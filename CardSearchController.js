@@ -42,6 +42,12 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     $scope.data.loadingDark = false;
   });
 
+  $scope.searchIfNotEmpty = function() {
+    if ($scope.search.text.trim() !== "") {
+      $scope.doSearch();
+    }
+  };
+
   $scope.doSearch = function() {
     $scope.data.matches = [];
     $scope.data.performedSearch = true;
@@ -81,9 +87,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       requiredType = CDFService.getTypeSearchStringFromType($scope.search.type);
     }
 
-    if ($scope.search.side != "ALL") {
+    if ($scope.search.side === "LIGHT") {
       searchRequiredSide = true;
-      requiredSide = $scope.search.side.toLowerCase();
+      requiredSide = "LS";
+    }
+    if ($scope.search.side === "DARK") {
+      searchRequiredSide = true;
+      requiredSide = "DS";
     }
 
 
@@ -113,7 +123,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       if (!searchRequiredSide) {
         matchedSide = true;
       } else {
-        if (-1 !== card.side.toLowerCase().indexOf(requiredSide)) {
+        if (card.side === requiredSide) {
           matchedSide = true;
         }
       }

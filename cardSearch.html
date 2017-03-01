@@ -78,7 +78,7 @@
           <!-- Side -->
           <div class="cs-searchField cs-first-one">
             <div class="cs-searchLabel">Side</div>
-            <select data-ng-model="search.side" class="cs-search-input">
+            <select data-ng-model="search.side" class="cs-search-input" data-ng-change="searchIfNotEmpty()">
               <option value="ALL">Any</option>
               <option value="LIGHT">Light</option>
               <option value="DARK">Dark</option>
@@ -89,7 +89,7 @@
           <!-- Type -->
           <div class="cs-searchField">
             <div class="cs-searchLabel">Type</div>
-            <select data-ng-model="search.type" class="cs-search-input">
+            <select data-ng-model="search.type" class="cs-search-input" data-ng-change="searchIfNotEmpty()">
               <option value="ALL">Any</option>
               <option value="ADMIRALS_ORDER">Admiral's Order</option>
               <option value="CHARACTER">Character</option>
@@ -111,7 +111,7 @@
           <!-- Search Field -->
           <div class="cs-searchField">
             <div class="cs-searchLabel">Search In</div>
-            <select data-ng-model="search.searchField" class="cs-search-input">
+            <select data-ng-model="search.searchField" class="cs-search-input" data-ng-change="searchIfNotEmpty()">
               <option value="ALL">Any</option>
               <option value="TITLE">Title</option>
               <option value="GAMETEXT">Gametext</option>
