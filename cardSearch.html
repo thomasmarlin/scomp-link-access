@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Star Wars CCG Card Search</title>
+  </head>
+
+
+  <!-- Third Party -->
+  <script src="/wp-content/plugins/swccg-tourny/js/spin.min.js.css"></script>
+  <script src="/wp-content/plugins/swccg-tourny/jquery-2.1.4.min.js"></script>
+  <script src='/wp-content/plugins/swccg-tourny/angular.1.4.8.min.js'></script>
+  <script src='/wp-content/plugins/swccg-tourny/angular-animate.min.js'></script>
+  <script src="/wp-content/plugins/swccg-tourny/js/bootstrap.min.js"></script>
+  <script src="/wp-content/plugins/swccg-tourny/js/angular-spinner.js"></script>
+  <script src="/wp-content/plugins/swccg-tourny/ui-bootstrap-tpls-1.1.0.min.js.css"></script>
+
+
+  <!-- Main App -->
+  <script src="/wp-content/plugins/swccg-tourny/CardSearchController.js"></script>
+  <script src="/wp-content/plugins/swccg-tourny/CDFService.js"></script>
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/wp-content/plugins/swccg-tourny/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/wp-content/plugins/swccg-tourny/cardSearch.css">
+
+  <body>
+
+    <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main">
+
+      <div class="cs-title">Star Wars CCG Card Search</div>
+      <hr class="cs-title-divider">
+
+      <div data-ng-if="data.selectedCard != null">
+        <div data-ng-if="data.mode == 'TEXT'">
+          <div class="cs-card-preview-overlay" data-ng-if="data.selectedCard" data-ng-click="data.selectedCard = null">
+            <div class="cs-card-preview-text-only" data-ng-if="data.selectedCard" data-ng-click="swallow($event)">
+              <div class="cs-card-close-button cs-link" data-ng-click="data.selectedCard = null">X Close</div>
+              <div class="cs-card-type">{{data.selectedCard.type}}</div>
+              <div class="cs-card-title">{{data.selectedCard.title}}</div>
+              <div class="cs-card-lore">{{data.selectedCard.lore}}</div>
+              <div class="cs-card-destiny">{{data.selectedCard.destiny}}</div>
+              <div class="cs-card-subtype">{{data.selectedCard.subType}}</div>
+              <div class="cs-card-power" data-ng-if="data.selectedCard.power != ''">Power: {{data.selectedCard.power}}</div>
+              <div class="cs-card-ability" data-ng-if="data.selectedCard.ability != ''">Ability: {{data.selectedCard.ability}}</div>
+              <div class="cs-card-ability" data-ng-if="data.selectedCard.maneuver != ''">Maneuver: {{data.selectedCard.maneuver}}</div>
+              <div class="cs-card-ability" data-ng-if="data.selectedCard.armor != ''">Armor: {{data.selectedCard.armor}}</div>
+              <div class="cs-card-hyperspeed" data-ng-if="data.selectedCard.hyperspeed != ''">Hyperspeed: {{data.selectedCard.hyperspeed}}</div>
+              <div class="cs-card-hyperspeed" data-ng-if="data.selectedCard.landspeed != ''">Landspeed: {{data.selectedCard.landspeed}}</div>
+
+
+              <div class="cs-card-deploy">{{data.selectedCard.deploy}}</div>
+              <div class="cs-card-forfeit">{{data.selectedCard.forfeit}}</div>
+              <div class="cs-card-gametext">{{data.selectedCard.gametext}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div data-ng-if="data.mode == 'IMAGE'" class="cs-card-preview-overlay" data-ng-click="data.selectedCard = null">
+          <div class="cs-card-preview-image">
+            <div data-ng-if="data.selectedCard.links.length == 1">
+              <img class="cs-card-image" src="{{data.selectedCard.links_large[0]}}">
+            </div>
+            <div data-ng-if="data.selectedCard.links.length > 1">
+              <img class="cs-card-image-multiple" data-ng-repeat="link in data.selectedCard.links_large" src="{{link}}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+
+        <!-- Search Pane -->
+        <div class="col-xs-4 col-md-3 cs-search-pane">
+
+          <!-- Side -->
+          <div class="cs-searchField cs-first-one">
+            <div class="cs-searchLabel">Side</div>
+            <select data-ng-model="search.side" class="cs-search-input">
+              <option value="ALL">Any</option>
+              <option value="LIGHT">Light</option>
+              <option value="DARK">Dark</option>
+            </select>
+          </div>
+
+
+          <!-- Type -->
+          <div class="cs-searchField">
+            <div class="cs-searchLabel">Type</div>
+            <select data-ng-model="search.type" class="cs-search-input">
+              <option value="ALL">Any</option>
+              <option value="ADMIRALS_ORDER">Admiral's Order</option>
+              <option value="CHARACTER">Character</option>
+              <option value="CREATURE">Creature</option>
+              <option value="DEVICe">Device</option>
+              <option value="DEFENSIVE_SHIELD">Defensive Sheild</option>
+              <option value="EFFECT">Effect</option>
+              <option value="EPIC_EVENT">Epic Event</option>
+              <option value="INTERRUPT">Interrupt</option>
+              <option value="JEDI_TEST">Jedi Test</option>
+              <option value="LOCATION">Location</option>
+              <option value="OBJECTIVE">Objective</option>
+              <option value="STARSHIP">Starship</option>
+              <option value="VEHICLE">Vehicle</option>
+              <option value="WEAPON">Weapon</option>
+            </select>
+          </div>
+
+          <!-- Search Field -->
+          <div class="cs-searchField">
+            <div class="cs-searchLabel">Search In</div>
+            <select data-ng-model="search.searchField" class="cs-search-input">
+              <option value="ALL">Any</option>
+              <option value="TITLE">Title</option>
+              <option value="GAMETEXT">Gametext</option>
+              <option value="LORE">Lore</option>
+            </select>
+          </div>
+
+
+          <!-- Preview Mode -->
+          <div class="cs-searchField">
+            <div class="cs-searchLabel">Display Mode</div>
+            <select data-ng-model="data.mode" class="cs-search-input">
+              <option value="IMAGE">Full Images</option>
+              <option value="TEXT">Text-Only</option>
+            </select>
+          </div>
+
+
+          <!-- Search Text -->
+          <div class="cs-searchField">
+            <div class="cs-searchLabel">Search Text</div>
+            <input data-ng-model="search.text"
+                   class="cs-search-input"
+                   placeholder="Enter Search Text Here..."
+                   data-ng-keydown="$event.keyCode == 13 ? doSearch() : null"  >
+          </div>
+
+
+          <!-- Search Button -->
+          <div class="cs-searchField">
+            <button data-ng-click="doSearch()" class="btn btn-primary">Search</button>
+          </div>
+
+        </div>
+
+        <!-- Results Pane -->
+        <div class="col-xs-8 col-md-9 cs-search-results-pane">
+          <!-- <div class="cs-search-results-label">Search Results</div> -->
+          <div class="row cs-search-results-header">
+            <div class="col-xs-4 cs-colored-column cs-color-1">
+              Card Name
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              Side
+            </div>
+            <div class="col-xs-1 cs-colored-column cs-color-1">
+              Set
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              Type
+            </div>
+            <div class="col-xs-3 cs-colored-column cs-color-1">
+              Sub Type
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              Rare
+            </div>
+            <div class="col-xs-1 cs-colored-column cs-color-1">
+              Other
+            </div>
+          </div>
+
+          <div data-ng-if="data.loadingLight || data.loadingDark" class="cs-loading-data">
+            Loading...
+          </div>
+
+          <div data-ng-if="!data.loadingLight && !data.loadingDark && !data.performedSearch" class="cs-loading-data">
+            Enter search parameters and click "Search"
+          </div>
+
+          <div data-ng-if="!data.loadingLight && !data.loadingDark && data.noResultsFound" class="cs-loading-data">
+            No Matches Found
+          </div>
+
+          <div class="row cs-card-result" data-ng-repeat="card in data.matches | orderBy:'titleSortable'">
+            <div class="col-xs-4 cs-link cs-colored-column cs-color-1" data-ng-click="data.selectedCard = card">
+              {{card.title}}
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              {{card.side}}
+            </div>
+            <div class="col-xs-1 cs-colored-column cs-color-1">
+              {{card.setAbbreviation}}
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              {{card.type}}
+            </div>
+            <div class="col-xs-3 cs-colored-column cs-color-1">
+              <div>
+                {{card.subType}}
+              </div>
+            </div>
+            <div class="col-xs-1 cs-color-2">
+              {{card.rarity}}
+            </div>
+            <div class="col-xs-1 cs-colored-column cs-color-1">
+              {{card.destiny}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>

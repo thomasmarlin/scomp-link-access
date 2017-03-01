@@ -1,0 +1,245 @@
+.cs-main {
+  padding: 5px;
+  text-align: center;
+  /*background-color: #FAFAFA;*/
+  background-color: #F3F3F3;
+}
+
+.cs-colored-colum {
+  border-right: thin solid #DADADA;
+}
+.cs-color-1 {
+  background-color: #FAFAFA;
+}
+.cs-color-2 {
+  background-color: white;
+}
+
+.cs-title {
+  color: gray;
+  font-size: 2em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.cs-title-divider {
+  margin-bottom: 0px;
+  margin-top: 0.5em;
+}
+
+.cs-search-pane {
+  text-align: left;
+  background-color: #DADADA;
+  padding: 1em;
+  height: 100vh;
+}
+
+.cs-search-input {
+  width: 100%;
+}
+
+.cs-search-results-pane {
+  text-align: left;
+  background-color: white;
+}
+
+.cs-search-results-header {
+  border-bottom: thin solid gray;
+}
+
+.cs-loading-data {
+  margin: 1em;
+  font-size: 1.5em;
+  font-style: italic;
+  color: gray;
+}
+
+.cs-searchLabel {
+  background-color: #97c3fc;
+  color: white;
+}
+.cs-searchField {
+  margin-top: 1em;
+  background-color: #DADADA;
+}
+.cs-searchField.cs-first-one {
+  margin-top: 0px;
+}
+
+.cs-searchField.cs-big-spacing {
+  margin-top: 5em;
+}
+
+.cs-search-results-label {
+  background-color: #DADADA;
+}
+
+.cs-card-result {
+  border-bottom: thin solid lightgray;
+}
+
+.cs-card-preview-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(150, 150, 150, 0.5);
+  z-index: 9999;
+}
+
+.cs-card-preview-text-only {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+
+  width: 400px;
+  height: 600px;
+
+  z-index: 999999;
+  text-align: left;
+
+  background-color: white;
+  border: thin solid black;
+  box-shadow: 2px 2px 2px black;
+}
+
+
+/*
+.cs-card-preview-image {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+
+  height: 600px;
+  width: 0px;
+
+  z-index: 999999;
+  text-align: left;
+  background-color: white;
+}
+*/
+.cs-card-preview-imagee {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  height: 600px;
+  z-index: 999999;
+}
+
+
+.cs-card-close-button {
+  position: absolute;
+  top: -1.5em;
+  right: 0px;
+  color: blue;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: white;
+  border: thin solid black;
+}
+
+.cs-card-type {
+  position: absolute;
+  left: 0.5em;
+  top: 0px
+}
+
+.cs-card-title {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+}
+
+.cs-card-destiny {
+  position: absolute;
+  top: 0px;
+  right: 0.5em;
+  font-size: 1.5em;
+}
+
+.cs-card-lore {
+  position: absolute;
+  top: 2.5em;
+  left: 2em;
+  right: 2em;
+}
+
+.cs-card-subtype {
+  position: absolute;
+  top: 375px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  margin: auto;
+}
+
+.cs-card-power {
+  position: absolute;
+  top: 410px;
+  left: 3em;
+  margin: auto;
+}
+
+.cs-card-ability {
+  position: absolute;
+  top: 410px;
+  left: 35%;
+  margin: auto;
+}
+
+.cs-card-hyperspeed {
+  position: absolute;
+  top: 410px;
+  right: 2em;
+  margin: auto;
+}
+
+.cs-card-deploy {
+  position: absolute;
+  left: 5px;
+  bottom: 3em;
+  font-size: 1.5em;
+}
+
+.cs-card-forfeit {
+  position: absolute;
+  left: 5px;
+  bottom: 2em;
+  font-size: 1.5em;
+}
+
+.cs-card-gametext {
+  position: absolute;
+  top: 450px;
+  left: 2em;
+  right: 2em;
+}
+
+.cs-card-image {
+  position: relative;
+  height: 100%;
+  width: auto;
+  z-index: 9999999;
+}
+
+.cs-card-image-multiple {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: auto;
+}
+
+.cs-link {
+  color: blue;
+  cursor: pointer;
+}
+.cs-link:hover {
+  text-decoration: underline;
+}
