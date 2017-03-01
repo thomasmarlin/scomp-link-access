@@ -46,7 +46,7 @@ cardSearchApp.service('CDFService', [function() {
       return CARD_TYPE_SEARCH_STRING[cardTypeEnum];
     }
     return "";
-  }
+  };
 
   function cardsFromCdfData(data) {
     var cards = [];
@@ -371,6 +371,9 @@ cardSearchApp.service('CDFService', [function() {
       }
       case "Reflections III": {
         return "Ref3";
+      }
+      case "Demo Deck": {
+        return "Demo";
       }
       default: {
         var abbreviation = "";

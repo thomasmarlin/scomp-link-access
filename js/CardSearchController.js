@@ -1,5 +1,5 @@
 'use strict';
-var cardSearchApp = angular.module('cardSearchApp', ['ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tabs', 'angularSpinner']).config(function($locationProvider) { $locationProvider.html5Mode({enabled: true, requireBase: false}); });
+var cardSearchApp = angular.module('cardSearchApp', ['ui.bootstrap', 'ui.bootstrap.tabs']).config(function($locationProvider) { $locationProvider.html5Mode({enabled: true, requireBase: false}); });
 cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService',  function($scope, $http, CDFService) {
 
   $scope.data = {
