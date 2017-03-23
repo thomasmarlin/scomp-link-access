@@ -112,6 +112,7 @@ cardSearchApp.service('CDFService', [function() {
       power: "",
       title: "",
       titleSortable: "",
+      titleLower: "",
       type: "",
       set: "",
       setAbbreviation: "",
@@ -261,6 +262,7 @@ cardSearchApp.service('CDFService', [function() {
       card.destiny = line.substring(iDestinyStart+1, iDestinyEnd);
     }
     card.titleSortable = card.title.replace("•", "");
+    card.titleLower = card.title.toLowerCase();
   }
 
 

@@ -11,9 +11,11 @@
   <script src='/wp-content/plugins/card-search/js/angular.1.4.8.min.js'></script>
   <script src="/wp-content/plugins/card-search/js/bootstrap.min.js"></script>
   <script src="/wp-content/plugins/card-search/ui-bootstrap-tpls-1.1.0.min.js.css"></script>
+  <script src="/wp-content/plugins/card-search/js/angular-query-builder.js"></script>
 
 
   <!-- Main App -->
+  <script src="/wp-content/plugins/card-search/js/app.js"></script>
   <script src="/wp-content/plugins/card-search/js/CardSearchController.js"></script>
   <script src="/wp-content/plugins/card-search/js/CDFService.js"></script>
 
@@ -28,6 +30,21 @@
 
       <div class="cs-title">Star Wars CCG Card Search</div>
       <hr class="cs-title-divider">
+
+      <div data-ng-if="data.showAdvancedSearch">
+        <div class="cs-card-preview-overlay" data-ng-click="data.showAdvancedSearch = false" data-ng-enter="$event.which === 13 ? doAdvancedSearch(): null">
+
+          <div class="cs-advanced-search-window" data-ng-click="swallowClick($event)">
+            <div class="cs-advanced-search-title">Advanced Search</div>
+
+            <query-builder group="filter.group"></query-builder>
+
+            <button class="btn btn-default" data-ng-click="cancelAdvanced()">Cancel</button>
+            <button class="btn btn-primary" data-ng-click="doAdvancedSearch()">Search</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
 
       <div data-ng-if="data.selectedCard != null">
         <div data-ng-if="data.mode == 'TEXT'">
@@ -139,7 +156,8 @@
 
           <!-- Search Button -->
           <div class="cs-searchField">
-            <button data-ng-click="doSearch()" class="btn btn-primary">Search</button>
+            <button data-ng-click="doSearch()" class="btn btn-primary cs-card-search-button">Search</button>
+            <button data-ng-click="advancedSearchBuilder()" class="btn btn-primary cs-card-search-button">Advanced Search</button>
           </div>
 
         </div>
@@ -183,7 +201,7 @@
             No Matches Found
           </div>
 
-          <div class="row cs-card-result" data-ng-repeat="card in data.matches | orderBy:'titleSortable'">
+          <div class="row cs-card-result" data-ng-repeat="card in data.matches | orderBy:'titleSortable' track by $index">
             <div class="col-xs-4 cs-link cs-colored-column cs-color-1" data-ng-click="data.selectedCard = card">
               {{card.title}}
             </div>

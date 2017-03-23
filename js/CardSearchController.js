@@ -1,5 +1,5 @@
 'use strict';
-var cardSearchApp = angular.module('cardSearchApp', ['ui.bootstrap', 'ui.bootstrap.tabs']).config(function($locationProvider) { $locationProvider.html5Mode({enabled: true, requireBase: false}); });
+var cardSearchApp = angular.module('cardSearchApp');
 cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService',  function($scope, $http, CDFService) {
 
   $scope.data = {
@@ -10,7 +10,30 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     performedSearch: false,
     noResultsFound: false,
     selectedCard: null,
+    showAdvancedSearch: false,
     mode: "IMAGE" // "TEXT"
+  };
+
+  $scope.getFilter = function() {
+      return JSON.stringify($scope.filter);
+  };
+
+  $scope.filter = {
+    group: {
+      operator: 'AND',
+      rules: [
+        {
+          condition: 'has',
+          field: 'gametext',
+          data: ''
+        },
+        {
+          condition: 'has',
+          field: 'gametext',
+          data: ''
+        }
+      ]
+    }
   };
 
   $scope.search = {
@@ -22,6 +45,18 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
 
   $scope.done = function() {
     alert("done!");
+  };
+
+  $scope.advancedSearchBuilder = function() {
+    $scope.data.showAdvancedSearch = true;
+  };
+
+  $scope.swallowClick = function($event) {
+    $event.stopPropagation();
+  };
+
+  $scope.cancelAdvanced = function() {
+    $scope.data.showAdvancedSearch = false;
   };
 
   function addCardsFromCdfData(data) {
@@ -47,6 +82,171 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       $scope.doSearch();
     }
   };
+
+  $scope.doAdvancedSearch = function() {
+
+    $scope.data.noResultsFound = false;
+    $scope.data.performedSearch = true;
+
+    var matchingCards = getCardsMatchingRule($scope.filter);
+    $scope.data.matches = matchingCards;
+
+    if ($scope.data.matches.length === 0) {
+      $scope.data.noResultsFound = true;
+    }
+
+    $scope.data.matches.sort('title');
+
+    $scope.data.showAdvancedSearch = false;
+  };
+
+
+  /**
+   * Compare the given field, returning true on match and false otherwise
+   */
+  function compareFields(card, fieldName, compareType, value) {
+    /*
+    { name: '=' },
+    { name: '<>' },
+    { name: '<' },
+    { name: '<=' },
+    { name: '>' },
+    { name: '>=' },
+    { name: 'has'}
+    */
+
+    if (compareType === '=') {
+      return card[fieldName] == value; //jshint ignore:line
+    } else if (compareType === '<>') {
+      return card[fieldName] != value; //jshint ignore:line
+    } else if (compareType === '<') {
+      return card[fieldName] < value; //jshint ignore:line
+    } else if (compareType === '<=') {
+      return card[fieldName] <= value; //jshint ignore:line
+    } else if (compareType === '>') {
+      return card[fieldName] > value; //jshint ignore:line
+    } else if (compareType === '>=') {
+      return card[fieldName] >= value; //jshint ignore:line
+    } else if (compareType === 'has') {
+      return -1 !== card[fieldName].toLowerCase().indexOf(value.toLowerCase()); //jshint ignore:line
+    } else {
+      console.error("Unknown compare type: " + compareType);
+      return false;
+    }
+
+  }
+
+  function getCardsMatchingSimpleRule(rule) {
+
+    var matches = [];
+    for (var i = 0; i < $scope.data.cardList.length; i++) {
+      var card = $scope.data.cardList[i];
+
+      // Empty field. Just ignore it!
+      if (rule.data === "") {
+        matches.push(card);
+        continue;
+      }
+
+      if (compareFields(card, rule.field, rule.condition, rule.data)) {
+        matches.push(card);
+      }
+    }
+    return matches;
+  }
+
+  function getCardsInAnyList(list1, list2) {
+    var cumulativeCards = [];
+
+    var i = 0;
+    var card = null;
+
+    for (i = 0; i < list1.length; i++) {
+      card = list1[i];
+      addCardToList(card, cumulativeCards);
+    }
+
+    for (i = 0; i < list2.length; i++) {
+      card = list2[i];
+      addCardToList(card, cumulativeCards);
+    }
+
+    return cumulativeCards;
+  }
+
+  function addCardToList(card, list) {
+    var alreadyExists = false;
+    for (var j = 0; j < list.length; j++) {
+      var existingCard = list[j];
+      if (existingCard.title === card.title) {
+        alreadyExists = true;
+        break;
+      }
+    }
+
+    if (!alreadyExists) {
+      list.push(card);
+    }
+  }
+
+  function getCardsInBothLists(list1, list2) {
+    var cardsInBothLists = [];
+    for (var i = 0; i < list1.length; i++) {
+      var card1 = list1[i];
+
+      for (var j = 0; j < list2.length; j++) {
+        var card2 = list2[j];
+        if (!card2 || !card1) {
+          debugger;
+        }
+        if (card2.title === card1.title) {
+          cardsInBothLists.push(card2);
+          break;
+        }
+      }
+    }
+    return cardsInBothLists;
+  }
+
+
+  function getCardsMatchingRuleGroup(group) {
+    // Evaluate the group of rules using AND or OR
+    var firstRule = true;
+    var cumulativeCardsMatchingRules = [];
+
+    for (var i = 0; i < group.rules.length; i++) {
+      var subRule = group.rules[i];
+      var cardsMatchingRule = getCardsMatchingRule(subRule);
+
+      if (group.operator === "AND") {
+        if (firstRule) {
+          cumulativeCardsMatchingRules = cardsMatchingRule;
+          firstRule = false;
+        }
+        cumulativeCardsMatchingRules = getCardsInBothLists(cumulativeCardsMatchingRules, cardsMatchingRule);
+      } else if (group.operator === "OR") {
+        cumulativeCardsMatchingRules = getCardsInAnyList(cumulativeCardsMatchingRules, cardsMatchingRule);
+      }
+    }
+    return cumulativeCardsMatchingRules;
+  }
+
+
+  /**
+   * Get cards that match a given rule (may be complex or simple)
+   */
+  function getCardsMatchingRule(rule) {
+
+    if (rule.condition) {
+
+      // This is a specific condition, not another rule
+      return getCardsMatchingSimpleRule(rule);
+
+    } else if (rule.group) {
+
+      return getCardsMatchingRuleGroup(rule.group);
+    }
+  }
 
   $scope.doSearch = function() {
     $scope.data.matches = [];
@@ -82,7 +282,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       searchTitle = true;
     }
 
-    if ($scope.search.type != "ALL") {
+    if ($scope.search.type !== "ALL") {
       searchRequiredType = true;
       requiredType = CDFService.getTypeSearchStringFromType($scope.search.type);
     }
@@ -158,6 +358,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       }
     }
 
+
     if ($scope.data.matches.length === 0) {
       $scope.data.noResultsFound = true;
     }
@@ -166,8 +367,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
 
   };
 
+
   $scope.swallow = function($event) {
     $event.stopPropagation();
-  }
+  };
 
 }]);

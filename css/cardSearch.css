@@ -243,3 +243,27 @@
 .cs-link:hover {
   text-decoration: underline;
 }
+
+.cs-card-search-button {
+  margin-top: 0.5em;
+  margin-right: 1em;
+}
+
+.cs-advanced-search-window {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 2em;
+  max-width: 550px;
+  height: auto;
+  margin: auto;
+  padding: 1.5em;
+  text-align: left;
+  background-color: #f2f2f2;
+  border-radius: 1em;
+}
+
+.cs-advanced-search-title {
+  font-size: 1.5em;
+  font-style: italic;
+}
