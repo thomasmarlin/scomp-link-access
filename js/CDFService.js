@@ -262,6 +262,9 @@ cardSearchApp.service('CDFService', [function() {
       card.destiny = line.substring(iDestinyStart+1, iDestinyEnd);
     }
     card.titleSortable = card.title.replace("•", "");
+    card.titleSortable = card.titleSortable.replace("•", "");
+    card.titleSortable = card.titleSortable.replace("•", "");
+    card.titleSortable = card.titleSortable.replace("•", "");
     card.titleLower = card.title.toLowerCase();
   }
 

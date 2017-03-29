@@ -11,7 +11,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     noResultsFound: false,
     selectedCard: null,
     showAdvancedSearch: false,
+    imageLoadFailure: false,
     mode: "IMAGE" // "TEXT"
+  };
+
+  $scope.selectCard = function(card) {
+    $scope.data.selectedCard = card;
+    $scope.data.imageLoadFailure = false;
   };
 
   $scope.getFilter = function() {
@@ -197,8 +203,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
       for (var j = 0; j < list2.length; j++) {
         var card2 = list2[j];
         if (!card2 || !card1) {
-          debugger;
+          console.log("error: bad card????");
         }
+
         if (card2.title === card1.title) {
           cardsInBothLists.push(card2);
           break;
@@ -365,6 +372,11 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
 
     $scope.data.matches.sort('title');
 
+  };
+
+  $scope.onImageLoadError = function() {
+    console.error("Error loading image!");
+    $scope.data.imageLoadFailure = true;
   };
 
 

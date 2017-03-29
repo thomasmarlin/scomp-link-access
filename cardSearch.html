@@ -18,6 +18,7 @@
   <script src="/wp-content/plugins/card-search/js/app.js"></script>
   <script src="/wp-content/plugins/card-search/js/CardSearchController.js"></script>
   <script src="/wp-content/plugins/card-search/js/CDFService.js"></script>
+  <script src="/wp-content/plugins/card-search/js/onLoadError.js"></script>
 
 
   <!-- CSS -->
@@ -47,10 +48,13 @@
       </div>
 
       <div data-ng-if="data.selectedCard != null">
-        <div data-ng-if="data.mode == 'TEXT'">
-          <div class="cs-card-preview-overlay" data-ng-if="data.selectedCard" data-ng-click="data.selectedCard = null">
-            <div class="cs-card-preview-text-only" data-ng-if="data.selectedCard" data-ng-click="swallow($event)">
-              <div class="cs-card-close-button cs-link" data-ng-click="data.selectedCard = null">X Close</div>
+
+        <div>data.imageLoadFailure: {{data.imageLoadFailure}}</div>
+        <!-- Text Card Display -->
+        <div data-ng-if="(data.mode == 'TEXT') || data.imageLoadFailure">
+          <div class="cs-card-preview-overlay" data-ng-click="selectCard(null)">
+            <div class="cs-card-preview-text-only" data-ng-click="swallow($event)">
+              <div class="cs-card-close-button cs-link" data-ng-click="selectCard(null)">X Close</div>
               <div class="cs-card-type">{{data.selectedCard.type}}</div>
               <div class="cs-card-title">{{data.selectedCard.title}}</div>
               <div class="cs-card-lore">{{data.selectedCard.lore}}</div>
@@ -71,10 +75,11 @@
           </div>
         </div>
 
-        <div data-ng-if="data.mode == 'IMAGE'" class="cs-card-preview-overlay" data-ng-click="data.selectedCard = null">
+        <!-- Image Display -->
+        <div data-ng-if="(data.mode == 'IMAGE') && !data.imageLoadFailure" class="cs-card-preview-overlay" data-ng-click="selectCard(null)">
           <div class="cs-card-preview-image">
             <div data-ng-if="data.selectedCard.links.length == 1">
-              <img class="cs-card-image" src="{{data.selectedCard.links_large[0]}}">
+              <img class="cs-card-image" src="{{data.selectedCard.links_large[0]}}" on-load-error="onImageLoadError">
             </div>
             <div data-ng-if="data.selectedCard.links.length > 1">
               <img class="cs-card-image-multiple" data-ng-repeat="link in data.selectedCard.links_large" src="{{link}}">
@@ -202,7 +207,7 @@
           </div>
 
           <div class="row cs-card-result" data-ng-repeat="card in data.matches | orderBy:'titleSortable' track by $index">
-            <div class="col-xs-4 cs-link cs-colored-column cs-color-1" data-ng-click="data.selectedCard = card">
+            <div class="col-xs-4 cs-link cs-colored-column cs-color-1" data-ng-click="selectCard(card)">
               {{card.title}}
             </div>
             <div class="col-xs-1 cs-color-2">
