@@ -96,6 +96,11 @@ cardSearchApp.service('CDFService', [function() {
       return null;
     }
 
+    var twoSided = false;
+    if (cardLine.indexOf('TWOSIDED') !== 0) {
+      twoSided = true;
+    }
+
     var card = {
       links: [],
       links_large: [],
@@ -117,7 +122,8 @@ cardSearchApp.service('CDFService', [function() {
       set: "",
       setAbbreviation: "",
       side: "",
-      subType: ""
+      subType: "",
+      twoSided: twoSided
     };
 
 
@@ -273,10 +279,10 @@ cardSearchApp.service('CDFService', [function() {
 
     // Handle the full special lines first!
     if (line.indexOf("Text:") === 0) {
-      card.gametext = line.substring(6).trim();
+      card.gametext += line.substring(6).trim();
       return;
     } else if (line.indexOf("Lore:") === 0) {
-      card.lore = line.substring(6).trim();
+      card.lore += line.substring(6).trim();
       return;
     } else if (line.indexOf("Set:") === 0) {
       card.set = line.substring(5).trim();
@@ -288,6 +294,9 @@ cardSearchApp.service('CDFService', [function() {
     } else if (line.indexOf("USED:") === 0) {
       card.gametext += "USED: " + line.substring(6).trim() + "  ";
       return;
+    } else if (card.type === "Objective") {
+      // Special case because Objectives aren't labeled properly... sigh...
+      card.gametext += line;
     }
 
     // Power: 7 Armor: 5 Hyperspeed: 4\n
