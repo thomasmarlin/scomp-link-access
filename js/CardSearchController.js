@@ -47,9 +47,160 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     alert("done!");
   };
 
+  function addStandardRulesToAdvancedSearch() {
+    // Add any of the current 'normal' filters to the advanced search
+    var rules = buildRulesForNormalFields();
+    for (var i = 0; i < rules.length; i++) {
+      var rule = rules[i];
+      var alreadyExists = false;
+
+      var firstGroup = $scope.filter.group;
+      if (firstGroup.operator === "AND") {
+        for (var j = 0; j < firstGroup.rules.length; i++) {
+          var existingRule = $scope.filter.rules[j];
+
+          // Make sure it's a 'normal' rule (not a group)
+          if (existingRule.condition) {
+            if ((existingRule.data == rule.data) && (existingRule.field == rule.field))  //jshint ignore:line
+            {
+              alreadyExists = true;
+            }
+          }
+        }
+
+        if (!alreadyExists) {
+          firstGroup.rules.push(rule);
+        }
+      }
+    }
+  }
+
+
   $scope.advancedSearchBuilder = function() {
     $scope.data.showAdvancedSearch = true;
+
+    addStandardRulesToAdvancedSearch();
   };
+
+  function buildRulesForNormalFields() {
+
+    //
+    // Handle the search field first
+    //
+    var searchText = $scope.search.text.toLowerCase().trim();
+    var orTextSearches = [];
+    var typeSearch = null;
+    var sideSearch = null;
+    var searchTypeCount = 0;
+
+    if (($scope.search.searchField === "ALL") || ($scope.search.searchField === "GAMETEXT")) {
+      orTextSearches.push({
+        condition: 'has',
+        field: 'gametext',
+        value: searchText
+      });
+    }
+    if (($scope.search.searchField === "ALL") || ($scope.search.searchField === "LORE")) {
+      orTextSearches.push({
+        condition: 'has',
+        field: 'lore',
+        value: searchText
+      });
+    }
+    if (($scope.search.searchField === "ALL") || ($scope.search.searchField === "TITLE")) {
+      orTextSearches.push({
+        condition: 'has',
+        field: 'title',
+        value: searchText
+      });
+    }
+    if (orTextSearches.length > 0) {
+      searchTypeCount++;
+    }
+
+
+    //
+    // Handle Card Type
+    //
+
+    if ($scope.search.type !== "ALL") {
+      typeSearch = {
+        condition: 'has',
+        field: 'type',
+        value: $scope.search.type
+      };
+      searchTypeCount++;
+    }
+
+    //
+    // Handle Light vs Dark
+    //
+
+    if ($scope.search.side === "LIGHT") {
+      sideSearch = {
+        condition: 'has',
+        field: 'side',
+        value: "LS"
+      };
+    }
+    if ($scope.search.side === "DARK") {
+      sideSearch = {
+        condition: 'has',
+        field: 'side',
+        value: "DS"
+      };
+    }
+    if (sideSearch) {
+      searchTypeCount++;
+    }
+
+    var fullSearch = {};
+    if (searchTypeCount > 1) {
+      var rules = [];
+      if (sideSearch) {
+        rules.push(sideSearch);
+      }
+      if (typeSearch) {
+        rules.push(typeSearch);
+      }
+      if (orTextSearches) {
+        var textSearch = buildOrSearch(orTextSearches);
+        rules.push(textSearch);
+      }
+      var andGroup = {
+        operator: 'AND',
+        rules: rules
+      };
+      fullSearch = {
+        group: andGroup
+      };
+
+    } else {
+      if (sideSearch) {
+        fullSearch = sideSearch;
+      }
+      if (typeSearch) {
+        fullSearch = typeSearch;
+      }
+      if (orTextSearches.length > 0) {
+        fullSearch = buildOrSearch(orTextSearches);
+      }
+    }
+  }
+
+  function buildOrSearch(orTextSearches) {
+    var textSearch = null;
+    if (orTextSearches.length > 1) {
+      textSearch = {
+        group: {
+          operator: 'OR',
+          rules: orTextSearches
+        }
+      };
+    } else {
+      textSearch = orTextSearches[0];
+    }
+  }
 
   $scope.swallowClick = function($event) {
     $event.stopPropagation();
@@ -196,9 +347,6 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
 
       for (var j = 0; j < list2.length; j++) {
         var card2 = list2[j];
-        if (!card2 || !card1) {
-          debugger;
-        }
         if (card2.title === card1.title) {
           cardsInBothLists.push(card2);
           break;
