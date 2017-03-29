@@ -51,9 +51,8 @@
 
       <div data-ng-if="data.selectedCard != null">
 
-        <div>data.imageLoadFailure: {{data.imageLoadFailure}}</div>
         <!-- Text Card Display -->
-        <div data-ng-if="(data.mode == 'TEXT') || data.imageLoadFailure">
+        <div data-ng-if="data.textOnly || data.imageLoadFailure">
           <div class="cs-card-preview-overlay" data-ng-click="selectCard(null)">
             <div class="cs-card-preview-text-only" data-ng-click="swallow($event)">
               <div class="cs-card-close-button cs-link" data-ng-click="selectCard(null)">X Close</div>
@@ -78,7 +77,7 @@
         </div>
 
         <!-- Image Display -->
-        <div data-ng-if="(data.mode == 'IMAGE') && !data.imageLoadFailure" class="cs-card-preview-overlay" data-ng-click="selectCard(null)">
+        <div data-ng-if="!data.textOnly && !data.imageLoadFailure" class="cs-card-preview-overlay" data-ng-click="selectCard(null)">
           <div class="cs-card-preview-image">
             <div data-ng-if="data.selectedCard.links.length == 1">
               <img class="cs-card-image" src="{{data.selectedCard.links_large[0]}}" on-load-error="onImageLoadError">
@@ -91,7 +90,7 @@
       </div>
 
 
-      <div class="row">
+      <div class="row cs-row-full-width">
 
         <!-- Search Pane -->
         <div class="col-xs-4 col-md-3 cs-search-pane">
@@ -141,15 +140,6 @@
           </div>
 
 
-          <!-- Preview Mode -->
-          <div class="cs-searchField">
-            <div class="cs-searchLabel">Display Mode</div>
-            <select data-ng-model="data.mode" class="cs-search-input">
-              <option value="IMAGE">Full Images</option>
-              <option value="TEXT">Text-Only</option>
-            </select>
-          </div>
-
 
           <!-- Search Text -->
           <div class="cs-searchField">
@@ -165,6 +155,11 @@
           <div class="cs-searchField">
             <button data-ng-click="doSearch()" class="btn btn-primary cs-card-search-button">Search</button>
             <button data-ng-click="advancedSearchBuilder()" class="btn btn-primary cs-card-search-button">Advanced Search</button>
+          </div>
+
+          <!-- Preview Mode -->
+          <div class="cs-display-mode-toggle">
+            <label style="font-weight: normal">Show Text Instead of Images <input type="checkbox" name="checkbox" ng-model="data.textOnly"></label>
           </div>
 
         </div>

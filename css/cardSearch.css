@@ -36,6 +36,7 @@
 
 .cs-search-input {
   width: 100%;
+  padding-left: 5px;
 }
 
 .cs-search-results-pane {
@@ -57,6 +58,7 @@
 .cs-searchLabel {
   background-color: #97c3fc;
   color: white;
+  padding-left: 5px;
 }
 .cs-searchField {
   margin-top: 1em;
@@ -68,6 +70,14 @@
 
 .cs-searchField.cs-big-spacing {
   margin-top: 5em;
+}
+.cs-searchFieldOnBottom {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .cs-search-results-label {
@@ -272,4 +282,18 @@
   margin-top: 1em;
   font-size: 0.8em;
   font-style: italic;
+}
+
+.cs-search-output-radios {
+  margin-left: 10px;
+}
+
+.cs-row-full-width {
+  width: 100%;
+}
+
+.cs-display-mode-toggle {
+  position: fixed;
+  bottom: 10px;
+  left: 5px;
 }

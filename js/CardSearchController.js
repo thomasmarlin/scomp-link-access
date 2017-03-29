@@ -12,7 +12,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     selectedCard: null,
     showAdvancedSearch: false,
     imageLoadFailure: false,
-    mode: "IMAGE" // "TEXT"
+    textOnly: false
   };
 
   $scope.selectCard = function(card) {
