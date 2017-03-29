@@ -17,15 +17,20 @@ queryBuilder.directive('queryBuilder', ['$compile', function ($compile) {
                 ];
 
                 scope.fields = [
-                    { name: 'gametext' },
-                    { name: 'power' },
-                    { name: 'forfeit' },
                     { name: 'ability' },
-                    { name: 'lore' },
+                    { name: 'armor' },
+                    { name: 'deploy' },
                     { name: 'destiny' },
+                    { name: 'forfeit' },
+                    { name: 'gametext' },
+                    { name: 'hyperspeed' },
+                    { name: 'lore' },
+                    { name: 'maneuver' },
+                    { name: 'power' },
+                    { name: 'side' },
+                    { name: 'subType' },
                     { name: 'title' },
-                    { name: 'type' },
-                    { name: 'subType' }
+                    { name: 'type' }
                 ];
 
                 scope.conditions = [
