@@ -18,6 +18,7 @@
   <script src="/wp-content/plugins/card-search/js/app.js"></script>
   <script src="/wp-content/plugins/card-search/js/CardSearchController.js"></script>
   <script src="/wp-content/plugins/card-search/js/CDFService.js"></script>
+  <script src="/wp-content/plugins/card-search/js/SWIPService.js"></script>
   <script src="/wp-content/plugins/card-search/js/onLoadError.js"></script>
 
 
@@ -89,6 +90,54 @@
         </div>
       </div>
 
+      <!-- Extra Card Data -->
+      <div data-ng-if="data.selectedCard != null" class="cs-extra-data">
+        <div class="cs-extra-card-data-title" data-ng-click="toggleExtraData()">
+          Extra Card Data
+          <span class="glyphicon pull-right cs-extra-close-button"
+                data-ng-class="{'glyphicon-chevron-down': data.showExtraData, 'glyphicon-chevron-up': !data.showExtraData}">
+          </span>
+        </div>
+        <div class="row" data-ng-if="data.showExtraData">
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.pulls">
+            <div class="cs-extra-data-label">Pulls:</div>
+            <div data-ng-bind-html='data.selectedCard.pulls | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.pulledBy">
+            <div class="cs-extra-data-label">Pulled By:</div>
+            <div data-ng-bind-html='data.selectedCard.pulledBy | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.counterpart">
+            <div class="cs-extra-data-label">Counterpart:</div>
+            <div data-ng-bind-html='data.selectedCard.counterpart | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.combo">
+            <div class="cs-extra-data-label">Combo:</div>
+            <div data-ng-bind-html='data.selectedCard.combo | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.matching">
+            <div class="cs-extra-data-label">Matching:</div>
+            <div data-ng-bind-html='data.selectedCard.matching | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.matchingWeapon">
+            <div class="cs-extra-data-label">Matching Weapon:</div>
+            <div data-ng-bind-html='data.selectedCard.matchingWeapon | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.canceledBy">
+            <div class="cs-extra-data-label">Canceled By:</div>
+            <div data-ng-bind-html='data.selectedCard.canceledBy | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.cancels">
+            <div class="cs-extra-data-label">Cancels:</div>
+            <div data-ng-bind-html='data.selectedCard.cancels | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+          <div class="col-sm-4 col-md-3 col-lg-2 cs-extra-data-column" data-ng-if="data.selectedCard.abbreviation">
+            <div class="cs-extra-data-label">Abbreviation:</div>
+            <div data-ng-bind-html='data.selectedCard.abbreviation | to_trusted' class="cs-exta-data-block"></div>
+          </div>
+        </div>
+
+      </div>
 
       <div class="row cs-row-full-width">
 

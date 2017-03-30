@@ -1,6 +1,6 @@
 'use strict';
 var cardSearchApp = angular.module('cardSearchApp');
-cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService',  function($scope, $http, CDFService) {
+cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 'CDFService', 'SWIPService',  function($scope, $http, $window, CDFService, SWIPService) {
 
   $scope.data = {
     matches: [],
@@ -12,7 +12,8 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     selectedCard: null,
     showAdvancedSearch: false,
     imageLoadFailure: false,
-    textOnly: false
+    textOnly: false,
+    showExtraData: true
   };
 
   $scope.selectCard = function(card) {
@@ -65,6 +66,11 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
     $scope.data.showAdvancedSearch = false;
   };
 
+
+  $scope.toggleExtraData = function() {
+    $scope.data.showExtraData = !$scope.data.showExtraData;
+  };
+
   function addCardsFromCdfData(data) {
     var cards = CDFService.cardsFromCdfData(data);
     for (var i = 0; i < cards.length; i++) {
@@ -76,12 +82,33 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', 'CDFService
   $http.get('lightside.cdf').success(function(data) {
     addCardsFromCdfData(data);
     $scope.data.loadingLight = false;
+
+    loadSwipData();
   });
 
   $http.get('darkside.cdf').success(function(data) {
     addCardsFromCdfData(data);
     $scope.data.loadingDark = false;
+
+    loadSwipData();
   });
+
+  function loadSwipData() {
+    // Only load SWIP data after we've loaded both the light and dark CDFs
+    if ($scope.data.loadingDark || $scope.data.loadingLight) {
+      return;
+    }
+
+    $http.get('swipdump.text').success(function(data) {
+      SWIPService.addSwipDataFromSwipDump(data, $scope.data.cardList);
+    });
+
+    // For small screens (probably mobile), hide the extra data by default
+    var w = angular.element($window);
+    if (w.width() < 800) {
+      $scope.data.showExtraData = false;
+    }
+  }
 
   $scope.searchIfNotEmpty = function() {
     if ($scope.search.text.trim() !== "") {

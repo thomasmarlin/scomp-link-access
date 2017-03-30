@@ -257,6 +257,15 @@ cardSearchApp.service('CDFService', [function() {
 
   }
 
+  function getSimpleName(cardName) {
+    var titleSortable = cardName.replace("•", "");
+    titleSortable = titleSortable.replace("•", "");
+    titleSortable = titleSortable.replace("•", "");
+    titleSortable = titleSortable.replace("•", "");
+    titleSortable = titleSortable.toLowerCase();
+    return titleSortable;
+  }
+  this.getSimpleName = getSimpleName;
 
   function processTitleLine(line, card) {
     card.title = line.trim();
@@ -267,11 +276,8 @@ cardSearchApp.service('CDFService', [function() {
       card.title = line.substring(0, iDestinyStart-1).trim();
       card.destiny = line.substring(iDestinyStart+1, iDestinyEnd);
     }
-    card.titleSortable = card.title.replace("•", "");
-    card.titleSortable = card.titleSortable.replace("•", "");
-    card.titleSortable = card.titleSortable.replace("•", "");
-    card.titleSortable = card.titleSortable.replace("•", "");
-    card.titleLower = card.title.toLowerCase();
+    card.titleSortable = getSimpleName(card.title);
+    card.titleLower = card.titleSortable;
   }
 
 
@@ -312,27 +318,31 @@ cardSearchApp.service('CDFService', [function() {
       var data = splitLine[i].trim();
 
       if (i % 2 !== 0) {
-        if (lastFieldNameLower == "power:") {
+        if (lastFieldNameLower === "power:") {
           card.power = data;
-        } else if (lastFieldNameLower == "maneuver:") {
+        } else if (lastFieldNameLower === "maneuver:") {
           card.maneuver = data;
-        } else if (lastFieldNameLower == "armor:") {
+        } else if (lastFieldNameLower === "armor:") {
           card.armor = data;
-        } else if (lastFieldNameLower == "hyperspeed:") {
+        } else if (lastFieldNameLower === "hyperspeed:") {
           card.hyperspeed = data;
-        } else if (lastFieldNameLower == "landspeed:") {
+        } else if (lastFieldNameLower === "landspeed:") {
           card.landspeed = data;
-        } else if (lastFieldNameLower == "deploy:") {
+        } else if (lastFieldNameLower === "deploy:") {
           card.deploy = data;
-        } else if (lastFieldNameLower == "forfeit:") {
+        } else if (lastFieldNameLower === "forfeit:") {
           card.forfeit = data;
-        } else if (lastFieldNameLower == "ability:") {
+        } else if (lastFieldNameLower === "ability:") {
           card.ability = data;
-        } else if (lastFieldNameLower == "used:") {
+        } else if (lastFieldNameLower === "influence:") {
+          card.influence = data;
+        } else if (lastFieldNameLower === "ferocity:") {
+          card.ferocity = data;
+        } else if (lastFieldNameLower === "used:") {
           card.gametext += "USED:  " + data + "\n";
-        } else if (lastFieldNameLower == "lost:") {
+        } else if (lastFieldNameLower === "lost:") {
           card.gametext += "LOST: " + data + "\n";
-        } else if (lastFieldNameLower == "starting:") {
+        } else if (lastFieldNameLower === "starting:") {
           card.gametext += "STARTING: " + data + "\n";
         }
 
