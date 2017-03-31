@@ -13,7 +13,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     showAdvancedSearch: false,
     imageLoadFailure: false,
     textOnly: false,
-    showExtraData: true
+    showExtraData: false
   };
 
   $scope.selectCard = function(card) {
