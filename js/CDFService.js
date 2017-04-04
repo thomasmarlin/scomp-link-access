@@ -134,6 +134,7 @@ cardSearchApp.service('CDFService', [function() {
     processLinks(cardLine, card);
 
     var cardData = cardLine.substring(iSecondSpace + 2).trim();
+    cardData = cardData.replace("\"\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line

@@ -1,5 +1,5 @@
 <div class="alert alert-warning alert-group">
-  <div class="form-inline">
+  <div class="form-inline" style="margin-bottom: 5px">
       <select ng-options="o.name as o.name for o in operators" ng-model="group.operator" class="form-control input-sm"></select>
       <button style="margin-left: 5px" ng-click="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Condition</button>
       <button style="margin-left: 5px" ng-click="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Group</button>
@@ -17,7 +17,13 @@
                   <div class="form-inline">
                       <select ng-options="t.name as t.name for t in fields" ng-model="rule.field" class="form-control input-sm"></select>
                       <select style="margin-left: 5px" ng-options="c.name as c.name for c in conditions" ng-model="rule.condition" class="form-control input-sm"></select>
-                      <input style="margin-left: 5px;" type="text" ng-model="rule.data" class="form-control input-sm"/>
+
+                      <!-- Side -->
+                      <select data-ng-if="isSideField(rule.field)" style="margin-left: 5px" ng-options="opt.data as opt.name for opt in lightDarkOptions" ng-model="rule.data" class="form-control input-sm"></select>
+
+                      <!-- Text Value -->
+                      <input data-ng-if="!isSideField(rule.field)" style="margin-left: 5px;" type="text" ng-model="rule.data" class="form-control input-sm"/>
+
                       <button style="margin-left: 5px" ng-click="removeCondition($index)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
                   </div>
               </div>

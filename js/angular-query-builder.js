@@ -41,8 +41,37 @@ queryBuilder.directive('queryBuilder', ['$compile', function ($compile) {
                     { name: '<=' },
                     { name: '>' },
                     { name: '>=' }
-
                 ];
+
+                scope.lightDarkOptions = [
+                  { name: 'Light', data: 'ls'},
+                  { name: 'Dark', data: 'ds'}
+                ];
+
+                scope.isTextField = function(fieldName) {
+                  return !scope.isNumberField && !scope.isSideField;
+                };
+
+                scope.isNumberField = function(fieldName) {
+                  switch (fieldName) {
+                    case 'ability':
+                    case 'armor':
+                    case 'deploy':
+                    case 'destiny':
+                    case 'forfeit':
+                    case 'hyperspeed':
+                    case 'maneuver':
+                    case 'power':
+                      return true;
+                    default:
+                      return false;
+                  }
+                };
+
+                scope.isSideField = function(fieldName) {
+                  return (fieldName == 'side');
+                };
+
 
                 scope.addCondition = function () {
                     scope.group.rules.push({

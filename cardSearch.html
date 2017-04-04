@@ -50,11 +50,15 @@
 
             <query-builder group="filter.group"></query-builder>
 
-            <button class="btn btn-default" data-ng-click="cancelAdvanced()">Cancel</button>
-            <button class="btn btn-primary" data-ng-click="doAdvancedSearch()">Run Advanced Search</button>
-            <div class="clearfix"></div>
+            <hr style="border-color: #DADADA;">
 
-            <div class="cs-advanced-notes"> Note:  To search "Dark Side" cards select 'side' and type 'ds'.  Likewise, use 'ls' for Light. This will be cleaned up on a future release.</div>
+            <div class="cs-advanced-search-button-bar">
+              <button class="btn btn-default" data-ng-click="cancelAdvanced()">Cancel</button>
+              <button class="btn btn-primary" data-ng-click="doAdvancedSearch()">Run Advanced Search</button>
+              <div class="clearfix"></div>
+
+              <div class="cs-advanced-notes"> Hint:  If you specify <span style="font-weight: bold">'type' + 'has' + 'used'</span>, it will return all "Used Interrupts", "Used or Lost Interrupts", "Used or Starting Interrupts", etc.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -210,7 +214,7 @@
 
 
           <!-- Search Button -->
-          <div class="cs-searchField">
+          <div class="cs-searchField cs-search-buttons">
             <button data-ng-click="doSearch()" class="btn btn-primary cs-card-search-button">Search</button>
             <button data-ng-click="advancedSearchBuilder()" class="btn btn-primary cs-card-search-button">Advanced Search</button>
           </div>

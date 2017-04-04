@@ -189,6 +189,11 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       cumulativeSearch.group.rules.push($scope.filter);
     }
 
+    // If no search criteria, just return an empty search
+    if (basicSearches.length < 1 && !includeAdvancedSearch) {
+      return null;
+    }
+
     return cumulativeSearch;
   }
 
@@ -445,6 +450,12 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
   function performSearchAndDisplayResults(searchCriteria) {
     $scope.data.noResultsFound = false;
     $scope.data.performedSearch = true;
+    $scope.data.matches = [];
+
+    if (!searchCriteria) {
+      $scope.data.performedSearch = false;
+      return;
+    }
 
     var matchingCards = getCardsMatchingRule(searchCriteria);
     $scope.data.matches = matchingCards;

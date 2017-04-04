@@ -16,7 +16,7 @@
 }
 
 .cs-title {
-  color: gray;
+  color: #777;
   font-size: 2em;
   font-style: italic;
   font-weight: bold;
@@ -25,6 +25,7 @@
 .cs-title-divider {
   margin-bottom: 0px;
   margin-top: 0.5em;
+  border-bottom: thin solid #CACACA;
 }
 
 .cs-search-pane {
@@ -32,6 +33,7 @@
   background-color: #DADADA;
   padding: 1em;
   height: 100vh;
+  border-right: thin solid #CACACA;
 }
 
 .cs-search-input {
@@ -42,6 +44,7 @@
 .cs-search-results-pane {
   text-align: left;
   background-color: white;
+  box-shadow: 1px 1px 1px #BBB;
 }
 
 .cs-search-results-header {
@@ -71,6 +74,11 @@
 .cs-searchField.cs-big-spacing {
   margin-top: 5em;
 }
+
+.cs-search-buttons {
+  border-top: thin solid #BABABA;
+}
+
 .cs-searchFieldOnBottom {
   position: absolute;
   left: 0px;
@@ -274,8 +282,11 @@
 }
 
 .cs-advanced-search-title {
-  font-size: 1.5em;
-  font-style: italic;
+  font-size: 1.7em;
+  text-decoration: underline;
+  text-align: center;
+  margin-left: 2px;
+  margin-bottom: 0.3em;
 }
 
 .cs-advanced-notes {
@@ -336,4 +347,8 @@
 .cs-extra-close-button {
   margin-right: 0.5em;
   margin-top: 2px;
+}
+
+.cs-advanced-search-button-bar {
+  text-align: center;
 }

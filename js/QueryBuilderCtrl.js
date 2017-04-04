@@ -28,4 +28,4 @@ cardSearchApp.controller('QueryBuilderCtrl', ['$scope', function ($scope) {
         $scope.output = computed(newValue.group);
     }, true);
 }]);
-/* jshint ingore:end */
+/* jshint ignore:end */
