@@ -25,6 +25,12 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       return JSON.stringify($scope.filter);
   };
 
+
+  /**
+   * This is the basic structure of filters. They can be
+   * either a 'group' (in which case it has sub-rules) or a 'condition'
+   * in which case it matches a given field with given data
+   */
   $scope.filter = {
     group: {
       operator: 'AND',
@@ -57,6 +63,134 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
   $scope.advancedSearchBuilder = function() {
     $scope.data.showAdvancedSearch = true;
   };
+
+
+
+  /**
+   * Build up a list of all requirements from the left-hand pane
+   * Store them as an array of requirements in the filter-format
+   */
+  function getBasicAndSearches() {
+
+    var andSearches = [];
+
+    /*
+    group: {
+      operator: 'AND',
+      rules: [
+        {
+          condition: 'has',
+          field: 'gametext',
+          data: ''
+        },
+        {
+          condition: 'has',
+          field: 'gametext',
+          data: ''
+        }
+      ]
+    }
+    */
+
+    var searchText = $scope.search.text.toLowerCase().trim();
+
+    // Specific Search Fields
+    if (searchText !== "" && $scope.search.searchField === "ALL") {
+      andSearches.push({
+        group: {
+          operator: 'OR',
+          rules: [
+            {
+              condition: 'has',
+              field: 'gametext',
+              data: searchText
+            },
+            {
+              condition: 'has',
+              field: 'lore',
+              data: searchText
+            },
+            {
+              condition: 'has',
+              field: 'title',
+              data: searchText
+            },
+
+          ]
+        }
+      });
+    }
+    if (searchText !== "" && $scope.search.searchField === "GAMETEXT") {
+      andSearches.push({
+        condition: 'has',
+        field: 'gametext',
+        data: searchText
+      });
+    }
+    if (searchText !== "" && $scope.search.searchField === "LORE") {
+      andSearches.push({
+        condition: 'has',
+        field: 'lore',
+        data: searchText
+      });
+    }
+    if (searchText !== "" && $scope.search.searchField === "TITLE") {
+      andSearches.push({
+        condition: 'has',
+        field: 'title',
+        data: searchText
+      });
+    }
+
+
+    if ($scope.search.type !== "ALL") {
+      var requiredType = CDFService.getTypeSearchStringFromType($scope.search.type);
+      andSearches.push({
+        condition: 'has',
+        field: 'type',
+        data: requiredType
+      });
+    }
+
+    if ($scope.search.side === "LIGHT") {
+      andSearches.push({
+        condition: 'has',
+        field: 'side',
+        data: "LS"
+      });
+    }
+    if ($scope.search.side === "DARK") {
+      andSearches.push({
+        condition: 'has',
+        field: 'side',
+        data: "DS"
+      });
+    }
+
+    return andSearches;
+  }
+
+
+  /*
+   * Build the search parameters based on the left-hand panel
+   * and optionally advanced settings!
+   */
+  function buildCumulativeSearch(includeAdvancedSearch) {
+
+    var basicSearches = getBasicAndSearches();
+    var cumulativeSearch = {
+      group: {
+        operator: "AND",
+        rules: basicSearches
+      }
+    };
+
+    if (includeAdvancedSearch) {
+      cumulativeSearch.group.rules.push($scope.filter);
+    }
+
+    return cumulativeSearch;
+  }
 
   $scope.swallowClick = function($event) {
     $event.stopPropagation();
@@ -116,23 +250,6 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     }
   };
 
-  $scope.doAdvancedSearch = function() {
-
-    $scope.data.noResultsFound = false;
-    $scope.data.performedSearch = true;
-
-    var matchingCards = getCardsMatchingRule($scope.filter);
-    $scope.data.matches = matchingCards;
-
-    if ($scope.data.matches.length === 0) {
-      $scope.data.noResultsFound = true;
-    }
-
-    $scope.data.matches.sort('title');
-
-    $scope.data.showAdvancedSearch = false;
-  };
-
 
   /**
    * Compare the given field, returning true on match and false otherwise
@@ -169,25 +286,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
 
   }
 
-  function getCardsMatchingSimpleRule(rule) {
 
-    var matches = [];
-    for (var i = 0; i < $scope.data.cardList.length; i++) {
-      var card = $scope.data.cardList[i];
-
-      // Empty field. Just ignore it!
-      if (rule.data === "") {
-        matches.push(card);
-        continue;
-      }
-
-      if (compareFields(card, rule.field, rule.condition, rule.data)) {
-        matches.push(card);
-      }
-    }
-    return matches;
-  }
-
+  /**
+   * Get a list of all cards that exist in either list #1 or list #2
+   */
   function getCardsInAnyList(list1, list2) {
     var cumulativeCards = [];
 
@@ -207,6 +309,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     return cumulativeCards;
   }
 
+
+  /**
+   * Adds a card to the given list
+   */
   function addCardToList(card, list) {
     var alreadyExists = false;
     for (var j = 0; j < list.length; j++) {
@@ -222,6 +328,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     }
   }
 
+
+  /**
+   * Find all cards that exist in both list #1 and list #2
+   */
   function getCardsInBothLists(list1, list2) {
     var cardsInBothLists = [];
     for (var i = 0; i < list1.length; i++) {
@@ -243,6 +353,32 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
   }
 
 
+  /**
+   * Match cards based on a given rule
+   */
+  function getCardsMatchingSimpleRule(rule) {
+
+    var matches = [];
+    for (var i = 0; i < $scope.data.cardList.length; i++) {
+      var card = $scope.data.cardList[i];
+
+      // Empty field. Just ignore it!
+      if (rule.data === "") {
+        matches.push(card);
+        continue;
+      }
+
+      if (compareFields(card, rule.field, rule.condition, rule.data)) {
+        matches.push(card);
+      }
+    }
+    return matches;
+  }
+
+
+  /**
+   * Match cards based on a group of data
+   */
   function getCardsMatchingRuleGroup(group) {
     // Evaluate the group of rules using AND or OR
     var firstRule = true;
@@ -282,130 +418,52 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     }
   }
 
+
+  /**
+   * Perform a basic search
+   */
   $scope.doSearch = function() {
-    $scope.data.matches = [];
-    $scope.data.performedSearch = true;
+    var includeAdvancedSearch = false;
+    var cumulativeSearch = buildCumulativeSearch(includeAdvancedSearch);
+    performSearchAndDisplayResults(cumulativeSearch);
+  };
+
+
+  /**
+   * Perform an advanced search
+   */
+  $scope.doAdvancedSearch = function() {
+    var includeAdvancedSearch = true;
+    var cumulativeSearch = buildCumulativeSearch(includeAdvancedSearch);
+    performSearchAndDisplayResults(cumulativeSearch);
+  };
+
+
+  /**
+   * Perform the given search and update the search results pane
+   */
+  function performSearchAndDisplayResults(searchCriteria) {
     $scope.data.noResultsFound = false;
+    $scope.data.performedSearch = true;
 
-
-    //
-    // Build search parameters
-    //
-
-    var requiredType = "";
-    var requiredSide = "";
-
-    var searchGametext = false;
-    var searchLore = false;
-    var searchTitle = false;
-    var searchRequiredType = false;
-    var searchRequiredSide = false;
-
-    if ($scope.search.searchField === "ALL") {
-      searchGametext = true;
-      searchLore = true;
-      searchTitle = true;
-    }
-    if ($scope.search.searchField === "GAMETEXT") {
-      searchGametext = true;
-    }
-    if ($scope.search.searchField === "LORE") {
-      searchLore = true;
-    }
-    if ($scope.search.searchField === "TITLE") {
-      searchTitle = true;
-    }
-
-    if ($scope.search.type !== "ALL") {
-      searchRequiredType = true;
-      requiredType = CDFService.getTypeSearchStringFromType($scope.search.type);
-    }
-
-    if ($scope.search.side === "LIGHT") {
-      searchRequiredSide = true;
-      requiredSide = "LS";
-    }
-    if ($scope.search.side === "DARK") {
-      searchRequiredSide = true;
-      requiredSide = "DS";
-    }
-
-
-    //
-    // Perform the actual search
-    //
-
-    var searchText = $scope.search.text.toLowerCase().trim();
-    for (var i = 0; i < $scope.data.cardList.length; i++) {
-      var card = $scope.data.cardList[i];
-
-      var matchedText = false;
-      var matchedType = false;
-      var matchedSide = false;
-
-
-      // Query by Type
-      if (!searchRequiredType) {
-        matchedType = true;
-      } else {
-        if (-1 !== card.type.toLowerCase().indexOf(requiredType)) {
-          matchedType = true;
-        }
-      }
-
-      // Query by Side
-      if (!searchRequiredSide) {
-        matchedSide = true;
-      } else {
-        if (card.side === requiredSide) {
-          matchedSide = true;
-        }
-      }
-
-
-      // Query by gametext
-      if (searchGametext) {
-        if (-1 !== card.gametext.toLowerCase().indexOf(searchText)) {
-          matchedText = true;
-        }
-      }
-
-
-      // Query by Lore
-      if (searchLore) {
-        if (-1 !== card.lore.toLowerCase().indexOf(searchText)) {
-          matchedText = true;
-        }
-      }
-
-
-      // Query by Title
-      if (searchTitle) {
-        if (-1 !== card.title.toLowerCase().indexOf(searchText)) {
-          matchedText = true;
-        }
-      }
-
-      // See if any of the matches were successful
-      if (matchedText && matchedType && matchedSide) {
-        $scope.data.matches.push(card);
-      }
-    }
-
+    var matchingCards = getCardsMatchingRule(searchCriteria);
+    $scope.data.matches = matchingCards;
 
     if ($scope.data.matches.length === 0) {
       $scope.data.noResultsFound = true;
+    } else {
+      $scope.data.noResultsFound = false;
     }
 
     $scope.data.matches.sort('title');
+    $scope.data.showAdvancedSearch = false;
+  }
 
-  };
 
   $scope.onImageLoadError = function() {
     console.error("Error loading image!");
     $scope.data.imageLoadFailure = true;
   };
-
 
   $scope.swallow = function($event) {
     $event.stopPropagation();
