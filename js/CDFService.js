@@ -63,6 +63,9 @@ cardSearchApp.service('CDFService', [function() {
         if (-1 !== lineInfo.indexOf('card "/legacy')) {
           continue;
         }
+        if (-1 !== lineInfo.indexOf('card "/TWOSIDED/legacy')) {
+          continue;
+        }
 
         // Get the card name from the line
         var card = cardFromLine(lineInfo);
@@ -90,9 +93,6 @@ cardSearchApp.service('CDFService', [function() {
   function cardFromLine(cardLine) {
 
     if (cardLine.indexOf("card") !== 0) {
-      return null;
-    }
-    if (cardLine.indexOf('card "/legacy"') === 0) {
       return null;
     }
 
