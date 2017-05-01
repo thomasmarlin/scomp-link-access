@@ -5,7 +5,98 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   /*
   * To get data out of SWIP:
     1) Compile sqlite2  (3 does NOT work with the db)
-    2) ./sqlite -header swccg_db.sdb "select id,CardName,Pulls,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
+    2) ./sqlite -header swccg_db.sdb "select id,CardName,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
+  */
+
+  // Added
+  /*
+  Characteristics
+  LightSideIcons
+  DarkSideIcons
+  Uniqueness
+
+  */
+
+  // id|CardName|Grouping|CardType|Subtype|ModelType|Expansion|Rarity|Uniqueness|Characteristics|Destiny|Power|Ferocity|CreatureDefenseValue|CreatureDefenseValueName|ObjectiveFront|ObjectiveBack|ObjectiveFrontName|ObjectiveBackName|Deploy|Forfeit|Armor|Ability|Hyperspeed|Landspeed|Politics|Maneuver|ForceAptitude|Lore|Gametext|JediTestNumber|LightSideIcons|DarkSideIcons|LightSideText|DarkSideText|Parsec|Icons|Planet|Space|Mobile|Interior|Exterior|Underground|Creature|Vehicle|Starship|Underwater|Pilot|Warrior|Astromech|PermanentWeapon|SelectiveCreature|Independent|ScompLink|Droid|TradeFederation|Republic|Episode1|Information|Abbreviation|Pulls|IsPulled|Counterpart|Combo|Matching|MatchingWeapon|Rules|Cancels|IsCanceledBy|Inventory|Needs|ExpansionV|Influence|Grabber|Errata|CardNameV|UniquenessV
+
+  /*
+  id|
+  CardName|
+  Grouping|
+  CardType|
+  Subtype|
+  ModelType|
+  Expansion|
+  Rarity|
+  Uniqueness|
+  Characteristics|
+  Destiny|
+  Power|
+  Ferocity|
+  CreatureDefenseValue|
+  CreatureDefenseValueName|
+  ObjectiveFront|
+  ObjectiveBack|
+  ObjectiveFrontName|
+  ObjectiveBackName|
+  Deploy|
+  Forfeit|
+  Armor|
+  Ability|
+  Hyperspeed|
+  Landspeed|
+  Politics|
+  Maneuver|
+  ForceAptitude|
+  Lore|
+  Gametext|
+  JediTestNumber|
+  LightSideIcons|
+  DarkSideIcons|
+  LightSideText|
+  DarkSideText|
+  Parsec|
+  Icons|
+  Planet|
+  Space|
+  Mobile|
+  Interior|
+  Exterior|
+  Underground|
+  Creature|
+  Vehicle|
+  Starship|
+  Underwater|
+  Pilot|
+  Warrior|
+  Astromech|
+  PermanentWeapon|
+  SelectiveCreature|
+  Independent|
+  ScompLink|
+  Droid|
+  TradeFederation|
+  Republic|
+  Episode1|
+  Information|
+  Abbreviation|
+  Pulls|
+  IsPulled|
+  Counterpart|
+  Combo|
+  Matching|
+  MatchingWeapon|
+  Rules|
+  Cancels|
+  IsCanceledBy|
+  Inventory|
+  Needs|
+  ExpansionV|
+  Influence|
+  Grabber|
+  Errata|
+  CardNameV|
+  UniquenessV
   */
 
 
@@ -42,67 +133,59 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   var isCanceledByHeaderIndex = -1;
   var cancelsHeaderIndex = -1;
   var abreviationHeaderIndex = -1;
+  var characteristicsHeaderIndex = -1;
+  var lightSideIconsHeaderIndex = -1;
+  var darkSideIconsHeaderIndex = -1;
+  var uniquenessHeaderIndex = -1;
 
-
-  function getCardName(splitData) {
-    if (nameHeaderIndex !== -1) {
-      return splitData[nameHeaderIndex];
+  function getDataAtIndex(splitData, index) {
+    if (index !== -1 && splitData[index]) {
+      return splitData[index];
     }
     return "";
+  }
+
+  function getCharacteristics(splitData) {
+    return getDataAtIndex(splitData, characteristicsHeaderIndex);
+  }
+  function getLightSideIcons(splitData) {
+    return getDataAtIndex(splitData, lightSideIconsHeaderIndex);
+  }
+  function getDarkSideIcons(splitData) {
+    return getDataAtIndex(splitData, darkSideIconsHeaderIndex);
+  }
+  function getUniqueness(splitData) {
+    return getDataAtIndex(splitData, uniquenessHeaderIndex);
+  }
+  function getCardName(splitData) {
+    return getDataAtIndex(splitData, nameHeaderIndex);
   }
   function getPulls(splitData) {
-    if (pullsHeaderIndex !== -1) {
-      return splitData[pullsHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, pullsHeaderIndex);
   }
   function getPulledBy(splitData) {
-    if (isPulledHeaderIndex !== -1) {
-      return splitData[isPulledHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, isPulledHeaderIndex);
   }
   function getCounterpart(splitData) {
-    if (counterpartHeaderIndex !== -1) {
-      return splitData[counterpartHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, counterpartHeaderIndex);
   }
   function getCombo(splitData) {
-    if (comboHeaderIndex !== -1) {
-      return splitData[comboHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, comboHeaderIndex);
   }
   function getMatching(splitData) {
-    if (matchingHeaderIndex !== -1) {
-      return splitData[matchingHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, matchingHeaderIndex);
   }
   function getMatchingWeapon(splitData) {
-    if (matchingWeaponHeaderIndex !== -1) {
-      return splitData[matchingWeaponHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, matchingWeaponHeaderIndex);
   }
   function getCanceledBy(splitData) {
-    if (isCanceledByHeaderIndex !== -1) {
-      return splitData[isCanceledByHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, isCanceledByHeaderIndex);
   }
   function getCancels(splitData) {
-    if (cancelsHeaderIndex !== -1) {
-      return splitData[cancelsHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, cancelsHeaderIndex);
   }
   function getAbbreviations(splitData) {
-    if (abreviationHeaderIndex !== -1) {
-      return splitData[abreviationHeaderIndex];
-    }
-    return "";
+    return getDataAtIndex(splitData, abreviationHeaderIndex);
   }
 
 
@@ -130,6 +213,10 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     cancelsHeaderIndex = headers.indexOf('Cancels');
     isCanceledByHeaderIndex = headers.indexOf('IsCanceledBy');
     abreviationHeaderIndex = headers.indexOf('Abbreviation');
+    uniquenessHeaderIndex = headers.indexOf("Uniqueness");
+    lightSideIconsHeaderIndex = headers.indexOf("LightSideIcons");
+    darkSideIconsHeaderIndex = headers.indexOf("DarkSideIcons");
+    characteristicsHeaderIndex = headers.indexOf("Characteristics");
   }
 
   function addSwipDataFromSwipDump(data, existingCards) {
@@ -165,6 +252,10 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
         existingCard.canceledBy = getCanceledBy(cardDataFields);
         existingCard.cancels = getCancels(cardDataFields);
         existingCard.abbreviation = getAbbreviations(cardDataFields);
+        existingCard.characteristics = getCharacteristics(cardDataFields);
+        existingCard.lightSideIcons = getLightSideIcons(cardDataFields);
+        existingCard.darkSideIcons = getDarkSideIcons(cardDataFields);
+        existingCard.uniqueness = getUniqueness(cardDataFields);
       }
 
     }
@@ -177,6 +268,15 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     while (line.indexOf("\\par") !== -1) {
       line = line.replace("\\par", "<br>");
     }
+
+    while (line.indexOf("\\b0") !== -1) {
+      line = line.replace("\\b0", "<br>");
+    }
+
+    while (line.indexOf("\\b") !== -1) {
+      line = line.replace("\\b", "<br>");
+    }
+    line = line.trim();
     return line;
   }
 

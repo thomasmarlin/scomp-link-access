@@ -106,6 +106,8 @@ cardSearchApp.service('CDFService', [function() {
       links_large: [],
       ability: "",
       armor: "",
+      characteristics: "",
+      darkSideIcons: "",
       destiny: "",
       deploy: "",
       forfeit: "",
@@ -113,7 +115,10 @@ cardSearchApp.service('CDFService', [function() {
       gametext: "",
       hyperspeed: "",
       landspeed: "",
+      lightSideIcons: "",
       maneuver: "",
+      parsec: "",
+      politics: "",
       power: "",
       title: "",
       titleSortable: "",
@@ -123,7 +128,8 @@ cardSearchApp.service('CDFService', [function() {
       setAbbreviation: "",
       side: "",
       subType: "",
-      twoSided: twoSided
+      twoSided: twoSided,
+      uniqueness: ""
     };
 
 
@@ -240,10 +246,10 @@ cardSearchApp.service('CDFService', [function() {
 
       var type = fullTypeLine.substring(0, endOfBaseType).trim();
       if (type.indexOf("Dark") === 0) {
-        card.side = "DS";
+        card.side = "Dark";
       }
       if (type.indexOf("Light") === 0){
-        card.side = "LS";
+        card.side = "Light";
       }
 
       type = type.replace("Dark", "").trim();
@@ -345,7 +351,12 @@ cardSearchApp.service('CDFService', [function() {
           card.gametext += "LOST: " + data + "\n";
         } else if (lastFieldNameLower === "starting:") {
           card.gametext += "STARTING: " + data + "\n";
+        } else if (lastFieldNameLower === "politics:") {
+          card.politics = data;
+        } else if (lastFieldNameLower === "parsec:") {
+          card.parsec = data;
         }
+
 
       } else{
         lastFieldNameLower = data.toLowerCase().trim();
@@ -414,4 +425,100 @@ cardSearchApp.service('CDFService', [function() {
 
   }
 
+
+
+  /**
+   * Builds a mapping of:
+   * {
+   *   'type"; ["interrupt", "effect", "character"],
+   *   'subType"; ["used interrupt", "utinni effect", "rebel', 'alient'],
+   *   'characteristics': [ 'Black Sun Agent', 'ISB Agent', ...],
+   *   'side': [ 'light', 'dark']
+   *   'set': ['Tatooine', 'Death Star II', etc]
+   *   ...
+   * }
+   */
+  function getCardValueMap(cards) {
+    var anyCard = cards[0];
+
+    var fieldValueMap = {};
+
+    // Add every field we know about
+    for (var field in anyCard) { //jshint ignore:line
+      fieldValueMap[field] = null;
+    }
+
+    // Add auto-complete to specific fields
+    fieldValueMap.type = getValuesForFieldName('type', cards);
+    fieldValueMap.subType = getValuesForFieldName('subType', cards);
+    fieldValueMap.characteristics = getValuesForFieldName('characteristics', cards);
+    fieldValueMap.side = getValuesForFieldName('side', cards);
+    fieldValueMap.set = getValuesForFieldName('set', cards);
+    fieldValueMap.uniqueness = getValuesForFieldName('uniqueness', cards);
+    fieldValueMap.darkSideIcons = getValuesForFieldName('darkSideIcons', cards);
+    fieldValueMap.lightSideIcons = getValuesForFieldName('lightSideIcons', cards);
+
+    return fieldValueMap;
+  }
+  this.getCardValueMap = getCardValueMap;
+
+
+  function splitValuesFromString(str) {
+
+    while (str.indexOf(".") !== -1) {
+      str = str.replace(".", "<br>");
+    }
+    while (str.indexOf(",") !== -1) {
+      str = str.replace(",", "<br>");
+    }
+
+
+    // SWIP has values split by \par.  The SWIPService changes them into
+    // breaks using <br>.  Now, we want to split these into their sub-values
+    var values = str.split("<br>");
+    var nonEmptyValues = [];
+    for (var i = 0; i < values.length; i++) {
+      var val = values[i].trim();
+      if (val !== "") {
+        nonEmptyValues.push(val);
+      }
+    }
+
+    return nonEmptyValues;
+  }
+
+  function getValuesForFieldName(fieldName, cards) {
+
+    // Keep a hash for quick access
+    /*
+    var possibleValues = {
+      'Black Sun Agent': true,
+      'ISB Agent': true
+    };
+    */
+    var possibleValues = {};
+
+    // Get possibilities for each card
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i];
+      if (card[fieldName] && card[fieldName] !== "") {
+        var cardValueString = card[fieldName];
+        var values = splitValuesFromString(cardValueString);
+
+        for (var j = 0; j < values.length; j++) {
+          var value = values[j].toLowerCase();
+          possibleValues[value] = true;
+        }
+
+      }
+    }
+
+    // Now, consolidate all of those values into an array
+    var possibleValueArray = [];
+    for (var val in possibleValues) { //jshint ignore:line
+      possibleValueArray.push(val);
+    }
+    return possibleValueArray;
+  }
+  this.getValuesForFieldName = getValuesForFieldName;
 }]);

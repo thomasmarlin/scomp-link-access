@@ -2,6 +2,11 @@
 var cardSearchApp = angular.module('cardSearchApp');
 cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 'CDFService', 'SWIPService',  function($scope, $http, $window, CDFService, SWIPService) {
 
+  var filterAddMode = {
+    AND: "AND",
+    OR: "OR"
+  };
+
   $scope.data = {
     matches: [],
     cardList: [],
@@ -13,7 +18,25 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     showAdvancedSearch: false,
     imageLoadFailure: false,
     textOnly: false,
-    showExtraData: false
+    showExtraData: false,
+    cardValueMap: null,
+    cardFields: [],
+    advancedFieldSelect: {},
+    advancedField: 'gametext',
+    advancedOperator: 'contains',
+    advancedValue: "",
+    advancedConditions: [],
+    operators: [
+      { name: 'contains'},
+      { name: "doesn't contain"},
+      { name: '>' },
+      { name: '<' },
+      { name: '=' },
+      { name: '<=' },
+      { name: '>=' },
+      { name: 'not'}
+    ],
+    filterAddMode: filterAddMode.AND
   };
 
   $scope.selectCard = function(card) {
@@ -21,9 +44,104 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     $scope.data.imageLoadFailure = false;
   };
 
-  $scope.getFilter = function() {
-      return JSON.stringify($scope.filter);
+  // Transform the set of advanced filters into a nice string
+  function conditionToString(condition) {
+    var conditionString = "";
+    if (condition.group) {
+      for (var i = 0; i < condition.group.rules.length; i++) {
+        var rule = condition.group.rules[i];
+        if (conditionString !== "") {
+          conditionString += " OR " + conditionToString(rule);
+        } else {
+          conditionString += rule.field + " " + rule.condition + " " + rule.data;
+        }
+      }
+    }
+    return conditionString;
+  }
+  $scope.conditionToString = conditionToString;
+
+  $scope.selectCondition = function(condition) {
+    for (var i = 0; i < $scope.data.advancedConditions.length; i++) {
+      var cond = $scope.data.advancedConditions[i];
+      cond.selected = false;
+    }
+    condition.selected = true;
   };
+
+  $scope.updateAdvancedSearchText = function($event, $select) {
+    $scope.data.advancedValue = $select.search;
+
+    if ($event.keyCode === 13) {
+      $scope.addAdvancedCondition();
+      $select.search = "";
+    }
+  };
+
+
+  $scope.addAdvancedCondition = function() {
+    var textSearch = $scope.data.advancedValue;
+    var operator = $scope.data.advancedOperator;
+    var fieldName = $scope.data.advancedField;
+    var condition = buildRule(fieldName, textSearch, operator);
+
+    // If no search text, don't do anything
+    if (textSearch.trim() === "") {
+      return;
+    }
+
+    var addToEnd = true;
+    if ($scope.data.filterAddMode === filterAddMode.OR) {
+      // Append this to the last condition (if one exists). Otherwise
+      // just add it to the end
+      var conditionCount = $scope.data.advancedConditions.length;
+      if (conditionCount > 0) {
+        var lastCondition = $scope.data.advancedConditions[conditionCount - 1];
+        lastCondition.group.rules.push(condition);
+        addToEnd = false;
+      }
+    }
+
+    if (addToEnd) {
+      $scope.data.advancedConditions.push(condition);
+    }
+
+    $scope.data.advancedValue = "";
+
+    doSearch();
+  };
+
+  $scope.removeCondition = function() {
+    for (var i = 0; i < $scope.data.advancedConditions.length; i++) {
+      var condition = $scope.data.advancedConditions[i];
+      if (condition.selected) {
+        $scope.data.advancedConditions.splice(i, 1);
+        return;
+      }
+    }
+  };
+
+  $scope.clearFilter = function() {
+    $scope.data.advancedConditions = [];
+  };
+
+
+  function buildRule(fieldName, text, operator) {
+    var condition = {
+      group: {
+        operator: 'OR',
+        rules: [
+          {
+            condition: operator,
+            field: fieldName,
+            data: text
+          }
+        ]
+      }
+    };
+    return condition;
+
+  }
 
 
   /**
@@ -36,18 +154,24 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       operator: 'AND',
       rules: [
         {
-          condition: 'has',
+          condition: 'contains',
           field: 'gametext',
           data: ''
         },
         {
-          condition: 'has',
+          condition: 'contains',
           field: 'gametext',
           data: ''
         }
       ]
     }
   };
+
+  $scope.getFilter = function() {
+      return JSON.stringify($scope.filter);
+  };
+
+
 
   $scope.search = {
     side: "ALL",
@@ -79,12 +203,12 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       operator: 'AND',
       rules: [
         {
-          condition: 'has',
+          condition: 'contains',
           field: 'gametext',
           data: ''
         },
         {
-          condition: 'has',
+          condition: 'contains',
           field: 'gametext',
           data: ''
         }
@@ -101,17 +225,17 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
           operator: 'OR',
           rules: [
             {
-              condition: 'has',
+              condition: 'contains',
               field: 'gametext',
               data: searchText
             },
             {
-              condition: 'has',
+              condition: 'contains',
               field: 'lore',
               data: searchText
             },
             {
-              condition: 'has',
+              condition: 'contains',
               field: 'title',
               data: searchText
             },
@@ -122,21 +246,21 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     }
     if (searchText !== "" && $scope.search.searchField === "GAMETEXT") {
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'gametext',
         data: searchText
       });
     }
     if (searchText !== "" && $scope.search.searchField === "LORE") {
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'lore',
         data: searchText
       });
     }
     if (searchText !== "" && $scope.search.searchField === "TITLE") {
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'title',
         data: searchText
       });
@@ -146,7 +270,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     if ($scope.search.type !== "ALL") {
       var requiredType = CDFService.getTypeSearchStringFromType($scope.search.type);
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'type',
         data: requiredType
       });
@@ -154,16 +278,16 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
 
     if ($scope.search.side === "LIGHT") {
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'side',
-        data: "LS"
+        data: "Light"
       });
     }
     if ($scope.search.side === "DARK") {
       andSearches.push({
-        condition: 'has',
+        condition: 'contains',
         field: 'side',
-        data: "DS"
+        data: "Dark"
       });
     }
 
@@ -175,7 +299,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
    * Build the search parameters based on the left-hand panel
    * and optionally advanced settings!
    */
-  function buildCumulativeSearch(includeAdvancedSearch) {
+  function buildCumulativeSearch() {
 
     var basicSearches = getBasicAndSearches();
     var cumulativeSearch = {
@@ -185,12 +309,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       }
     };
 
-    if (includeAdvancedSearch) {
-      cumulativeSearch.group.rules.push($scope.filter);
+    for (var i = 0; i < $scope.data.advancedConditions.length; i++) {
+      var condition = $scope.data.advancedConditions[i];
+      cumulativeSearch.group.rules.push(condition);
     }
 
     // If no search criteria, just return an empty search
-    if (basicSearches.length < 1 && !includeAdvancedSearch) {
+    if (basicSearches.length < 1 && $scope.data.advancedConditions.length < 1) {
       return null;
     }
 
@@ -240,6 +365,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
 
     $http.get('swipdump.text').success(function(data) {
       SWIPService.addSwipDataFromSwipDump(data, $scope.data.cardList);
+      $scope.data.cardValueMap = CDFService.getCardValueMap($scope.data.cardList);
+
+      $scope.data.cardFields = [];
+      for (var fieldName in $scope.data.cardValueMap) { //jshint ignore:line
+        $scope.data.cardFields.push(fieldName);
+      }
+
     });
 
     // For small screens (probably mobile), hide the extra data by default
@@ -262,17 +394,18 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
   function compareFields(card, fieldName, compareType, value) {
     /*
     { name: '=' },
-    { name: '<>' },
     { name: '<' },
     { name: '<=' },
     { name: '>' },
     { name: '>=' },
-    { name: 'has'}
+    { name: 'contains'},
+    { name: 'not'},
+    { name: "doesn't contain"}
     */
 
     if (compareType === '=') {
       return card[fieldName] == value; //jshint ignore:line
-    } else if (compareType === '<>') {
+    } else if (compareType === 'not') {
       return card[fieldName] != value; //jshint ignore:line
     } else if (compareType === '<') {
       return card[fieldName] < value; //jshint ignore:line
@@ -282,8 +415,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       return card[fieldName] > value; //jshint ignore:line
     } else if (compareType === '>=') {
       return card[fieldName] >= value; //jshint ignore:line
-    } else if (compareType === 'has') {
+    } else if (compareType === 'contains') {
       return -1 !== card[fieldName].toLowerCase().indexOf(value.toLowerCase()); //jshint ignore:line
+    } else if (compareType === "doesn't contain") {
+      return -1 === card[fieldName].toLowerCase().indexOf(value.toLowerCase()); //jshint ignore:line
     } else {
       console.error("Unknown compare type: " + compareType);
       return false;
@@ -425,23 +560,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
 
 
   /**
-   * Perform a basic search
+   * Perform a search
    */
-  $scope.doSearch = function() {
-    var includeAdvancedSearch = false;
-    var cumulativeSearch = buildCumulativeSearch(includeAdvancedSearch);
+  function doSearch() {
+    var cumulativeSearch = buildCumulativeSearch();
     performSearchAndDisplayResults(cumulativeSearch);
-  };
-
-
-  /**
-   * Perform an advanced search
-   */
-  $scope.doAdvancedSearch = function() {
-    var includeAdvancedSearch = true;
-    var cumulativeSearch = buildCumulativeSearch(includeAdvancedSearch);
-    performSearchAndDisplayResults(cumulativeSearch);
-  };
+  }
+  $scope.doSearch = doSearch;
 
 
   /**
