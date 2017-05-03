@@ -96,23 +96,25 @@
   border-bottom: thin solid lightgray;
 }
 
-.cs-card-preview-overlay {
+.cs-card-preview-pane {
   position: fixed;
   top: 0px;
-  left: 0px;
+  right: 0px;
   height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 9999;
 }
 
+.cs-card-preview-overlay {
+  position: relative;
+  float: right;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .cs-card-preview-text-only {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
+  position: relative;
+  float: right;
 
   width: 400px;
   height: 600px;
@@ -125,30 +127,9 @@
   box-shadow: 2px 2px 2px black;
 }
 
-
-/*
 .cs-card-preview-image {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-
-  height: 600px;
-  width: 0px;
-
-  z-index: 999999;
-  text-align: left;
-  background-color: white;
-}
-*/
-.cs-card-preview-imagee {
-  position: fixed;
-  top: 2em;
-  right: 2em;
-  height: 600px;
-  z-index: 999999;
+  max-width: 350px;
+  height: auto;
 }
 
 
@@ -309,16 +290,20 @@
 }
 
 .cs-extra-data {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  width: 100vw;
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 250px;
   background: #f2f2f2;
   border: thin solid #AAA;
   z-index: 99999;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.cs-no-extra-data {
+  font-style: italic;
+  margin-top: 2em;
 }
 
 .cs-extra-card-data-title {
@@ -331,6 +316,9 @@
 .cs-extra-data-column {
   text-align: left;
   box-shadow: 1px 1px 1px black;
+  padding: 5px;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .cs-extra-data-label {

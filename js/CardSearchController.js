@@ -18,7 +18,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     showAdvancedSearch: false,
     imageLoadFailure: false,
     textOnly: false,
-    showExtraData: false,
+    showExtraData: true,
     cardValueMap: null,
     cardFields: [],
     advancedFieldSelect: {},
@@ -39,9 +39,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     filterAddMode: filterAddMode.AND
   };
 
-  $scope.selectCard = function(card) {
+  $scope.selectCard = function(card, $event) {
     $scope.data.selectedCard = card;
     $scope.data.imageLoadFailure = false;
+
+    if ($event) {
+      $event.stopPropagation();
+    }
   };
 
   // Transform the set of advanced filters into a nice string
@@ -330,6 +334,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     $scope.data.showAdvancedSearch = false;
   };
 
+  $scope.hideCardData = function() {
+    $scope.data.selectedCard = null;
+  };
 
   $scope.toggleExtraData = function() {
     $scope.data.showExtraData = !$scope.data.showExtraData;
@@ -603,6 +610,18 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
 
   $scope.swallow = function($event) {
     $event.stopPropagation();
+  };
+
+  $scope.hasExtraData = function(card) {
+    return  card.pulls ||
+            card.pulledBy ||
+            card.counterpart ||
+            card.combo ||
+            card.matching ||
+            card.matchingWeapon ||
+            card.canceledBy ||
+            card.cancels ||
+            card.abbreviation;
   };
 
 }]);
