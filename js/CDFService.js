@@ -140,11 +140,15 @@ cardSearchApp.service('CDFService', [function() {
     processLinks(cardLine, card);
 
     var cardData = cardLine.substring(iSecondSpace + 2).trim();
+
+    // Every decent browser can handle this...but not IE. See below...
     cardData = cardData.replace("\"\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
 
+    // For Internet Explorer stupidity (replace any garbage characters with  the uniqueness-dot
+    cardData = cardData.replace(/[^\x00-\x80]/g, "•"); // //jshint ignore:line
 
     // Split Lines
     // "Accuser (1)\n
