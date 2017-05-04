@@ -328,7 +328,7 @@
 .cs-exta-data-block {
   padding-bottom: 2em;
   max-height: 200px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .cs-extra-close-button {
