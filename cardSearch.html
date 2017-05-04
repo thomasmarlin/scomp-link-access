@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
     <!-- Try to prevent caching -->
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -10,36 +13,36 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-store" />
 
-    <meta charset="UTF-8">
     <title>Star Wars CCG Card Search</title>
   </head>
 
-
-  <!-- Third Party -->
-  <script src="/wp-content/plugins/card-search/js/jquery-2.1.4.min.js"></script>
-  <script src='/wp-content/plugins/card-search/js/angular.1.4.8.min.js'></script>
-  <script src='/wp-content/plugins/card-search/js/select.min.js'></script>
-  <script src="/wp-content/plugins/card-search/js/bootstrap.min.js"></script>
-  <script src="/wp-content/plugins/card-search/ui-bootstrap-tpls-1.1.0.min.js.css"></script>
-  <script src="/wp-content/plugins/card-search/js/angular-ui.min.js"></script>
-  <script src="/wp-content/plugins/card-search/js/angular-sanitize.js"></script>
-
-  <!-- Main App -->
-  <script src="/wp-content/plugins/card-search/js/app.js"></script>
-  <script src="/wp-content/plugins/card-search/js/CardSearchController.js"></script>
-  <script src="/wp-content/plugins/card-search/js/CDFService.js"></script>
-  <script src="/wp-content/plugins/card-search/js/SWIPService.js"></script>
-  <script src="/wp-content/plugins/card-search/js/onLoadError.js"></script>
-  <script src="/wp-content/plugins/card-search/js/outsideClick.js"></script>
-
-
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/cardSearch.css">
-  <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/select.min.css">
-
   <body>
 
+    <!-- Third Party -->
+    <script src="/wp-content/plugins/card-search/js/jquery-2.1.4.min.js"></script>
+    <script src='/wp-content/plugins/card-search/js/angular.1.4.8.min.js'></script>
+    <script src='/wp-content/plugins/card-search/js/select.min.js'></script>
+    <script src="/wp-content/plugins/card-search/js/bootstrap.min.js"></script>
+    <script src="/wp-content/plugins/card-search/ui-bootstrap-tpls-1.1.0.min.js.css"></script>
+    <script src="/wp-content/plugins/card-search/js/angular-ui.min.js"></script>
+    <script src="/wp-content/plugins/card-search/js/angular-sanitize.js"></script>
+
+    <!-- Main App -->
+    <script src="/wp-content/plugins/card-search/js/app.js"></script>
+    <script src="/wp-content/plugins/card-search/js/CardSearchController.js"></script>
+    <script src="/wp-content/plugins/card-search/js/CDFService.js"></script>
+    <script src="/wp-content/plugins/card-search/js/SWIPService.js"></script>
+    <script src="/wp-content/plugins/card-search/js/onLoadError.js"></script>
+    <script src="/wp-content/plugins/card-search/js/outsideClick.js"></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/cardSearch.css">
+    <link rel="stylesheet" type="text/css" href="/wp-content/plugins/card-search/css/select.min.css">
+
+
+    <!-- Content -->
     <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main">
 
       <div class="cs-title">Star Wars CCG Card Search</div>
@@ -221,7 +224,7 @@
             <select ng-model="data.advancedField" class="form-control input-sm">
               <option ng-repeat="fieldName in data.cardFields | orderBy:'toString()'" value="{{fieldName}}">
                 {{fieldName}}
-              </options>
+              </option>
             </select>
 
             <!-- Operator (contains, >, =, < etc) -->
