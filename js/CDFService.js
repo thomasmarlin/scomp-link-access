@@ -114,6 +114,7 @@ cardSearchApp.service('CDFService', [function() {
       lore: "",
       gametext: "",
       hyperspeed: "",
+      icons: "",
       landspeed: "",
       lightSideIcons: "",
       maneuver: "",
@@ -311,6 +312,10 @@ cardSearchApp.service('CDFService', [function() {
     } else if (line.indexOf("USED:") === 0) {
       card.gametext += "USED: " + line.substring(6).trim() + "  ";
       return;
+    } else if (line.indexOf("Icons:") === 0) {
+      var iconsString = line.substring(7).trim();
+      card.icons = getIcons(iconsString);
+      return;
     } else if (card.type === "Objective") {
       // Special case because Objectives aren't labeled properly... sigh...
       card.gametext += line;
@@ -425,8 +430,17 @@ cardSearchApp.service('CDFService', [function() {
         return abbreviation;
       }
     }
+  }
 
 
+  function getIcons(iconsString) {
+    // Icons: Warrior, Pilot, Separatist, Episode 1
+
+    // To match the parsing in SWIP, add "<br> between icons
+    while (-1 !== iconsString.indexOf(",")) {
+      iconsString = iconsString.replace(",", "<br>");
+    }
+    return iconsString;
   }
 
 
@@ -456,8 +470,10 @@ cardSearchApp.service('CDFService', [function() {
     fieldValueMap.type = getValuesForFieldName('type', cards);
     fieldValueMap.subType = getValuesForFieldName('subType', cards);
     fieldValueMap.characteristics = getValuesForFieldName('characteristics', cards);
+    fieldValueMap.icons = getValuesForFieldName('icons', cards);
     fieldValueMap.side = getValuesForFieldName('side', cards);
     fieldValueMap.set = getValuesForFieldName('set', cards);
+    fieldValueMap.rarity = getValuesForFieldName('rarity', cards);
     fieldValueMap.uniqueness = getValuesForFieldName('uniqueness', cards);
     fieldValueMap.darkSideIcons = getValuesForFieldName('darkSideIcons', cards);
     fieldValueMap.lightSideIcons = getValuesForFieldName('lightSideIcons', cards);

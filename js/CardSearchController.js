@@ -470,22 +470,25 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     { name: "doesn't contain"}
     */
 
+    var valueToCompare = value.toLowerCase();
+    var cardField = card[fieldName].toLowerCase();
+
     if (compareType === '=') {
-      return card[fieldName] == value; //jshint ignore:line
+      return cardField == valueToCompare; //jshint ignore:line
     } else if (compareType === 'not') {
-      return card[fieldName] != value; //jshint ignore:line
+      return cardField != valueToCompare; //jshint ignore:line
     } else if (compareType === '<') {
-      return card[fieldName] < value; //jshint ignore:line
+      return cardField < valueToCompare; //jshint ignore:line
     } else if (compareType === '<=') {
-      return card[fieldName] <= value; //jshint ignore:line
+      return cardField <= valueToCompare; //jshint ignore:line
     } else if (compareType === '>') {
-      return card[fieldName] > value; //jshint ignore:line
+      return cardField > valueToCompare; //jshint ignore:line
     } else if (compareType === '>=') {
-      return card[fieldName] >= value; //jshint ignore:line
+      return cardField >= valueToCompare; //jshint ignore:line
     } else if (compareType === 'contains') {
-      return -1 !== card[fieldName].toLowerCase().indexOf(value.toLowerCase()); //jshint ignore:line
+      return -1 !== cardField.indexOf(valueToCompare); //jshint ignore:line
     } else if (compareType === "doesn't contain") {
-      return -1 === card[fieldName].toLowerCase().indexOf(value.toLowerCase()); //jshint ignore:line
+      return -1 === cardField.indexOf(valueToCompare); //jshint ignore:line
     } else {
       console.error("Unknown compare type: " + compareType);
       return false;

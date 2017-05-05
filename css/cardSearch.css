@@ -421,7 +421,17 @@
 .cs-filter-red-button {
   width: 100%;
   padding-top: 0.1em;
-padding-bottom: 0.1em;
+  padding-bottom: 0.1em;
   background-color: #ff9999 !important;
   border-color: #ff6666 !important;
+}
+
+.cs-result-count {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+
+.cs-advanced-value * {
+  text-transform: capitalize !important;
 }
