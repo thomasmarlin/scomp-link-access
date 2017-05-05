@@ -478,6 +478,16 @@ cardSearchApp.service('CDFService', [function() {
     fieldValueMap.darkSideIcons = getValuesForFieldName('darkSideIcons', cards);
     fieldValueMap.lightSideIcons = getValuesForFieldName('lightSideIcons', cards);
 
+
+    // Remove fields that we don't want to show to the user
+    delete fieldValueMap.setAbbreviation;
+    delete fieldValueMap.links;
+    delete fieldValueMap.links_large;
+    delete fieldValueMap.titleLower;
+    delete fieldValueMap.titleSortable;
+    delete fieldValueMap.twoSided;
+
+
     return fieldValueMap;
   }
   this.getCardValueMap = getCardValueMap;
