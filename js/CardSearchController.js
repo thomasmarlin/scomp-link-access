@@ -32,7 +32,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
       { name: "doesn't contain"},
       { name: '>' },
       { name: '<' },
-      { name: '=' },
+      //{ name: '=' }, Gets confusing with multi-value fields, so just removing
       { name: '<=' },
       { name: '>=' },
       { name: 'not'}
@@ -186,6 +186,8 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
 
   $scope.clearFilter = function() {
     $scope.data.advancedConditions = [];
+    $scope.data.advancedField = "gametext";
+    $scope.data.advancedOperator = "contains";
     doSearch();
   };
 
@@ -470,8 +472,14 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     { name: "doesn't contain"}
     */
 
-    var valueToCompare = value.toLowerCase();
-    var cardField = card[fieldName].toLowerCase();
+    var valueToCompare = value;//value.toLowerCase();
+    if (value && value.toLowerCase) {
+      valueToCompare = value.toLowerCase();
+    }
+    var cardField = "";
+    if (card[fieldName] && card[fieldName].toLowerCase) {
+      cardField = card[fieldName].toLowerCase();
+    }
 
     if (compareType === '=') {
       return cardField == valueToCompare; //jshint ignore:line
