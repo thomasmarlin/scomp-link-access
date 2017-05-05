@@ -222,7 +222,7 @@
 
             <!-- Search Fields -->
             <div class="cs-searchLabel">Filter Field</div>
-            <select ng-model="data.advancedField" class="form-control input-sm">
+            <select ng-model="data.advancedField" class="form-control input-sm" id="cs-advanced-field-name-dropdown">
               <option ng-repeat="fieldName in data.cardFields | orderBy:'toString()'" value="{{fieldName}}">
                 {{fieldName}}
               </option>
