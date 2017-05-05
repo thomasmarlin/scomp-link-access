@@ -435,3 +435,7 @@
 .cs-advanced-value * {
   text-transform: capitalize !important;
 }
+
+#cs-advanced-field-name-dropdown {
+  text-transform: capitalize !important;
+}
