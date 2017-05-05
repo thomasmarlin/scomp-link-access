@@ -43,7 +43,8 @@
 
 
     <!-- Content -->
-    <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main">
+    <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main"
+         data-ng-keydown="handleKeyEvent($event)">
 
       <div class="cs-title">Star Wars CCG Card Search</div>
       <hr class="cs-title-divider">
@@ -326,7 +327,8 @@
             No Matches Found
           </div>
 
-          <div class="row cs-card-result" data-ng-repeat="card in data.matches | orderBy:'titleSortable' track by $index">
+          <div class="row cs-card-result" data-ng-repeat="card in data.matches track by $index"
+               data-ng-class="{'cs-card-result-selected': card == data.lastSelectedCard}">
             <div class="col-xs-4 cs-link cs-colored-column cs-color-1" data-ng-click="selectCard(card, $event)">
               {{card.title}}
             </div>

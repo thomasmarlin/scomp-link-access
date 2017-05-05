@@ -1,6 +1,6 @@
 'use strict';
 var cardSearchApp = angular.module('cardSearchApp');
-cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 'CDFService', 'SWIPService',  function($scope, $http, $window, CDFService, SWIPService) {
+cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http', '$window', 'CDFService', 'SWIPService',  function($scope, $document, $http, $window, CDFService, SWIPService) {
 
   var filterAddMode = {
     AND: "AND",
@@ -15,6 +15,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     performedSearch: false,
     noResultsFound: false,
     selectedCard: null,
+    lastSelectedCard: null,
     showAdvancedSearch: false,
     imageLoadFailure: false,
     textOnly: false,
@@ -39,7 +40,42 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
     filterAddMode: filterAddMode.AND
   };
 
+  function getCurrentSelectedCardIndex() {
+    if ($scope.data.lastSelectedCard !== null) {
+      for (var i = 0; i < $scope.data.matches.length; i++) {
+        var card = $scope.data.matches[i];
+        if (card === $scope.data.lastSelectedCard) {
+          return i;
+        }
+      }
+    }
+    return -1;
+  }
+  function moveDown() {
+    var selectedCardIndex = getCurrentSelectedCardIndex();
+    if (selectedCardIndex !== -1) {
+      selectCardAtIndex(selectedCardIndex+1);
+    }
+  }
+  function moveUp() {
+    var selectedCardIndex = getCurrentSelectedCardIndex();
+    if (selectedCardIndex !== -1) {
+      selectCardAtIndex(selectedCardIndex-1);
+    }
+  }
+  function selectCardAtIndex(index) {
+    var indexToSelect = index;
+    if (index < 0) {
+      indexToSelect = 0;
+    } else if (index >= $scope.data.matches.length) {
+      indexToSelect = $scope.data.matches.length - 1;
+    }
+    $scope.selectCard($scope.data.matches[indexToSelect]);
+    $scope.$apply();
+  }
+
   $scope.selectCard = function(card, $event) {
+    $scope.data.lastSelectedCard = card;
     $scope.data.selectedCard = card;
     $scope.data.imageLoadFailure = false;
 
@@ -47,6 +83,28 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       $event.stopPropagation();
     }
   };
+
+  jQuery($document).keydown(function(event) {
+    if (event.which === 38) {
+      moveUp();
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (event.which === 40) {
+      moveDown();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+
+
+  $scope.handleKeyEvent = function($event) {
+    if ($event.keyCode === 38) {
+      moveUp();
+    } else if ($event.keyCode === 40) {
+      moveDown();
+    }
+  };
+
 
   // Transform the set of advanced filters into a nice string
   function conditionToString(condition) {
@@ -120,13 +178,15 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       var condition = $scope.data.advancedConditions[i];
       if (condition.selected) {
         $scope.data.advancedConditions.splice(i, 1);
-        return;
+        break;
       }
     }
+    doSearch();
   };
 
   $scope.clearFilter = function() {
     $scope.data.advancedConditions = [];
+    doSearch();
   };
 
 
@@ -576,10 +636,23 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
   $scope.doSearch = doSearch;
 
 
+  function sortByName(a, b){
+    if(a.titleSortable < b.titleSortable) {
+      return -1;
+    }
+    if(a.titleSortable > b.titleSortable) {
+      return 1;
+    }
+    return 0;
+  }
+
+
   /**
    * Perform the given search and update the search results pane
    */
   function performSearchAndDisplayResults(searchCriteria) {
+    $scope.data.selectedCard = null;
+    $scope.data.lastSelectedCard = null;
     $scope.data.noResultsFound = false;
     $scope.data.performedSearch = true;
     $scope.data.matches = [];
@@ -598,7 +671,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$http', '$window', 
       $scope.data.noResultsFound = false;
     }
 
-    $scope.data.matches.sort('title');
+    $scope.data.matches.sort(sortByName);
     $scope.data.showAdvancedSearch = false;
   }
 

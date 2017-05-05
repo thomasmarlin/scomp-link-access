@@ -96,6 +96,18 @@
   border-bottom: thin solid lightgray;
 }
 
+.cs-card-result-selected {
+  background-color: #4444FF;
+}
+.cs-card-result-selected .cs-color-1 {
+  background-color: #4444FF;
+}
+.cs-card-result-selected .cs-color-2 {
+  background-color: #4444FF;
+}
+.cs-card-result-selected .cs-link {
+  color: white;
+}
 .cs-card-preview-pane {
   position: fixed;
   top: 0px;
