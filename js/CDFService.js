@@ -274,6 +274,11 @@ cardSearchApp.service('CDFService', [function() {
     titleSortable = titleSortable.replace("•", "");
     titleSortable = titleSortable.replace("•", "");
     titleSortable = titleSortable.replace("•", "");
+
+    titleSortable = titleSortable.replace("<>", "");
+    titleSortable = titleSortable.replace("<>", "");
+    titleSortable = titleSortable.replace("<>", "");
+
     titleSortable = titleSortable.toLowerCase();
     return titleSortable;
   }
