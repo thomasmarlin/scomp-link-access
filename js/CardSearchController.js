@@ -84,17 +84,21 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
   };
 
-  jQuery($document).keydown(function(event) {
-    if (event.which === 38) {
-      moveUp();
-      event.preventDefault();
-      event.stopPropagation();
-    } else if (event.which === 40) {
-      moveDown();
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  });
+
+  function registerKeyEvents() {
+    jQuery($document).keydown(function(event) {
+      if (event.which === 38) {
+        moveUp();
+        event.preventDefault();
+        event.stopPropagation();
+      } else if (event.which === 40) {
+        moveDown();
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    });
+  }
+
 
 
   $scope.handleKeyEvent = function($event) {
@@ -535,7 +539,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     var alreadyExists = false;
     for (var j = 0; j < list.length; j++) {
       var existingCard = list[j];
-      if (existingCard.title === card.title) {
+      if (0 === compareCards(existingCard, card)) {
         alreadyExists = true;
         break;
       }
@@ -561,7 +565,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
           console.log("error: bad card????");
         }
 
-        if (card2.title === card1.title) {
+        if (0 === compareCards(card1, card2)) {
           cardsInBothLists.push(card2);
           break;
         }
@@ -646,15 +650,37 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
   }
   $scope.doSearch = doSearch;
 
-
-  function sortByName(a, b){
+  function compareCards(a, b) {
     if(a.titleSortable < b.titleSortable) {
       return -1;
     }
     if(a.titleSortable > b.titleSortable) {
       return 1;
     }
+    if(a.type < b.type) {
+      return -1;
+    }
+    if(a.type > b.type) {
+      return 1;
+    }
+    if(a.subType < b.subType) {
+      return -1;
+    }
+    if(a.subType > b.subType) {
+      return 1;
+    }
+    if(a.side < b.side) {
+      return -1;
+    }
+    if(a.side > b.side) {
+      return 1;
+    }
+
     return 0;
+  }
+
+  function sortByName(a, b){
+    return compareCards(a, b);
   }
 
 
@@ -707,5 +733,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
             card.cancels ||
             card.abbreviation;
   };
+
+
+
+  // Listen for events on load
+  setTimeout(registerKeyEvents, 1500);
 
 }]);

@@ -140,7 +140,8 @@
 }
 
 .cs-card-preview-image {
-  max-width: 350px;
+  /*For now, just rely on the images being the right size
+  max-width: 350px; */
   height: auto;
 }
 
@@ -242,10 +243,19 @@
 
 .cs-card-image-multiple {
   position: relative;
+  height: 100%;
+  width: auto;
+  z-index: 9999999;
+}
+
+/*
+.cs-card-image-multiple {
+  position: relative;
   float: left;
   height: 100%;
   width: auto;
 }
+*/
 
 .cs-link {
   color: blue;
