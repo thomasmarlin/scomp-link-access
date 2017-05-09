@@ -134,7 +134,7 @@
               <img class="cs-card-image" align="right" src="{{data.selectedCard.links_large[0]}}" on-load-error="onImageLoadError">
             </div>
             <div data-ng-if="data.selectedCard.links.length > 1">
-              <img class="cs-card-image-multiple" align="right" data-ng-repeat="link in data.selectedCard.links_large" src="{{link}}">
+              <img class="cs-card-image-multiple" align="right" data-ng-repeat="link in data.selectedCard.links_large | orderBy:'$index':true" src="{{link}}">
             </div>
           </div>
         </div>
