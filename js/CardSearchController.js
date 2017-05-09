@@ -100,16 +100,6 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
   }
 
 
-
-  $scope.handleKeyEvent = function($event) {
-    if ($event.keyCode === 38) {
-      moveUp();
-    } else if ($event.keyCode === 40) {
-      moveDown();
-    }
-  };
-
-
   // Transform the set of advanced filters into a nice string
   function conditionToString(condition) {
     var conditionString = "";
