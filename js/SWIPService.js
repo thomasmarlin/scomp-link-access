@@ -5,7 +5,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   /*
   * To get data out of SWIP:
     1) Compile sqlite2  (3 does NOT work with the db)
-    2) ./sqlite -header swccg_db.sdb "select id,CardName,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
+    2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
   */
 
   // Added
@@ -124,6 +124,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   */
 
   var nameHeaderIndex = -1;
+  var sideIndexHeader = -1;
   var pullsHeaderIndex = -1;
   var isPulledHeaderIndex = -1;
   var counterpartHeaderIndex = -1;
@@ -145,6 +146,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     return "";
   }
 
+  function getSide(splitData) {
+    return getDataAtIndex(splitData, sideIndexHeader);
+  }
   function getCharacteristics(splitData) {
     return getDataAtIndex(splitData, characteristicsHeaderIndex);
   }
@@ -189,11 +193,12 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   }
 
 
-  function getCardWithName(name, existingCards) {
+  function getCardWithName(name, side, existingCards) {
     var simpleName = CDFService.getSimpleName(name);
     for (var i = 0; i < existingCards.length; i++) {
       var existingCard = existingCards[i];
-      if (existingCard.titleSortable === simpleName) {
+      if ((existingCard.titleSortable === simpleName) &&
+          (existingCard.side === side)) {
         return existingCard;
       }
     }
@@ -204,6 +209,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   function processHeaders(firstLine) {
     var headers = firstLine.split('|');
     nameHeaderIndex = headers.indexOf('CardName');
+    sideIndexHeader = headers.indexOf('Grouping');
     pullsHeaderIndex = headers.indexOf('Pulls');
     isPulledHeaderIndex = headers.indexOf('IsPulled');
     counterpartHeaderIndex = headers.indexOf('Counterpart');
@@ -239,8 +245,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
       if (!cardName) {
         continue;
       }
+      var cardSide = getSide(cardDataFields);
 
-      var existingCard = getCardWithName(cardName, existingCards);
+      var existingCard = getCardWithName(cardName, cardSide, existingCards);
       if (existingCard) {
         // Add the extra data from SWIP!!
         existingCard.pulls = getPulls(cardDataFields);
