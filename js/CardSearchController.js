@@ -4,7 +4,8 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
 
   var filterAddMode = {
     AND: "AND",
-    OR: "OR"
+    OR: "OR",
+    NOT: "NOT"
   };
 
   $scope.data = {
@@ -113,6 +114,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
         }
       }
     }
+    if (condition.isExcludeCondition) {
+      conditionString = "NOT (" + conditionString + ")";
+    }
     return conditionString;
   }
   $scope.conditionToString = conditionToString;
@@ -156,6 +160,8 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
         lastCondition.group.rules.push(condition);
         addToEnd = false;
       }
+    } else if ($scope.data.filterAddMode === filterAddMode.NOT) {
+      condition.isExcludeCondition = true;
     }
 
     if (addToEnd) {
@@ -208,7 +214,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
    * This is the basic structure of filters. They can be
    * either a 'group' (in which case it has sub-rules) or a 'condition'
    * in which case it matches a given field with given data
-   */
+   *
   $scope.filter = {
     group: {
       operator: 'AND',
@@ -226,6 +232,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
       ]
     }
   };
+  */
 
   $scope.getFilter = function() {
       return JSON.stringify($scope.filter);
@@ -371,7 +378,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
 
     for (var i = 0; i < $scope.data.advancedConditions.length; i++) {
       var condition = $scope.data.advancedConditions[i];
-      cumulativeSearch.group.rules.push(condition);
+      if (!condition.isExcludeCondition) {
+        cumulativeSearch.group.rules.push(condition);
+      }
     }
 
     // If no search criteria, just return an empty search
@@ -380,6 +389,27 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
 
     return cumulativeSearch;
+  }
+
+  /*
+   * Build a query which shows which cards to NOT include
+   */
+  function buildSearchToExclude() {
+    var excludeSearch = {
+      group: {
+        operator: "OR",
+        rules: []
+      }
+    };
+
+    for (var i = 0; i < $scope.data.advancedConditions.length; i++) {
+      var condition = $scope.data.advancedConditions[i];
+      if (condition.isExcludeCondition) {
+        excludeSearch.group.rules.push(condition);
+      }
+    }
+
+    return excludeSearch;
   }
 
   $scope.swallowClick = function($event) {
@@ -610,8 +640,34 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
         cumulativeCardsMatchingRules = getCardsInAnyList(cumulativeCardsMatchingRules, cardsMatchingRule);
       }
     }
+
     return cumulativeCardsMatchingRules;
   }
+
+
+  function removeCardsFromList(cardList, cardsToExclude) {
+    var filteredList = [];
+
+    for (var i = 0; i < cardList.length; i++) {
+      var card = cardList[i];
+      var exclude = false;
+
+      for (var j = 0; j < cardsToExclude.length; j++) {
+        var excludedCard = cardsToExclude[j];
+        if (card === excludedCard) {
+          exclude = true;
+          break;
+        }
+      }
+
+      if (!exclude) {
+        filteredList.push(card);
+      }
+    }
+
+    return filteredList;
+  }
+
 
 
   /**
@@ -636,7 +692,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
    */
   function doSearch() {
     var cumulativeSearch = buildCumulativeSearch();
-    performSearchAndDisplayResults(cumulativeSearch);
+    var searchToExclude = buildSearchToExclude();
+
+    performSearchAndDisplayResults(cumulativeSearch, searchToExclude);
   }
   $scope.doSearch = doSearch;
 
@@ -677,7 +735,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
   /**
    * Perform the given search and update the search results pane
    */
-  function performSearchAndDisplayResults(searchCriteria) {
+  function performSearchAndDisplayResults(searchCriteria, excludeCriteria) {
     $scope.data.selectedCard = null;
     $scope.data.lastSelectedCard = null;
     $scope.data.noResultsFound = false;
@@ -690,6 +748,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
 
     var matchingCards = getCardsMatchingRule(searchCriteria);
+    var excludeCards = getCardsMatchingRule(excludeCriteria);
+
+    matchingCards = removeCardsFromList(matchingCards, excludeCards);
+
     $scope.data.matches = matchingCards;
 
     if ($scope.data.matches.length === 0) {
