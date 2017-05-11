@@ -234,11 +234,6 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
   };
   */
 
-  $scope.getFilter = function() {
-      return JSON.stringify($scope.filter);
-  };
-
-
 
   $scope.search = {
     side: "ALL",
@@ -686,6 +681,14 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
   }
 
+  function clearSearch() {
+    $scope.search.side = "ALL";
+    $scope.search.type = "ALL";
+    $scope.search.searchField = "TITLE";
+    $scope.search.text = "";
+    doSearch();
+  }
+  $scope.clearSearch = clearSearch;
 
   /**
    * Perform a search

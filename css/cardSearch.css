@@ -269,6 +269,12 @@
   margin-top: 0.5em;
 }
 
+.cs-clear-link {
+  margin-top: 1.5em;
+  text-decoration: underline;
+  color: #ff6666;
+}
+
 .cs-advanced-search-window {
   position: fixed;
   left: 0px;
@@ -426,6 +432,11 @@
 .cs-hr-skinny {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.cs-red-button {
+  background-color: #ff9999 !important;
+  border-color: #ff6666 !important;
 }
 
 .cs-filter-red-button {
