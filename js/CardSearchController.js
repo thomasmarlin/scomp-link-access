@@ -726,6 +726,12 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     if(a.side > b.side) {
       return 1;
     }
+    if(a.set < b.set) {
+      return -1;
+    }
+    if(a.set > b.set) {
+      return 1;
+    }
 
     return 0;
   }

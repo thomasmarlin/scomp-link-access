@@ -5,7 +5,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   /*
   * To get data out of SWIP:
     1) Compile sqlite2  (3 does NOT work with the db)
-    2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
+    2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Expansion,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
   */
 
   // Added
@@ -125,6 +125,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
 
   var nameHeaderIndex = -1;
   var sideIndexHeader = -1;
+  var expansionIndexHeader = -1;
   var pullsHeaderIndex = -1;
   var isPulledHeaderIndex = -1;
   var counterpartHeaderIndex = -1;
@@ -148,6 +149,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
 
   function getSide(splitData) {
     return getDataAtIndex(splitData, sideIndexHeader);
+  }
+  function getExpansion(splitData) {
+    return getDataAtIndex(splitData, expansionIndexHeader);
   }
   function getCharacteristics(splitData) {
     return getDataAtIndex(splitData, characteristicsHeaderIndex);
@@ -193,14 +197,23 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   }
 
 
-  function getCardWithName(name, side, existingCards) {
+  function getCardWithName(name, side, expansion, existingCards) {
     var simpleName = CDFService.getSimpleName(name);
     for (var i = 0; i < existingCards.length; i++) {
       var existingCard = existingCards[i];
       if ((existingCard.titleSortable === simpleName) &&
           (existingCard.side === side)) {
-        return existingCard;
+
+        if (existingCard.titleLower === "bib fortuna") {
+          console.log("Bib with set: "+ existingCard.set + " vs expansion: " + expansion);
+        }
+        // Looks like we have a match!  Let's make extra sure though...
+        if (existingCard.set.toLowerCase().trim() === expansion.toLowerCase().trim()) {
+          return existingCard;
+        }
+
       }
+
     }
     return null;
   }
@@ -210,6 +223,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     var headers = firstLine.split('|');
     nameHeaderIndex = headers.indexOf('CardName');
     sideIndexHeader = headers.indexOf('Grouping');
+    expansionIndexHeader = headers.indexOf('Expansion');
     pullsHeaderIndex = headers.indexOf('Pulls');
     isPulledHeaderIndex = headers.indexOf('IsPulled');
     counterpartHeaderIndex = headers.indexOf('Counterpart');
@@ -246,8 +260,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
         continue;
       }
       var cardSide = getSide(cardDataFields);
+      var cardExpansion = getExpansion(cardDataFields);
 
-      var existingCard = getCardWithName(cardName, cardSide, existingCards);
+      var existingCard = getCardWithName(cardName, cardSide, cardExpansion, existingCards);
       if (existingCard) {
         // Add the extra data from SWIP!!
         existingCard.pulls = getPulls(cardDataFields);
