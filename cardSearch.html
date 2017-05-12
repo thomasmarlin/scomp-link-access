@@ -13,7 +13,7 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-store" />
 
-    <title>Star Wars CCG Card Search</title>
+    <title>SWCCG Data Probe</title>
   </head>
 
   <body>
@@ -45,7 +45,14 @@
     <!-- Content -->
     <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main">
 
-      <div class="cs-title">Star Wars CCG Card Search</div>
+      <div class="cs-title">
+        <div class="cs-title-holder">
+          <span>
+            <img src="./radar.png" class="cs-logo-image">
+          </span>
+          SWCCG Data Probe
+        </div>
+      </div>
       <hr class="cs-title-divider">
 
       <div data-ng-if="data.selectedCard != null"

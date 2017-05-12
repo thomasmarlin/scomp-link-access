@@ -20,6 +20,16 @@
   font-size: 2em;
   font-style: italic;
   font-weight: bold;
+  padding: 8px;
+}
+.cs-title-holder {
+  position: relative;
+}
+
+.cs-logo-image {
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 10px;
 }
 
 .cs-title-divider {
