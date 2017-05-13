@@ -123,7 +123,6 @@ cardSearchApp.service('CDFService', [function() {
       power: "",
       title: "",
       titleSortable: "",
-      titleLower: "",
       type: "",
       set: "",
       setAbbreviation: "",
@@ -294,9 +293,14 @@ cardSearchApp.service('CDFService', [function() {
       card.destiny = line.substring(iDestinyStart+1, iDestinyEnd);
     }
     card.titleSortable = getSimpleName(card.title);
-    card.titleLower = card.titleSortable;
+    card.titleLowerNoSet = removeSetFromTitle(card.titleSortable);
   }
 
+  function removeSetFromTitle(title) {
+    // See if thie title ends with "......... (CC)" or "..... (EP1)"
+    return title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
+  }
+  this.removeSetFromTitle = removeSetFromTitle;
 
   function processLabeledLine(line, card){
 
@@ -488,8 +492,8 @@ cardSearchApp.service('CDFService', [function() {
     delete fieldValueMap.setAbbreviation;
     delete fieldValueMap.links;
     delete fieldValueMap.links_large;
-    delete fieldValueMap.titleLower;
     delete fieldValueMap.titleSortable;
+    delete fieldValueMap.titleLowerNoSet;
     delete fieldValueMap.twoSided;
 
 

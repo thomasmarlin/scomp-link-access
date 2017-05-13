@@ -201,12 +201,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     var simpleName = CDFService.getSimpleName(name);
     for (var i = 0; i < existingCards.length; i++) {
       var existingCard = existingCards[i];
-      if ((existingCard.titleSortable === simpleName) &&
+      if ((existingCard.titleLowerNoSet === simpleName) &&
           (existingCard.side === side)) {
 
-        if (existingCard.titleLower === "bib fortuna") {
-          console.log("Bib with set: "+ existingCard.set + " vs expansion: " + expansion);
-        }
         // Looks like we have a match!  Let's make extra sure though...
         if (existingCard.set.toLowerCase().trim() === expansion.toLowerCase().trim()) {
           return existingCard;
@@ -259,10 +256,11 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
       if (!cardName) {
         continue;
       }
+      var cardWithoutSetInfo = CDFService.removeSetFromTitle(cardName);
       var cardSide = getSide(cardDataFields);
       var cardExpansion = getExpansion(cardDataFields);
 
-      var existingCard = getCardWithName(cardName, cardSide, cardExpansion, existingCards);
+      var existingCard = getCardWithName(cardWithoutSetInfo, cardSide, cardExpansion, existingCards);
       if (existingCard) {
         // Add the extra data from SWIP!!
         existingCard.pulls = getPulls(cardDataFields);
