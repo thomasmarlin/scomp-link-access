@@ -85,6 +85,10 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
   };
 
+  $scope.clickedCardData = function($event) {
+    $event.stopPropagation();
+  };
+
 
   function registerKeyEvents() {
     jQuery($document).keydown(function(event) {

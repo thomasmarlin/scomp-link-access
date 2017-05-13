@@ -57,10 +57,11 @@
 
       <div data-ng-if="data.selectedCard != null"
            class="cs-card-preview-pane"
+           data-ng-click="hideCardData()"
            outside-click="hideCardData">
 
         <!-- Extra Card Data -->
-        <div data-ng-if="data.selectedCard != null" class="cs-extra-data">
+        <div data-ng-if="data.selectedCard != null" class="cs-extra-data" data-ng-click="clickedCardData($event)">
           <div class="cs-extra-card-data-title">
             Extra Card Data
           </div>
