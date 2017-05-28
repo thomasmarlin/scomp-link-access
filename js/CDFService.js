@@ -298,7 +298,10 @@ cardSearchApp.service('CDFService', [function() {
 
   function removeSetFromTitle(title) {
     // See if thie title ends with "......... (CC)" or "..... (EP1)"
-    return title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
+    var replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
+    replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
+
+    return replaced;
   }
   this.removeSetFromTitle = removeSetFromTitle;
 
