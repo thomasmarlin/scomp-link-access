@@ -331,6 +331,16 @@ cardSearchApp.service('CDFService', [function() {
     } else if (card.type === "Objective") {
       // Special case because Objectives aren't labeled properly... sigh...
       card.gametext += line;
+    } else if (line.indexOf("DARK") === 0) {
+      var indexOfDarkColon = line.indexOf(":");
+      if (indexOfDarkColon > 0) {
+        card.gametext += "Dark: " + line.substring(indexOfDarkColon);
+      }
+    } else if (line.indexOf("LIGHT") === 0) {
+      var indexLightOfColon = line.indexOf(":");
+      if (indexLightOfColon > 0) {
+        card.gametext += "Light: " + line.substring(indexLightOfColon);
+      }
     }
 
     // Power: 7 Armor: 5 Hyperspeed: 4\n
