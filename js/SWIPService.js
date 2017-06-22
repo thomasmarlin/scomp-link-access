@@ -5,7 +5,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
   /*
   * To get data out of SWIP:
     1) Compile sqlite2  (3 does NOT work with the db)
-    2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Expansion,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" > swipdump.text
+    2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Expansion,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" | iconv -f utf-8 -t utf-8 --unicode-subst=e --byte-subst=e > swipdump.text
   */
 
   // Added
