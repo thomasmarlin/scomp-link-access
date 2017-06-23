@@ -48,9 +48,8 @@
       <div class="cs-title">
         <div class="cs-title-holder">
           <span>
-            <img src="./radar.png" class="cs-logo-image">
+            <img src="./scomp.png" class="cs-logo-image"> Scomp Link Access
           </span>
-          Scomp Link Access
         </div>
       </div>
       <hr class="cs-title-divider">
@@ -215,7 +214,7 @@
           <!-- Search Button -->
           <div class="cs-searchField cs-search-buttons">
 
-            <button data-ng-click="clearSearch()" class="btn cs-card-search-button pull-left">Reset Search</button>
+            <button data-ng-click="clearSearch()" class="btn cs-card-search-button hyperstyle pull-left">Reset Search</button>
             <button data-ng-click="doSearch()" class="btn btn-primary cs-card-search-button pull-right">Search</button>
 
             <div class="clearfix"></div>
@@ -266,7 +265,7 @@
             <div class="cs-current-filter-text">
               Current Filter:
             </div>
-            <div data-ng-if="data.advancedConditions.length == 0">
+            <div data-ng-if="data.advancedConditions.length == 0" class="cs-current-filter-none">
               None
             </div>
             <div class="cs-advanced-summary" data-ng-if="data.advancedConditions.length > 0">

@@ -28,7 +28,7 @@
 
 .cs-logo-image {
   height: 50px;
-  margin-left: 50px;
+  /*margin-left: 50px;*/
   margin-right: 10px;
 }
 
@@ -44,6 +44,7 @@
   padding: 1em;
   height: 100vh;
   border-right: thin solid #CACACA;
+  background: linear-gradient(#DADADA, #FAFAFA);
 }
 
 .cs-search-input {
@@ -75,7 +76,7 @@
 }
 .cs-searchField {
   margin-top: 1em;
-  background-color: #DADADA;
+  /*background-color: #DADADA;*/
 }
 .cs-searchField.cs-first-one {
   margin-top: 0px;
@@ -279,6 +280,12 @@
   margin-top: 0.5em;
 }
 
+.cs-card-search-button.hyperstyle {
+  background-color: transparent;
+  text-decoration: underline;
+  font-style: italic;
+}
+
 .cs-clear-link {
   margin-top: 1.5em;
   text-decoration: underline;
@@ -379,17 +386,27 @@
 }
 
 .cs-advanced-panel {
+  /*
   border: thin solid #AAA;
   border-radius: 5px;
   padding: 10px;
   margin-top: 4em;
+  */
+  border-top: thin solid #AAA;
+  padding: 10px;
+  margin-top: 4em;
+  padding: 10px 0px 0px 0px;
 }
 
 .cs-advanced-panel-title {
+  /*
   font-size: 1.2em;
-  /*font-weight: bold;*/
   margin-left: 1px;
   font-style: italic;
+  */
+  font-size: 1.2em;
+  margin-left: 1px;
+  color: #444;
 }
 
 .cs-advanced-summary {
@@ -428,10 +445,17 @@
 .cs-current-filter-text {
   font-size: 1.0em;
   font-style: italic;
+  color: #555;
+  margin-left: 2px;
+}
+
+.cs-current-filter-none {
+  margin-left: 2px;
 }
 
 .cs-add-filter-type {
   font-size: 1.0em;
+  margin-left: 3px;
 }
 
 .cs-filter-radio {
@@ -442,6 +466,7 @@
 .cs-hr-skinny {
   margin-top: 10px;
   margin-bottom: 10px;
+  border-top: 1px solid #DDD;
 }
 
 .cs-red-button {
