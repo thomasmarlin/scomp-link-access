@@ -19,27 +19,27 @@
   <body>
 
     <!-- Third Party -->
-    <script src="/wp/wp-content/plugins/card-search/js/jquery-2.1.4.min.js"></script>
-    <script src='/wp/wp-content/plugins/card-search/js/angular.1.4.8.min.js'></script>
-    <script src='/wp/wp-content/plugins/card-search/js/select.min.js'></script>
-    <script src="/wp/wp-content/plugins/card-search/js/bootstrap.min.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/ui-bootstrap-tpls-1.1.0.min.js.css"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/angular-ui.min.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/angular-sanitize.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src='js/angular.1.4.8.min.js'></script>
+    <script src='js/select.min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="ui-bootstrap-tpls-1.1.0.min.js.css"></script>
+    <script src="js/angular-ui.min.js"></script>
+    <script src="js/angular-sanitize.js"></script>
 
     <!-- Main App -->
-    <script src="/wp/wp-content/plugins/card-search/js/app.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/CardSearchController.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/CDFService.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/SWIPService.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/onLoadError.js"></script>
-    <script src="/wp/wp-content/plugins/card-search/js/outsideClick.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/CardSearchController.js"></script>
+    <script src="js/CDFService.js"></script>
+    <script src="js/SWIPService.js"></script>
+    <script src="js/onLoadError.js"></script>
+    <script src="js/outsideClick.js"></script>
 
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/wp/wp-content/plugins/card-search/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/wp/wp-content/plugins/card-search/css/cardSearch.css">
-    <link rel="stylesheet" type="text/css" href="/wp/wp-content/plugins/card-search/css/select.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/cardSearch.css">
+    <link rel="stylesheet" type="text/css" href="css/select.min.css">
 
 
     <!-- Content -->
@@ -243,7 +243,9 @@
             <!-- Possible Values -->
             <div>
               <ui-select ng-model="data.advancedValue" theme="bootstrap" class="cs-advanced-value"
-                         on-select="addAdvancedCondition()"
+                         on-select="addAdvancedCondition($select)"
+                         tagging
+                         reset-search-input="false"
                          data-ng-keyup="updateAdvancedSearchText($event, $select)">
                 <ui-select-match placeholder="Type or select..." >{{$select.selected}}</ui-select-match>
                 <ui-select-choices repeat="possibleValue in data.cardValueMap[data.advancedField] | orderBy:'toString()' | filter: $select.search">

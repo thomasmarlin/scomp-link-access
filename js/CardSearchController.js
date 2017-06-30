@@ -137,13 +137,13 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     $scope.data.advancedValue = $select.search;
 
     if ($event.keyCode === 13) {
-      $scope.addAdvancedCondition();
+      $scope.addAdvancedCondition($select);
       $select.search = "";
     }
   };
 
 
-  $scope.addAdvancedCondition = function() {
+  $scope.addAdvancedCondition = function($select) {
     var textSearch = $scope.data.advancedValue;
     var operator = $scope.data.advancedOperator;
     var fieldName = $scope.data.advancedField;
@@ -173,6 +173,7 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
 
     $scope.data.advancedValue = "";
+    $select.search = "";
 
     doSearch();
   };
