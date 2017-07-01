@@ -279,6 +279,8 @@ cardSearchApp.service('CDFService', [function() {
     titleSortable = titleSortable.replace("<>", "");
 
     titleSortable = titleSortable.toLowerCase();
+    titleSortable = titleSortable.replace("é", "e");
+
     return titleSortable;
   }
   this.getSimpleName = getSimpleName;

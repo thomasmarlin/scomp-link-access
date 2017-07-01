@@ -8,6 +8,22 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     2) ./sqlite -header swccg_db.sdb "select id,CardName,Grouping,Expansion,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;" | iconv -f utf-8 -t utf-8 --unicode-subst=e --byte-subst=e > swipdump.text
   */
 
+
+  /**
+ * 1) compile sqlite2
+ * 2) ./sqlite -header swccg_db.sdb
+ * 3) .output swipdump.text
+ * 4) select id,CardName,Grouping,Expansion,Uniqueness,Characteristics,Pulls,LightSideIcons,DarkSideIcons,IsPulled,Counterpart,Combo,Matching,MatchingWeapon,Cancels,IsCanceledBy from SWD;
+ * 5) .quit
+ * 6) File is now saved as 'swipdump.txt'. However, the character encoding is wrong.
+ * 7) vi swipdump.text
+ *    7a) :set fileencoding=utf-8
+ *    7b) :wq!
+ *
+ * The dumped results are now ready for upload and are in 'swipdump.text'
+
+
+
   // Added
   /*
   Characteristics
