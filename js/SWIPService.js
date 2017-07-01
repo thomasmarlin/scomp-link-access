@@ -157,7 +157,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     // SWIP lists the set as "Virtual Card Set #X"
     //
     // Transform SWIP data to match :)
-    setName.replace("Virtual Card Set #", "Virtual Set");
+    setName = setName.replace("Virtual Card Set #", "Virtual Set ");
     return setName;
   }
   function getCharacteristics(splitData) {
