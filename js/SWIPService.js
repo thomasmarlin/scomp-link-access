@@ -23,6 +23,17 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
  * The dumped results are now ready for upload and are in 'swipdump.text'
 
 
+ /**
+  * Updating SWIP:
+  1. ./sqlite swccg_db.sdb
+  2. .dump dumpdata.text
+  3. Manual open dumpdata.text
+    - copy a related line and paste it down towards the bottom with a new number
+  4. ./sqlite swccg_imported.sdb
+  5. .read dumpdata.text
+  Database now has the latest information!
+
+
 
   // Added
   /*

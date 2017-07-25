@@ -54,7 +54,7 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 60|Admiral Motti|Dark|Premiere|*|\b admiral\b0, \b commander\b0, \b leader\b0||||Admiral Piett\par Blizzard 4\par  Endor Shield (V)\par Imperial Command\par The Empire's Back||Admiral Motti + Lone Pilot\par Add two battle destiny if Motti is defending a battle alone at a system.\par -----\par Admiral Motti + Vader's Eye + Lone Warrior\par Add two battle destiny if Motti is defending a battle alone at a site.\par ||||
 61|Admiral Motti (V)|Dark|Virtual Card Set #0|*|\b admiral\b0, \b commander\b0, \b leader\b0|Kuat Drive Yards|||Admiral Piett\par Blizzard 4\par Endor Shield (V)\par Imperial Command\par The Empire's Back||Admiral Motti (V) + Lone Pilot\par Add two battle destiny if Motti is defending a battle alone at a system.\par -----\par Admiral Motti (V) + Vader's Eye + Lone Warrior\par Add two battle destiny if Motti is defending a battle alone at a site.||||
 62|Admiral Ozzel|Dark|Hoth|*|ISB agent, \b admiral\b0, \b leader\b0||||Endor Shield (V)\par Imperial Command||Admiral Ozzel + Commander Nemet||||
-63|Admiral Piett|Dark|Death Star II|*|\b admiral\b0, \b leader\b0|Battle Deployment\par Black Sun Fleet\par Fighter Cover\par Fighters Coming In\par Intensify The Forward Batteries\par Nothing Can Get Through Our Shield\par The Deflector Shield Is Too Strong\par We're In Attack Position Now\par -----\par Admiral Motti\par Admiral Motti (V)\par Commander Brandei\par  Commander Desanne\par Commander Gherant\par Commander Igar\par Commander Merrejk\par Commander Nemet\par Commander Nemet (V)\par Commander Praji\par Imperial Commander\par Lieutenant Commander Ardan\par Major Mianda\par Sergeant Major Enfield\par Sergeant Merril\par Tank Commander|||Blizzard 4\par Imperial Command||Admiral Piett at a system + Imperial Command|Executor\par Flagship Executor|||
+63|Admiral Piett|Dark|Death Star II|*|\b admiral\b0, \b leader\b0|Battle Deployment\par Black Sun Fleet\par Fighter Cover\par Fighters Coming In\par Intensify The Forward Batteries\par Nothing Can Get Through Our Shield\par The Deflector Shield Is Too Strong\par We're In Attack Position Now\par -----\par Admiral Motti\par Admiral Motti (V)\par Commander Brandei\par Commander Desanne\par Commander Gherant\par Commander Igar\par Commander Merrejk\par Commander Nemet\par Commander Nemet (V)\par Commander Praji\par Director Orson Krennic\par Imperial Commander\par Lieutenant Commander Ardan\par Major Mianda\par Sergeant Major Enfield\par Sergeant Merril\par Tank Commander|||Blizzard 4\par Imperial Command||Admiral Piett at a system + Imperial Command|Executor\par Flagship Executor|||
 64|Advance Preparation|Light|A New Hope||||||Firin Morett||||||
 66|Advantage|Light|Cloud City|*|||||Don't Do That Again\par Don't Do That Again - Defensive Shield\par Don't Do That Again (V) - Defensive Shield\par Harc Seff (V)\par We Wish To Board At Once||||||
 67|Advosze|Dark|A New Hope|***|\b smuggler\b0||||Elis in Hinthra (V)\par Murttoc Yine||||||
@@ -92,7 +92,7 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 102|Amanaman|Dark|Jabba's Palace|*|||||||||||
 103|Amanin|Dark|Jabba's Palace||||||||||||
 104|Ambush|Light|Cloud City|*|||||||||||
-105|Amidala's Blaster|Light|Theed Palace|*|blaster||||Portable Scanner||||Padmé Naberrie\par Padmé Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo||
+105|Amidala's Blaster|Light|Theed Palace|*|blaster||||Portable Scanner||||Padm� Naberrie\par Padm� Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo||
 106|An Entire Legion Of My Best Troops|Dark|Endor|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points||||||
 107|An Unusual Amount Of Fear|Light|Reflections III|*|||||The Signal\par We Wish To Board At Once|Fear Is My Ally|||||
 108|Anakin Skywalker|Light|Death Star II|*|||||Twilight Is Upon Me||||||
@@ -284,7 +284,7 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 318|Bowcaster|Light|A New Hope||||||Portable Scanner||||||
 319|Brainiac|Light|A New Hope|*|||||||Brainiac + Mantellian Savrip\par Brainiac's forfeit is equal to the total number of cards in your opponent's hand, so he may often be sacrificed to the Mantellian Savrip to cover all battle damage and attrtion against you.||||
 320|Brangus Glee|Dark|Special Edition|*|\b gambler\b0||||||||||
-321|Bravo 1|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||Bravo 1 + Ric Olié, Bravo Leader + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Ric Olié\par Ric Olié, Bravo Leader|||
+321|Bravo 1|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||Bravo 1 + Ric Oli�, Bravo Leader + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Ric Oli�\par Ric Oli�, Bravo Leader|||
 322|Bravo 2|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!|||Officer Dolphe|||
 323|Bravo 3|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||| Lieutenant Arven Wendik|||
 324|Bravo 4|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||| Lieutenant Rya Kirsch|||
@@ -624,9 +624,9 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 695|Demotion|Light|Premiere||||||The Signal\par We Wish To Board At Once||||||Boring Conversation Anyway\par Point Man
 697|Den Of Thieves|Dark|Jabba's Palace|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans|Bargaining Table|||||
 699|Deneb Both|Light|Tatooine|*|Mistryl||||||Deneb Both + Draw Their Fire||||
-700|Dengar|Dark|Dagobah|*|\b Black Sun agent\b0, \b bounty hunter\b0, \b Corellian\b0, \b assassin\b0||||Double Back||Dengar + Luke? Luuuuke! + any (Rebel) Han\par Makes Rebel Han Lost.\par (Indiana Jones Jedi Knight)|Punishing One|Dengar's Blaster Carbine\par Dengar's Modified Riot Gun||
+700|Dengar|Dark|Dagobah|*|\b Black Sun agent\b0, \b bounty hunter\b0, \b Corellian\b0, \b assassin\b0||||Double Back||Dengar + Luke? Luuuuke! + any (Rebel) Han\par Makes Rebel Han Lost.\par (Indiana Jones Jedi Knight)|Punishing One\par Punishing One (V)|Dengar's Blaster Carbine\par Dengar's Modified Riot Gun||
 702|Dengar In Punishing One|Dark|Enhanced Cloud City|*|Independent (starship)||||Court Of The Vile Gangster|||||Opponent's immunity to attrition|
-703|Dengar With Blaster Carbine|Dark|Enhanced Jabba's Palace|*|\b Black Sun agent\b0, \b bounty hunter\b0, blaster, \b Corellian\b0||||Double Back|||Punishing One|||
+703|Dengar With Blaster Carbine|Dark|Enhanced Jabba's Palace|*|\b Black Sun agent\b0, \b bounty hunter\b0, blaster, \b Corellian\b0||||Double Back|||Punishing One\par Punishing One (V)|||
 704|Dengar's Blaster Carbine|Dark|Dagobah|*|blaster||||Jabba's Through With You\par Mara Jade, The Emperor's Hand||||Dengar\par Dengar (V)||
 705|Dengar's Modified Riot Gun|Dark|Jabba's Palace|*|||||Jabba's Through With You||||Dengar\par Dengar (V)||
 706|Depa Billaba|Light|Coruscant|*|\b Jedi Council member\b0||||Speak With The Jedi Council\par Tatooine: City Outskirts||Depy Billaba + Are You Brain Dead?!\par -----\par Depa Billaba + Encampment or Deploy regardless of location deployment restrictions.\par -----\par Depa Bilaba + Smoke Screen||||
@@ -758,22 +758,22 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 847|Endor Operations/Imperial Outpost|Dark|Endor||||||||Endor Operations + Colonel Dyer\par Colonel Dyer prevents Ominous Rumors from being canceled while at Bunker or an Endor battleground site.||||
 848|Endor Scout Trooper|Light|Endor||\b Rebel trooper\b0, \b trooper\b0, \b scout\b0||||General Crix Madine\par Mon Mothma\par Pucumir Thryss (to same Cloud City site)||||||
 849|Endor Shield|Dark|Death Star II|*|||||Endor: Bunker\par Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points||||||
-850|Endor: Ancient Forest|Dark|Endor|*|||1|2|||||||
-851|Endor: Back Door|Dark|Endor|*|||2|2|Conduct Your Search|Endor: Back Door|Endor: Back Door + Closed Door||||
+850|Endor: Ancient Forest|Dark|Endor|*|||1|2|Establish Secret Base (V)||||||
+851|Endor: Back Door|Dark|Endor|*|||2|2|Conduct Your Search\par Establish Secret Base (V)\par |Endor: Back Door|Endor: Back Door + Closed Door||||
 852|Endor: Back Door|Light|Endor|*|||2|2|General Solo (V)\par Mindful Of The Future\par The Shield Is Down!\par The Shield Is Down! (V)\par Wuta|Endor: Back Door|Endor: Back Door + Fallen Portal||||
 853|Endor: Bunker|Dark|Endor|*||Endor Shield\par Endor Shield (V)|0|1||Endor: Bunker|Endor: Bunker + Major Hewex||||
 854|Endor: Bunker|Light|Endor|*|||0|1|The Shield Is Down! (V)\par Wuta|Endor: Bunker|||||
 855|Endor: Chief Chirpa's Hut|Light|Endor|*|||2|0|Wuta||Endor: Chief Chirpa's Hut + Chief Chirpa||||
-856|Endor: Dark Forest|Dark|Endor|*|||1|2|||||||
-857|Endor: Dense Forest|Dark|Endor|*|||1|2||Endor: Dense Forest|||||
+856|Endor: Dark Forest|Dark|Endor|*|||1|2|Establish Secret Base (V)\par ||||||
+857|Endor: Dense Forest|Dark|Endor|*|||1|2|Establish Secret Base (V)\par |Endor: Dense Forest|||||
 858|Endor: Dense Forest|Light|Endor|*|||2|1|Mindful Of The Future\par The Shield Is Down! (V)\par Wuta|Endor: Dense Forest|||||
-859|Endor: Ewok Village|Dark|Endor|*|||1|1||Endor: Ewok Village|||||
+859|Endor: Ewok Village|Dark|Endor|*|||1|1|Establish Secret Base (V)\par |Endor: Ewok Village|||||
 860|Endor: Ewok Village|Light|Endor|*|||1|1|Mindful Of The Future\par The Shield Is Down! (V)\par Wuta|Endor: Ewok Village|Endor: Ewok Village + Wicket + Ewok Spear\par -----\par Endor: Ewok Village + Catapult + Ewok Sentries||||
-861|Endor: Forest Clearing|Dark|Endor|*|||1|2|||||||
-862|Endor: Great Forest|Dark|Endor|***|||1|1||Endor: Great Forest|||||
+861|Endor: Forest Clearing|Dark|Endor|*|||1|2|Establish Secret Base (V)\par ||||||
+862|Endor: Great Forest|Dark|Endor|***|||1|1|Establish Secret Base (V)\par |Endor: Great Forest|||||
 863|Endor: Great Forest|Light|Endor|***|||1|1|The Shield Is Down! (V)\par Wuta|Endor: Great Forest|||||
 864|Endor: Hidden Forest Trail|Light|Endor|*|||2|1|Mindful Of The Future\par The Shield Is Down! (V)\par Wuta||||||
-865|Endor: Landing Platform (Docking Bay)|Dark|Endor|*|||1|1|Begin Landing Your Troops\par Death Star: Docking Control Room 327\par Imperial Arrest Order\par Imperial Arrest Order & Secret Plans\par Join Us Or Die (V)|Endor: Landing Platform (Docking Bay)|||||
+865|Endor: Landing Platform (Docking Bay)|Dark|Endor|*|||1|1|Begin Landing Your Troops\par Death Star: Docking Control Room 327\par Establish Secret Base (V)\par Imperial Arrest Order\par Imperial Arrest Order & Secret Plans\par Join Us Or Die (V)|Endor: Landing Platform (Docking Bay)|||||
 866|Endor: Landing Platform (Docking Bay)|Light|Endor|*|||1|1|Firin Morett\par Insurrection\par Insurrection & Aim High\par Mindful Of The Future\par Security Control\par The Shield Is Down! (V)\par Wuta|Endor: Landing Platform (Docking Bay)|||||
 867|Endor: Rebel Landing Site (Forest)|Light|Endor|*|||2|1|Mindful Of The Future\par The Shield Is Down! (V)\par Wuta||||||
 868|Energy Shell Launchers|Dark|Theed Palace||||||AAT Assault Leader\par Vizam (when with Advosze)||||AAT Assault Leader||
@@ -1367,7 +1367,8 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 1542|Lieutenant Venka|Dark|Dagobah|*|||||Blizzard 4||Lieutnant Venka + Tarkin + Chief Bast||||
 1543|Lieutenant Watts|Dark|Endor|*|||||Aratech Corporation (V)\par Blizzard 4||Lieutenant Watts + Tempest Scout 2 + Major Marquand||||
 1545|Lieutenant Williams|Light|Coruscant|*|||||||Lieutenant Williams + Captain Madakor + Radiant VII|Obi-Wan In Radiant VII\par Radiant VII|||
-1546|Life Debt|Light|Jabba's Palace|*||Gold Squadron 1\par Han, Chewie, And The Falcon\par Lando In Millennium Falcon\par Millennium Falcon\par Chewie\par Chewie (V)\par Chewie With Blaster Rifle\par Chewie With Bowcaster
+1546|Life Debt|Light|Jabba's Palace|*||Gold Squadron 1\par Han, Chewie, And The Falcon\par Lando In Millennium Falcon\par Millennium Falcon\par Chewie\par Chewie (V)\par Chewie With Blaster Rifle
+\par Chewie With Bowcaster
 Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|||||Life Debt + That's One\par That's One makes Life Debt a Used Interrupt.||||Furry Fury
 1547|Lift Tube|Dark|Premiere||enclosed|||||Lift Tube|||||
 1548|Lift Tube|Light|Premiere||enclosed||||Lift Tube Escape|Lift Tube|Lift Tube + Lift Tube Escape + Dune Sea Sabacc\par Lift Tube and Lift Tube Escape can be tracked pretty easily for perfect Sabacc. (Indiana Jones Jedi Knight)||||
@@ -1462,7 +1463,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1647|Masanya|Light|Death Star II|*|Rebel (starship), ship-docking capability||||||||||
 1648|Massassi Base Operations/One In A Million|Light|Third Anthology||||||||MBO + Great Shot, Kid!||||
 1649|Master Luke|Light|Enhanced Jabba's Palace|*|||||Luke's Back||Master Luke + I Must Be Allowed To Speak (V) or non-virtual|Artoo-Detoo In Red 5\par Red 5\par Luke's T-16 Skyhopper\par Rogue 1|Anakin's Lightsaber (V)\par Luke's Blaster Pistol\par Luke's Hunting Rifle\par Luke's Lightsaber||
-1651|Master Qui-Gon|Light|Coruscant|*|||||Padmé Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
+1651|Master Qui-Gon|Light|Coruscant|*|||||Padm� Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 1652|Master, Destroyers!|Dark|Theed Palace|*||Three non-unique destroyer droids\par Destroyer Droid|||||||||
 1653|Masterful Move|Dark|Special Edition|*||Ghhhk\par HoloNet Transmission\par Image Of The Dark Lord\par Image Of The Dark Lord (V)\par Imperial Holotable\par Kintan Strider\par Molator\par Monnok\par Ng'ok\par The Phantom Menace\par Revenge Of The Sith (V)\par Visage Of The Emperor||||Escape Pod (V)||||Mantellian Savrip\par Opponent's Force drain at a holosite.|
 1654|Masterful Move & Endor Occupation|Dark|Coruscant|*||Ghhhk\par HoloNet Transmission\par Image Of The Dark Lord\par Image Of The Dark Lord (V)\par Imperial Holotable\par Kintan Strider\par Molator\par Monnok\par Ng'ok\par The Phantom Menace\par Revenge Of The Sith (V)\par Visage Of The Emperor||||||||All My Urchins & Cloud City Celebration\par Cloud City Celebration\par Coruscant Celebration\par Tatooine Celebration\par Mantellian Savrip\par Opponent's force drain at a holosite|
@@ -1522,7 +1523,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1713|Murttoc Yine|Dark|Jabba's Palace|*|\b Black Sun agent\b0, \b information broker\b0, \b spy\b0|Advosze\par Arica\par Arica (V)\par Dodo Bodonawieedo\par Dr. Evazan\par Dr. Evazan & Ponda Baba\par Ephant Mon\par Fozec\par Fozec (V)\par Garindan\par Garindan (V)\par Gela Yeens\par Gela Yeens (V)\par Grotto Werribee\par Grotto Werribee (V)\par J'Quille\par Labria\par Labria\par Lathe\par Mara Jade, The Emperor's Hand\par Mercenary Pilot\par Mercenary Pilot (V)\par Outer Rim Scout\par Ponda Baba\par Ponda Baba (V)\par Pote Snitkin\par Reegesk\par Ree-Yees\par Shada (V)\par Televan Koreyy\par Thul Fain\par Tonnika Sisters\par Umpass-Stay\par Velken Tezeri (V)\par Wooof\par Wooof (V)\par Yade M'rak|||||Murttoc Yine + Nevar Yalnal||||
 1714|My Kind Of Scum/Fearless And Inventive|Dark|Jabba's Palace Sealed Deck|||||||Agents In The Court/No Love For The Empire|||||
 1715|My Lord, Is That Legal?/I Will Make It Legal|Dark|Coruscant||||||||||||
-1716|My Loyal Bodyguard|Light|Coruscant|*||Dormé\par Sabé\par Saché\par Yané\par Yané (V)|||||||||
+1716|My Loyal Bodyguard|Light|Coruscant|*||Dorm�\par Sab�\par Sach�\par Yan�\par Yan� (V)|||||||||
 1717|Myn Kyneugh|Dark|Death Star II|*|Royal Guard, \b leader\b0||||Blizzard 4||||||
 1718|Mynock|Dark|Dagobah||selective, parasite||||Swamp|Mynock|||||
 1719|Mynock|Light|Dagobah||selective, parasite||||Swamp|Mynock|||||
@@ -1681,7 +1682,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1885|OWO-1 With Backup|Dark|Theed Palace|*|\b battle droid\b0, \b leader\b0, \b Trade Federation\b0||||Naboo: Theed Palace Hallway\par TT-6||OWO-1 With Backup + Daultay Dofine||||
 1886|P-59|Dark|Coruscant|*|\b leader\b0, \b Trade Federation\b0||||||P-59 + Daultay Dofine||||
 1887|P-60|Dark|Coruscant|*|\b Trade Federation\b0||||||P-60 + Daultay Dofine||||
-1888|Padmé Naberrie|Light|Tatooine|*||Ben Kenobi\par  Obi-Wan Kenobi\par Obi-Wan Kenobi (V)\par Obi-Wan Kenobi, Jedi Knight\par Obi-Wan Kenobi, Padawan Learner\par Obi-Wan Kenobi, Padawan Learner (V)\par Obi-Wan With Lightsaber\par Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn With Lightsaber\par Qui-Gon Jinn, Jedi Master|||Sabé||Padmé Naberrie + Jerus Jannick||Amidala's Blaster||
+1888|Padm� Naberrie|Light|Tatooine|*||Ben Kenobi\par  Obi-Wan Kenobi\par Obi-Wan Kenobi (V)\par Obi-Wan Kenobi, Jedi Knight\par Obi-Wan Kenobi, Padawan Learner\par Obi-Wan Kenobi, Padawan Learner (V)\par Obi-Wan With Lightsaber\par Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn With Lightsaber\par Qui-Gon Jinn, Jedi Master|||Sab�||Padm� Naberrie + Jerus Jannick||Amidala's Blaster||
 1889|Palace Raider|Light|Jabba's Palace Sealed Deck||\b smuggler\b0||||Soth Petikkin (when at a Jabba's Palace site you control)\par Arleil Schous\par Nar Shaddaa Wind Chimes\par Nar Shaddaa Wind Chimes & Out Of Somewhere||||||
 1890|Palejo Reshad|Light|Jabba's Palace|*|\b Corellian\b0||||||Palejo Reshad + Corellia||||
 1891|Panaka, Protector Of The Queen|Light|Theed Palace|*|\b leader\b0, \b Royal Naboo Security\b0||||||Panaka, Protector Of The Queen + Queen Amidala + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Panaka's Blaster||
@@ -1756,14 +1757,14 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1970|Put That Down|Light|Cloud City|*||||||||||Targeting of a character by a weapon\par Double Back\par Res Luk Ra'auf|
 1971|Quad Laser Cannon|Light|Premiere||cannon, laser cannon||||Lieutenant s'Too Vees (when at a docking bay)\par Portable Scanner\par Rapid Fire||||||
 1972|Quarren|Dark|Jabba's Palace||||||||||||
-1973|Queen Amidala|Light|Theed Palace|*|\b leader\b0||||Sabé||Queen Amidala + Jerus Jannick\par -----\par Queen Amidala + Panaka, Protector Of The Queen\par While Panaka is with Amidala at a Naboo site, opponent may not target Amidala with weapons. Panaka deploys free to a Naboo site.\par -----\par Queen Amidala + Panaka, Protector Of The Queen + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Amidala's Blaster||
-1974|Queen Amidala, Ruler Of Naboo|Light|Coruscant|*|\b leader\b0||||Sabé||Queen Amidala, Ruler Of Naboo + I Will Not Defer\par -----\par Queen Amidala, Ruler Of Naboo + Supreme Chancellor Valorum\par -----\par Queen Amidala, Ruler Of Naboo + Jerus Jannick||Amidala's Blaster||
-1975|Queen's Royal Starship|Light|Coruscant|*|Republic (starship)||||All Wings Report In & Darklighter Spin||| Ric Olié\par Ric Olié, Bravo Leader|||
+1973|Queen Amidala|Light|Theed Palace|*|\b leader\b0||||Sab�||Queen Amidala + Jerus Jannick\par -----\par Queen Amidala + Panaka, Protector Of The Queen\par While Panaka is with Amidala at a Naboo site, opponent may not target Amidala with weapons. Panaka deploys free to a Naboo site.\par -----\par Queen Amidala + Panaka, Protector Of The Queen + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Amidala's Blaster||
+1974|Queen Amidala, Ruler Of Naboo|Light|Coruscant|*|\b leader\b0||||Sab�||Queen Amidala, Ruler Of Naboo + I Will Not Defer\par -----\par Queen Amidala, Ruler Of Naboo + Supreme Chancellor Valorum\par -----\par Queen Amidala, Ruler Of Naboo + Jerus Jannick||Amidala's Blaster||
+1975|Queen's Royal Starship|Light|Coruscant|*|Republic (starship)||||All Wings Report In & Darklighter Spin||| Ric Oli�\par Ric Oli�, Bravo Leader|||
 1976|Quick Draw|Light|Dagobah|||Any one blaster from Lost Pile.|||The Signal\par We Wish To Board At Once||||||
 1978|Quick Reflexes|Dark|Jabba's Palace|||Hidden Weapons from Lost Pile.\par Any one blaster from Lost Pile.|||Twi'lek Advisor\par We Must Accelerate Our Plans||||||
 1979|Quiet Mining Colony/Independent Operation|Light|Enhanced Cloud City|||A site or cloud sector to Bespin|||||Admiral Ackbar\par Beldon's Eye (V)\par Boss Nass\par Captain Tarpals\par Corporal Kensaric\par Goo Nee Tay\par Grugnak\par Harc Seff (V)\par Keeping The Empire Out Forever\par Lando Calrissian, Scoundrel\par Leia (V)\par Spaceport Docking Bay (not on CC)\par Wedge\par You Have A Lot Of Guts Coming Here||||
 1980|Quietly Observing|Dark|Tatooine|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans||Quietly Observing + Aurra Sing||||
-1981|Qui-Gon Jinn|Light|Tatooine|*|||||Padmé Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn + A Jedi's Patience||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|A duel destiny to cause a redraw.|
+1981|Qui-Gon Jinn|Light|Tatooine|*|||||Padm� Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn + A Jedi's Patience||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|A duel destiny to cause a redraw.|
 1982|Qui-Gon Jinn With Lightsaber|Light|Theed Palace|*|lightsaber||||Padme Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn With Lightsaber + Are You Brain Dead?!\par -----\par Qui-Gon Jinn With Lightsaber + A Jedi's Resilience||||
 1983|Qui-Gon Jinn, Jedi Master|Light|Reflections III|*||A lightsaber from Lost Pile to deploy on him.\par Jedi Lightsaber\par Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|||Padme Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 1984|Qui-Gon Jinn's Lightsaber|Light|Tatooine|*|lightsaber||||Gift Of The Mentor\par Qui-Gon Jinn, Jedi Master when lightsaber is in Lost Pile||||Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn, Jedi Master||
@@ -1879,8 +1880,8 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2108|Reveal Ourselves To The Jedi|Light|Coruscant|*||||||Kill Them Immediately|||||
 2109|Revealed|Light|Jabba's Palace|*|||||||||||
 2110|Revolution|Light|Premiere||||||The Signal\par We Wish To Board At Once\par Yavin 4 (V)||Revolution + any Hut\par Significant Force drain bonus.||||Evader\par Evader & Monnok\par Imperial Decree\par Imperial Justice makes a location immune to Revolution.\par Set Your Course For Alderaan/The Ultimate Power In The Universe
-2111|Ric Olié|Light|Coruscant|*|\b leader\b0||||||Ric Olié + Queen's Royal Starship|Bravo 1\par Queen's Royal Starship|||
-2112|Ric Olié, Bravo Leader|Light|Theed Palace|*|\b leader\b0||||||Ric Olié, Bravo Leader + Bravo 1 + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Bravo 1\par Queen's Royal Starship|||
+2111|Ric Oli�|Light|Coruscant|*|\b leader\b0||||||Ric Oli� + Queen's Royal Starship|Bravo 1\par Queen's Royal Starship|||
+2112|Ric Oli�, Bravo Leader|Light|Theed Palace|*|\b leader\b0||||||Ric Oli�, Bravo Leader + Bravo 1 + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Bravo 1\par Queen's Royal Starship|||
 2113|Rise, My Friend|Dark|Death Star II|*|||||||||||
 2114|Rite Of Passage|Dark|Cloud City|*|||||Captain Bewil||||||Path Of Least Resistance
 2115|Roche|Light|Special Edition|*||Big One\par Big One: Asteroid Cave or Space Slug Belly|1|1|Mindful Of The Future||A New Secret Base (V) + Roche + Blue Squadron B-wing + Slayn & Korpil Facilities: Deploy -2 at any system and download a weapon when deployed ||||
@@ -1911,14 +1912,14 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2143|Rycar's Run|Light|Dagobah|*|||||The Signal\par We Wish To Board At Once||||||
 2144|Ryle Torsyn|Light|Special Edition|*||||||||Gold 3|||
 2145|Rystall|Dark|Special Edition|*|\b Black Sun agent\b0, \b musician\b0, Mistryl||||Ak-rev\par Coruscant: Imperial City (V)||||||
-2146|Sabé|Light|Coruscant|*|\b handmaiden\b0|Padmé Naberrie\par Padmé Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo|||My Loyal Bodyguard||||||
+2146|Sab�|Light|Coruscant|*|\b handmaiden\b0|Padm� Naberrie\par Padm� Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo|||My Loyal Bodyguard||||||
 2147|Saber 1|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!||Saber 1 + SFS L-s9.3 Laser Cannons|Baron Soontir Fel|||
 2148|Saber 2|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||Major Turr Phennir|||
 2149|Saber 3|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||DS-181-3|||
 2150|Saber 4|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||DS-181-4|||
 2151|Sabotage|Light|A New Hope|*|||||Major Palo Torshan||Sabotage + Boushh\par -----\par Sabotage + TK-422|||Informant|Informant
 2152|Sabotage (V)|Light|Virtual Card Set #1|*|||||Major Palo Torshan|Overload||||The targeting of a permanent weapon at same site as your spy.|Informant
-2153|Saché|Light|Coruscant|*|\b handmaiden\b0||||My Loyal Bodyguard||||||
+2153|Sach�|Light|Coruscant|*|\b handmaiden\b0||||My Loyal Bodyguard||||||
 2154|Sacrifice|Dark|Special Edition|*||||||First Aid|||||
 2156|Saelt-Marae|Light|Jabba's Palace|*|||||||Saelt-Marae + Kal'Falnl C'ndros||||
 2157|Sai'torr Kal Fas|Light|Premiere||||||The Signal\par We Wish To Board At Once\par Wokling (V)|Ket Maliss|||||
@@ -2028,7 +2029,8 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2275|Skrilling|Dark|Jabba's Palace|\b scavenger\b0|||||||Skrilling + Tusken Scavenger||||
 2276|Skull|Light|Jabba's Palace|*||Blast The Door, Kid!\par Fallen Portal|||||Skull + Fallen Portal -- This combo is obvious, but is very helpful. Fallen Portal is a powerful card, especially if you can lure your opponent into one of the sites mentioned on the card. With the low-ability aliens running around, Fallen Portal can be a surprisingly effective way of taking out your opponent's characters.||||
 2277|Skywalkers|Light|Premiere|*||||||||||Imperial Barrier\par Retract The Bridge\par Wrong Turn|Boring Conversation Anyway
-2278|Slave I|Dark|Cloud City|*|Independent (starship), ship-docking capability||||Short Range Fighters & Watch Your Back!|||Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett With Blaster Rifle\par Boba Fett, Bounty Hunter|oba Fett's Blaster RifleBoba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)||
+2278|Slave I|Dark|Cloud City|*|Independent (starship), ship-docking capability||||Short Range Fighters & Watch Your Back!|||Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett With Blaster Rifle\par Boba Fett, Bounty Hunter|oba Fett's Blaster RifleBoba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)\par Boba Fett, Bounty Hunter\par Boba Fett\par Boba Fett (CC)
+||
 2280|Slayn & Korpil Facilities|Light|Special Edition|*||A starship weapon on your B-wing.|||The Signal\par We Wish To Board At Once\par Wokling (V)||||||
 2281|Sleen|Dark|Dagobah||selective, ferocious||||Swamp|Nudj||Boba Fett\par Boba Fett (CC)\par Boba Fett With Blaster Rifle\par Boba Fett, Bounty Hunter|||Ounee Ta (V) - Defensive Shield prevents Sleen from canceling Force icons
 2282|Slight Weapons Malfunction|Light|Special Edition|*|||||||Starfighter or Vehicle + Rapid Fire + Slight Weapons Malfunction||||
@@ -2256,7 +2258,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2532|The Gravest Of Circumstances|Light|Coruscant|*|||||The Signal\par We Wish To Board At Once\par Sanity And Compassion||The Gravest of Circumstances + Sanity And Compassion + draw Horoxx Ryyder\par Horox is a destiny 3, +3 for a flipped Senators objective, +3 if you can drop a senator from hand on the Political Effect. Congratulations, you just drew a 9 for destiny.\par -----\par The Gravest of Circumstances + Taxation Agenda there + I Did It!\par Your Senators/Podracing deck is now a nasty inflicting direct damage/choke combo. The opponent's choices are basically: lose 2 on his turn, use 1 on your turn OR save no Force on his turn and lose 1 on your turn. (Joh) Yowza!\par -----\par Anecdote: All effects and the objective were playtested initially, and then the agenda's and secondary texts were added later for the second phase of playtest. Political Effects only became "Political Effects" at this time.||||Alter (EP1)
 2533|The Hutts Are Gangsters|Dark|Reflections III|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans|||||Game text of Amidala when present with Jabba.|
 2534|The Hyperdrive Generator's Gone/We'll Need A New One|Light|Coruscant||||||||||||
-2535|The Phantom Menace|Dark|Coruscant|*|hologram|One Neimoidian\par Captain Daultay Dofine\par Daultay Dofine\par Lott Dod\par Neimoidian Pilot\par Nute Gunray\par Nute Gunray, Neimoidian Viceroy\par Rune Haako\par Rune Haako, Legal Counsel\par Sil Unch\par Tey How|||Masterful Move\par Masterful Move & Endor Occupation\par Twi'lek Advisor\par We Must Accelerate Our Plans||||||Out Of Commission & Transmission Terminated\par Transmission Terminated
+2535|The Phantom Menace|Dark|Coruscant|*|hologram|One Neimoidian\par Captain Daultay Dofine\par Daultay Dofine\par Lott Dod\par Neimoidian Pilot\par Nute Gunray\par Nute Gunray, Neimoidian Viceroy\par Rune Haako\par Rune Haako, Legal Counsel\par Sil Unch\par Tey How|||Masterful Move\par Masterful Move & Endor Occupation\par Twi'lek Advisor\par We Must Accelerate Our Plans|||||Specter Of The Supreme Leader|Out Of Commission & Transmission Terminated\par Transmission Terminated
 2536|The Planet That It's Farthest From|Light|Special Edition|*|||||The Signal\par We Wish To Board At Once\par Wokling (V)||||||
 2538|The Point Is Conceded|Dark|Coruscant|*|||||||||||
 2539|The Professor|Light|Dagobah|*|||||Hopping Mad\par The Signal\par We Wish To Board At Once||||||Shut Him Up Or Shut Him Down
@@ -2503,7 +2505,8 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2821|Womp Rat|Dark|Special Edition|***|ferocious||||Swamp||||||
 2822|Wookiee|Light|Special Edition||\b Wookiee\b0||||Arleil Schous\par Nar Shaddaa Wind Chimes\par Nar Shaddaa Wind Chimes & Out Of Somewhere||||||
 2823|Wookiee Guide|Light|Endor|*|||||||||||
-2824|Wookiee Roar|Light|A New Hope|*||Chewbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector\par Chewie\par Chewie (V)\par Chewie With Blaster Rifle\par Chewie With Bowcaster\par Chewie, Enraged|||||||||Furry Fury
+2824|Wookiee Roar|Light|A New Hope|*||Chewbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector\par Chewie\par Chewie (V)\par Chewie With Blaster Rifle
+\par Chewie With Bowcaster\par Chewie, Enraged|||||||||Furry Fury
 2825|Wookiee Strangle|Light|Cloud City|*|||||||Wookiee Strangle + any Chewbacca + Chewbacca's Bowcaster + Sorry About The Mess\par Your opponent has two characters less than he started the turn with - in your control phase.||||
 2827|Wooof|Dark|Jabba's Palace|*|\b smuggler\b0||||Elis in Hinthra\par Murttoc Yine||||||
 2828|Wooof (V)|Dark|Virtual Card Set #1|*|\b smuggler\b0||||Elis in Hinthra\par Murttoc Yine|||Jabba's Space Cruiser|||
@@ -2520,7 +2523,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2840|X-wing Laser Cannon|Light|Special Edition||cannon, laser cannon||||Lieutenant s'Too Vees (when at a docking bay)\par Portable Scanner\par Rapid Fire||||||
 2841|Yade M'rak|Dark|Coruscant|*|\b gambler\b0, \b smuggler\b0, \b Corellian\b0||||Elis in Hinthra (V)\par Murttoc Yine||||||
 2842|Yaggle Gakkle|Dark|Hoth||||||Tauntaun Skull||||||
-2843|Yané|Light|Coruscant|*|\b handmaiden\b0, \b musician\b0||||My Loyal Bodyguard||||||
+2843|Yan�|Light|Coruscant|*|\b handmaiden\b0, \b musician\b0||||My Loyal Bodyguard||||||
 2844|Yarkora|Light|Jabba's Palace|***|\b scout\b0||||General Crix Madine\par Might Of The Republic\par Soth Petikkin (when at a Jabba's Palace site you control)\par Arleil Schous\par Nar Shaddaa Wind Chimes\par Nar Shaddaa Wind Chimes & Out Of Somewhere||Yarkora + Sorry About the Mess\par Though Yarkora is not a warrior, use Sai'torr Kal Fas or just combine him with another character who can carry a weapon. This will create a team that is sure to beat the spies.||||
 2845|Yarna d'al' Gargan|Light|Jabba's Palace|*|||||The Signal\par We Wish To Board At Once\par Kashyyyk: Sacred Forest (V)|Well Guarded|||||
 2847|Yarua|Light|Coruscant|*|\b senator\b0, \b Wookiee\b0||||Might Of The Republic||||||
@@ -2598,7 +2601,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4044|Something Special Planned For Them (V)|Dark|Virtual Card Set #0|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points|Strikeforce (V)|||||
 4029|Mara Jade With Lightsaber|Dark|Virtual Card Set #0|*|||||Blizzard 4||||Anakin's Lightsaber (V)||
 4094|Anakin's Lightsaber (V)|Light|Virtual Card Set #0|*|lightsaber||||Gift Of The Mentor\par I Know\par Son Of Skywalker||||Leia, non-Jedi Luke, Mara||
-4074|Master Qui-Gon (V)|Light|Virtual Card Set #0|*|||||Padmé Naberrie\par Tatooine: City Outskirts||Master Qui-Gon + matching lightsaber + A Jedi's Resilience\par -----\par Master Qui-Gon (V) + Credits Will Do Fine||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
+4074|Master Qui-Gon (V)|Light|Virtual Card Set #0|*|||||Padm� Naberrie\par Tatooine: City Outskirts||Master Qui-Gon + matching lightsaber + A Jedi's Resilience\par -----\par Master Qui-Gon (V) + Credits Will Do Fine||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 4001|Antilles Maneuver (V)|Light|Virtual Card Set #0|*||A Rebel of ability < 3 (except an admiral) aboard your starship.||||I Can't Shake Him! (V)|||||
 4000|Conquest (V)|Dark|Virtual Card Set #0|*|Imperial (starship), ship-docking capability||||Commander Nemet (V)\par Kuat Drive Yards|||||A (non-Immune to Sense) Interrupt (during battle)|
 4002|I Can't Shake Him! (V)|Dark|Virtual Card Set #0|*||An Imperial of ability < 3 (except an admiral) aboard your starship.||||Antilles Maneuver (V)|||||
@@ -2644,7 +2647,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4028|Maarek Stele, The Emperor's Reach|Dark|Virtual Card Set #0|*|leader|Colonel Jendon In Onyx 1\par Onyx 1\par Onyx 2\par Onyx 2 (V)\par TIE Defender Mark I|||Blizzard 4||||||
 4057|Colonel Jendon In Onyx 1|Dark|Virtual Card Set #0|*|Imperial (starship)|Concussion Missiles\par Enhanced TIE Laser Cannon\par Intruder Missile\par SFS L-s7.2 TIE Cannon\par SFS L-s9.3 Laser Cannons|||Commander Brandei\par The Emperor's Reach (V)||||||
 4025|DS-61-5|Dark|Virtual Card Set #0|*||||||||Black 5|||
-4023|Dengar With Blaster Carbine (V)|Dark|Virtual Card Set #0|*|\b Black Sun agent\b0, \b bounty hunter\b0, blaster, \b Corellian\b0||||Double Back|||Punishing One|||
+4023|Dengar With Blaster Carbine (V)|Dark|Virtual Card Set #0|*|\b Black Sun agent\b0, \b bounty hunter\b0, blaster, \b Corellian\b0||||Double Back|||Punishing One\par Punishing One (V)|||
 4035|Ysanne Isard|Dark|Virtual Card Set #0|*|Female, ISB agent, \b leader\b0, \b spy\b0||||Blizzard 4||||||
 4040|Combat Response (V)|Dark|Virtual Card Set #0|*|||||Desperate Counter\par Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points|||||Tallon Roll\par Dark Maneuvers & Tallon Roll|
 4101|According To My Design|Dark|Virtual Card Set #1|*||Emperor Palpatine\par The Emperor|||||||||
@@ -2679,7 +2682,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4066|Captain Rex, 501st Legion|Light|Virtual Card Set #0|*|\b leader\b0 , Clone trooper.||||||Commander Cody + Captain Rex||||
 4069|Commander Cody|Light|Virtual Card Set #0|*|\b Leader\b0 . Clone trooper, commander||||||Commander Cody + Captain Rex||||
 4071|General Airen Cracken|Light|Virtual Card Set #0|*|\b leader, scout, information broker\b0 , general||||Strike Planning\par Balanced Attack|||Tala 1|||
-5001|Dormé|Light|Virtual Card Set #0|*|\b Spy \b0 and handmaiden.||||My Loyal Bodyguard||||||
+5001|Dorm�|Light|Virtual Card Set #0|*|\b Spy \b0 and handmaiden.||||My Loyal Bodyguard||||||
 4075|Obi-Wan Kenobi, Padawan Learner (V)|Light|Virtual Card Set #0|*|padawan||||Fall Of A Jedi\par Padme Naberrie\par Return Of A Jedi||||||
 4076|R-3PO (Ar-Threepio) (V)|Light|Virtual Card Set #0|*|||||Were You Looking For Me?||||||
 4084|Put That Down (V)|Light|Virtual Card Set #0|*|||||||||||
@@ -2693,7 +2696,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4097|Lt. Pol Treidum (V)|Dark|Virtual Card Set #1|*|ISB agent||||||||||
 4105|Turn It Off! Turn It Off! (V)|Dark|Virtual Card Set #1||||||||||||
 4106|Coruscant: Imperial City (V)|Dark|Virtual Card Set #1|*||A character with "Black Sun" in lore.|0|1|||||||
-4111|Yané (V)|Light|Virtual Card Set #1|*|\b musician, handmaiden\b0||||My Loyal Bodyguard||||||
+4111|Yan� (V)|Light|Virtual Card Set #1|*|\b musician, handmaiden\b0||||My Loyal Bodyguard||||||
 5000|A New Secret Base (V)|Light|Virtual Card Set #1|*||battleground systems|||||||||
 4113|Ascension Guns (V)|Light|Virtual Card Set #1|*|||||Naboo: Theed Palace Hallway\par Naboo: Theed Palace Hallway (V)||||||
 4114|Perimeter Scan (V)|Light|Virtual Card Set #1|||||||Turn It Off! Turn It Off! (V)||||Trample|
@@ -2738,7 +2741,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 5039|Leslomy Tacema (V)|Light|Virtual Card Set #3|*|Duros, \b smuggler \b0||||||||||
 5040|Major Bren Derlin (V)|Light|Virtual Card Set #3|*|\b Scout \b0||||General Crix Madine|||||'Reacts' to the same location.|
 5041|Mon Calamari Admiral|Light|Virtual Card Set #3|***|\b Mon Calamari\b0, \b Admiral\b0||||Admiral Ackbar\par Balanced Attack\par Rebel Leadership (V)||||||
-5042|Padmé Naberrie (V)|Light|Virtual Card Set #3|*|||||Sabé||Padmé Naberrie + Jerus Jannick||Amidala's Blaster||
+5042|Padm� Naberrie (V)|Light|Virtual Card Set #3|*|||||Sab�||Padm� Naberrie + Jerus Jannick||Amidala's Blaster||
 5043|R2-D2 & C-3PO|Light|Virtual Card Set #3|*|r-unit||||Artoo, Come Back At Once!\par Seeking An Audience\par Seeking An Audience (V)\par Were You Looking For Me?||R2-D2 & C-3PO + Chewie With Blaster Rifle\par Chewie With Blaster Rifle adds one battle destiny if with C-3P0.||||
 5044|Toryn Farr (V)|Light|Virtual Card Set #3|*|||||||||||
 5045|Planetary Defenses (V)|Light|Virtual Card Set #3|*|||||||||||
@@ -2809,7 +2812,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 5109|Kylo Ren's Lightsaber|Dark|Virtual Card Set #4|*|lightsaber||||Maul Strikes||||Kylo Ren||
 5110|Hunting Party (V)|Dark|Virtual Card Set #4|*|||||||Hunting Party + Sandwhirl\par First you spin them around, then you bag them.\par -----\par Hunting Party + Skiffs\par As the missing people will be in the desert, most likely, you'll need some cheap, fast landspeed to shuttle your bounty hunters around in.||||
 5111|Dathcha (V)|Dark|Virtual Card Set #5|*|\b Jawa\b0, \b scavenger \b0||||Herat||||||
-5112|Dengar (V)|Dark|Virtual Card Set #5|*|\b Black Sun agent\b0, \b bounty hunter\b0, \b Corellian\b0, \b assassin\b0||||Double Back||Dengar + Luke? Luuuuke! + any (Rebel) Han\par Makes Rebel Han Lost.\par (Indiana Jones Jedi Knight)|Punishing One|Dengar's Blaster Carbine\par Dengar's Modified Riot Gun||
+5112|Dengar (V)|Dark|Virtual Card Set #5|*|\b Black Sun agent\b0, \b bounty hunter\b0, \b Corellian\b0, \b assassin\b0||||Double Back||Dengar + Luke? Luuuuke! + any (Rebel) Han\par Makes Rebel Han Lost.\par (Indiana Jones Jedi Knight)|Punishing One\par Punishing One (V)|Dengar's Blaster Carbine\par Dengar's Modified Riot Gun||
 5113|Emperor Palpatine, Forseer|Dark|Virtual Card Set #5|*|\b leader\b0||||According To My Design (V)\par Sith Fury (V)||Emperor Palpatine + Force Lightning\par -----\par Emperor Palpatine + I Have You Now\par Add one battle destiny (two if Rebel is Luke) if a Dark Jedi and a Rebel with ability > 2 are involved in the same battle.\par -----\par Emperor Palpatine + Force Field\par Cancels an attempt to target a Dark Jedi with a character weapon.\par -----\par Emperor Palpatine + Janus Greejatus\par -----\par Emperor Palpatine + Overseeing It Personally||||
 5114|Hondo Ohnaka|Dark|Virtual Card Set #5|*|||||||||||
 5115|Sim Aloo (V)|Dark|Virtual Card Set #5|*|\b Imperial Council Member\b0\par ||||||||||
@@ -2820,7 +2823,8 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 5120|Overseeing It Personally (V)|Dark|Virtual Card Set #5|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points|Leia Of Alderaan (V)|Overseeing It Personally + Emperor Palpatine or The Emperor||||End Of A Reign
 5121|A Trophy Sacrificed|Dark|Virtual Card Set #5|*||||||||||Sense|
 5122|Point Man (V)|Dark|Virtual Card Set #5|||||||||||Keep Your Eyes Open (in battle at a site)\par Keep Your Eyes Open (V) (in a battle at a site)|
-5123|Boba Fett's Blaster Rifle (V)|Dark|Virtual Card Set #5|*|blaster rifle, rifle||||Any Methods Necessary (V)\par Jabba's Through With You||||Boba Fett\par Boba Fett (CC)\par Boba Fett (CC) (V)||Game text canceled by Mandalorian Mishap
+5123|Boba Fett's Blaster Rifle (V)|Dark|Virtual Card Set #5|*|blaster rifle, rifle||||Any Methods Necessary (V)\par Jabba's Through With You||||Boba Fett\par Boba Fett (CC)
+\par Boba Fett (CC) (V)||Game text canceled by Mandalorian Mishap
 5124|Captain Jonus In Scimitar 2|Dark|Virtual Card Set #5|*|Imperial (starship), bomber||||Commander Brandei||||||
 5125|Commander Wedge Antilles (V)|Light|Virtual Card Set #5|*|\b commander\b0, \b leader\b0, \b Corellian\b0, Rogue Squadron pilot||||Beldon's Eye (V)\par Echo Base Garrison\par Princess Organa|||Pulsar Skate\par Red 2\par Red Squadron 1\par Rogue 3|||
 5126|Ensign Chad Hilse|Light|Virtual Card Set #5|*|Alderaanian, \b Rebel trooper\b0, \b trooper\b0||||||||||
@@ -2851,3 +2855,32 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 5151|What Chance Do We Have?|Light|Virtual Card Set #6||||||The Signal\par We Wish To Board At Once|Imperial Decree (V)|||||
 5152|Rogue One|Light|Virtual Card Set #6||Rebel (starship), ship-docking capability||||All Wings Report In & Darklighter Spin|||Bodhi Rook|||
 5153|The Falcon|Light|Virtual Card Set #6|*|Resistance (starship)||||All Wings Report In & Darklighter Spin\par Life Debt|||Artoo & Threepio\par Captain Han Solo\par Chewbacca\par Chewbacca, Protector\par Chewie (V)\par Chewie With Bowcaster\par General Solo\par Han (V)\par Han Solo\par Lando Calrissian\par Lando Calrissian, Scoundrel\par Rey\par Solo|||
+5154|Director Orson Krennic|Dark|Virtual Card Set #7|*|\b commander\b0, \b leader\b0 ||||Admiral Piett\par Blizzard 4||||||
+5155|Grand Admiral Thrawn (V)|Dark|Virtual Card Set #7|*|\b admiral\b0, \b leader\b0||||Blizzard 4\par Endor Shield (V)\par Imperial Command||Grand Admiral Thrawn at a system or site + Imperial Command|Chimaera|||
+5156|Quiggold|Dark|Virtual Card Set #7|*|\b pirate\b0|||||||Meson Martinet|||
+5157|Savage Opress|Dark|Virtual Card Set #7|*|\b assassin\b0||||||||||
+5158|Sidon Ithano|Dark|Virtual Card Set #7|*||||||||Meson Martinet|||
+5159|Meson Martinet|Dark|Virtual Card Set #7|*|Independent (starship)||||Short Range Fighters & Watch Your Back!|||Quiggold\par Sidon Ithano|||
+5160|Punishing One (V)|Dark|Virtual Card Set #7|*|Independent (starship)||||Short Range Fighters & Watch Your Back!|||Dengar\par Dengar With Blaster Carbine\par Dengar With Blaster Carbine (V)|||
+5161|Establish Secret Base (V)|Dark|Virtual Card Set #7|*|||||Endor Operations\par Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points||||||
+5162|Security Precautions (V)|Dark|Virtual Card Set #7|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points||Hidden Base Objective + Twi'ilek Advisor + Security Precautions\par -----\par Security Precautions + Crossfire + Battle Order||||
+5163|Specter Of The Supreme Leader|Dark|Virtual Card Set #7|*|hologram||||Masterful Move\par Masterful Move & Endor Occupation\par Twi'lek Advisor\par We Must Accelerate Our Plans|||||The Phantom Menace|Out Of Commission & Transmission Terminated\par Transmission Terminated
+5164|Baze Malbus With Cannon|Light|Virtual Card Set #7|*|||||||||||
+5165|Chirrut Imwe|Light|Virtual Card Set #7|*|||||||||||
+5166|Depa Billaba (V)|Light|Virtual Card Set #7|*|Jedi Council Member||||||||||
+5167|Dice Ibegon (V)|Light|Virtual Card Set #7|*|||||||||||
+5168|General Leia Organa|Light|Virtual Card Set #7|*|General\par Leader||||||||||
+5169|Major Caluan Ematt|Light|Virtual Card Set #7|*|||||||||||
+5170|Major Taslin Brance|Light|Virtual Card Set #7|*|||||||||||
+5171|Kin Kian|Light|Virtual Card Set #7|*|||||||||||
+5172|Yoda (V)|Light|Virtual Card Set #7|*|||||||||||
+5173|They're Tracking Us (V)|Light|Virtual Card Set #7|*|||||||||||
+5174|Sabine Wren|Light|Virtual Card Set #7|*|Mandalorian\par Scout||||||||||
+5175|Rebellions Are Built On Hope|Light|Virtual Card Set #7|*|||||||||||
+5176|I Can Take Care Of Myself|Light|Virtual Card Set #7|*|||||||||||
+5177|This is MY Ship!|Light|Virtual Card Set #7|*|||||||||||
+5178|Ghost|Light|Virtual Card Set #7|*|Rebel (starship)|||||||Hera|||
+5179|Profundity|Light|Virtual Card Set #7|*|Rebel (starship), ship-docking capability||||Rebellions Are Built On Hope||||||
+5180|Jakku: Docking Bay|Light|Virtual Card Set #7|*|||1|1|||||||
+5181|Luke's Hunting Rifle|Light|Virtual Card Set #7|*|rifle||||||||Luke Skywalker (any)\par Owen Lars\par Owen & Beru Lars||
+5182|Help Me Obi-Wan Kenobi|Light|Virtual Card Set #7|*|||||||||||
