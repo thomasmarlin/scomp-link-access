@@ -92,7 +92,7 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 102|Amanaman|Dark|Jabba's Palace|*|||||||||||
 103|Amanin|Dark|Jabba's Palace||||||||||||
 104|Ambush|Light|Cloud City|*|||||||||||
-105|Amidala's Blaster|Light|Theed Palace|*|blaster||||Portable Scanner||||Padm� Naberrie\par Padm� Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo||
+105|Amidala's Blaster|Light|Theed Palace|*|blaster||||Portable Scanner||||Padme Naberrie\par Padme Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo||
 106|An Entire Legion Of My Best Troops|Dark|Endor|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points||||||
 107|An Unusual Amount Of Fear|Light|Reflections III|*|||||The Signal\par We Wish To Board At Once|Fear Is My Ally|||||
 108|Anakin Skywalker|Light|Death Star II|*|||||Twilight Is Upon Me||||||
@@ -284,7 +284,7 @@ id|CardName|Grouping|Expansion|Uniqueness|Characteristics|Pulls|LightSideIcons|D
 318|Bowcaster|Light|A New Hope||||||Portable Scanner||||||
 319|Brainiac|Light|A New Hope|*|||||||Brainiac + Mantellian Savrip\par Brainiac's forfeit is equal to the total number of cards in your opponent's hand, so he may often be sacrificed to the Mantellian Savrip to cover all battle damage and attrtion against you.||||
 320|Brangus Glee|Dark|Special Edition|*|\b gambler\b0||||||||||
-321|Bravo 1|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||Bravo 1 + Ric Oli�, Bravo Leader + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Ric Oli�\par Ric Oli�, Bravo Leader|||
+321|Bravo 1|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||Bravo 1 + Ric Olie, Bravo Leader + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Ric Olie\par Ric Olie, Bravo Leader|||
 322|Bravo 2|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!|||Officer Dolphe|||
 323|Bravo 3|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||| Lieutenant Arven Wendik|||
 324|Bravo 4|Light|Theed Palace|*|Republic (starship)||||All Wings Report In & Darklighter Spin\par Whoooo!||| Lieutenant Rya Kirsch|||
@@ -1463,7 +1463,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1647|Masanya|Light|Death Star II|*|Rebel (starship), ship-docking capability||||||||||
 1648|Massassi Base Operations/One In A Million|Light|Third Anthology||||||||MBO + Great Shot, Kid!||||
 1649|Master Luke|Light|Enhanced Jabba's Palace|*|||||Luke's Back||Master Luke + I Must Be Allowed To Speak (V) or non-virtual|Artoo-Detoo In Red 5\par Red 5\par Luke's T-16 Skyhopper\par Rogue 1|Anakin's Lightsaber (V)\par Luke's Blaster Pistol\par Luke's Hunting Rifle\par Luke's Lightsaber||
-1651|Master Qui-Gon|Light|Coruscant|*|||||Padm� Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
+1651|Master Qui-Gon|Light|Coruscant|*|||||Padme Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 1652|Master, Destroyers!|Dark|Theed Palace|*||Three non-unique destroyer droids\par Destroyer Droid|||||||||
 1653|Masterful Move|Dark|Special Edition|*||Ghhhk\par HoloNet Transmission\par Image Of The Dark Lord\par Image Of The Dark Lord (V)\par Imperial Holotable\par Kintan Strider\par Molator\par Monnok\par Ng'ok\par The Phantom Menace\par Revenge Of The Sith (V)\par Visage Of The Emperor||||Escape Pod (V)||||Mantellian Savrip\par Opponent's Force drain at a holosite.|
 1654|Masterful Move & Endor Occupation|Dark|Coruscant|*||Ghhhk\par HoloNet Transmission\par Image Of The Dark Lord\par Image Of The Dark Lord (V)\par Imperial Holotable\par Kintan Strider\par Molator\par Monnok\par Ng'ok\par The Phantom Menace\par Revenge Of The Sith (V)\par Visage Of The Emperor||||||||All My Urchins & Cloud City Celebration\par Cloud City Celebration\par Coruscant Celebration\par Tatooine Celebration\par Mantellian Savrip\par Opponent's force drain at a holosite|
@@ -1523,7 +1523,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1713|Murttoc Yine|Dark|Jabba's Palace|*|\b Black Sun agent\b0, \b information broker\b0, \b spy\b0|Advosze\par Arica\par Arica (V)\par Dodo Bodonawieedo\par Dr. Evazan\par Dr. Evazan & Ponda Baba\par Ephant Mon\par Fozec\par Fozec (V)\par Garindan\par Garindan (V)\par Gela Yeens\par Gela Yeens (V)\par Grotto Werribee\par Grotto Werribee (V)\par J'Quille\par Labria\par Labria\par Lathe\par Mara Jade, The Emperor's Hand\par Mercenary Pilot\par Mercenary Pilot (V)\par Outer Rim Scout\par Ponda Baba\par Ponda Baba (V)\par Pote Snitkin\par Reegesk\par Ree-Yees\par Shada (V)\par Televan Koreyy\par Thul Fain\par Tonnika Sisters\par Umpass-Stay\par Velken Tezeri (V)\par Wooof\par Wooof (V)\par Yade M'rak|||||Murttoc Yine + Nevar Yalnal||||
 1714|My Kind Of Scum/Fearless And Inventive|Dark|Jabba's Palace Sealed Deck|||||||Agents In The Court/No Love For The Empire|||||
 1715|My Lord, Is That Legal?/I Will Make It Legal|Dark|Coruscant||||||||||||
-1716|My Loyal Bodyguard|Light|Coruscant|*||Dorm�\par Sab�\par Sach�\par Yan�\par Yan� (V)|||||||||
+1716|My Loyal Bodyguard|Light|Coruscant|*||Dorme\par Sabe\par Sache\par Yanï¿½\par Yanï¿½ (V)|||||||||
 1717|Myn Kyneugh|Dark|Death Star II|*|Royal Guard, \b leader\b0||||Blizzard 4||||||
 1718|Mynock|Dark|Dagobah||selective, parasite||||Swamp|Mynock|||||
 1719|Mynock|Light|Dagobah||selective, parasite||||Swamp|Mynock|||||
@@ -1682,7 +1682,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1885|OWO-1 With Backup|Dark|Theed Palace|*|\b battle droid\b0, \b leader\b0, \b Trade Federation\b0||||Naboo: Theed Palace Hallway\par TT-6||OWO-1 With Backup + Daultay Dofine||||
 1886|P-59|Dark|Coruscant|*|\b leader\b0, \b Trade Federation\b0||||||P-59 + Daultay Dofine||||
 1887|P-60|Dark|Coruscant|*|\b Trade Federation\b0||||||P-60 + Daultay Dofine||||
-1888|Padm� Naberrie|Light|Tatooine|*||Ben Kenobi\par  Obi-Wan Kenobi\par Obi-Wan Kenobi (V)\par Obi-Wan Kenobi, Jedi Knight\par Obi-Wan Kenobi, Padawan Learner\par Obi-Wan Kenobi, Padawan Learner (V)\par Obi-Wan With Lightsaber\par Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn With Lightsaber\par Qui-Gon Jinn, Jedi Master|||Sab�||Padm� Naberrie + Jerus Jannick||Amidala's Blaster||
+1888|Padme Naberrie|Light|Tatooine|*||Ben Kenobi\par  Obi-Wan Kenobi\par Obi-Wan Kenobi (V)\par Obi-Wan Kenobi, Jedi Knight\par Obi-Wan Kenobi, Padawan Learner\par Obi-Wan Kenobi, Padawan Learner (V)\par Obi-Wan With Lightsaber\par Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn With Lightsaber\par Qui-Gon Jinn, Jedi Master|||Sabe||Padme Naberrie + Jerus Jannick||Amidala's Blaster||
 1889|Palace Raider|Light|Jabba's Palace Sealed Deck||\b smuggler\b0||||Soth Petikkin (when at a Jabba's Palace site you control)\par Arleil Schous\par Nar Shaddaa Wind Chimes\par Nar Shaddaa Wind Chimes & Out Of Somewhere||||||
 1890|Palejo Reshad|Light|Jabba's Palace|*|\b Corellian\b0||||||Palejo Reshad + Corellia||||
 1891|Panaka, Protector Of The Queen|Light|Theed Palace|*|\b leader\b0, \b Royal Naboo Security\b0||||||Panaka, Protector Of The Queen + Queen Amidala + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Panaka's Blaster||
@@ -1757,14 +1757,14 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 1970|Put That Down|Light|Cloud City|*||||||||||Targeting of a character by a weapon\par Double Back\par Res Luk Ra'auf|
 1971|Quad Laser Cannon|Light|Premiere||cannon, laser cannon||||Lieutenant s'Too Vees (when at a docking bay)\par Portable Scanner\par Rapid Fire||||||
 1972|Quarren|Dark|Jabba's Palace||||||||||||
-1973|Queen Amidala|Light|Theed Palace|*|\b leader\b0||||Sab�||Queen Amidala + Jerus Jannick\par -----\par Queen Amidala + Panaka, Protector Of The Queen\par While Panaka is with Amidala at a Naboo site, opponent may not target Amidala with weapons. Panaka deploys free to a Naboo site.\par -----\par Queen Amidala + Panaka, Protector Of The Queen + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Amidala's Blaster||
-1974|Queen Amidala, Ruler Of Naboo|Light|Coruscant|*|\b leader\b0||||Sab�||Queen Amidala, Ruler Of Naboo + I Will Not Defer\par -----\par Queen Amidala, Ruler Of Naboo + Supreme Chancellor Valorum\par -----\par Queen Amidala, Ruler Of Naboo + Jerus Jannick||Amidala's Blaster||
-1975|Queen's Royal Starship|Light|Coruscant|*|Republic (starship)||||All Wings Report In & Darklighter Spin||| Ric Oli�\par Ric Oli�, Bravo Leader|||
+1973|Queen Amidala|Light|Theed Palace|*|\b leader\b0||||Sabe||Queen Amidala + Jerus Jannick\par -----\par Queen Amidala + Panaka, Protector Of The Queen\par While Panaka is with Amidala at a Naboo site, opponent may not target Amidala with weapons. Panaka deploys free to a Naboo site.\par -----\par Queen Amidala + Panaka, Protector Of The Queen + We Don't Have Time For This\par If Amidala and Panaka are in a battle together, add two battle destiny.||Amidala's Blaster||
+1974|Queen Amidala, Ruler Of Naboo|Light|Coruscant|*|\b leader\b0||||Sabe||Queen Amidala, Ruler Of Naboo + I Will Not Defer\par -----\par Queen Amidala, Ruler Of Naboo + Supreme Chancellor Valorum\par -----\par Queen Amidala, Ruler Of Naboo + Jerus Jannick||Amidala's Blaster||
+1975|Queen's Royal Starship|Light|Coruscant|*|Republic (starship)||||All Wings Report In & Darklighter Spin||| Ric Olie\par Ric Olie, Bravo Leader|||
 1976|Quick Draw|Light|Dagobah|||Any one blaster from Lost Pile.|||The Signal\par We Wish To Board At Once||||||
 1978|Quick Reflexes|Dark|Jabba's Palace|||Hidden Weapons from Lost Pile.\par Any one blaster from Lost Pile.|||Twi'lek Advisor\par We Must Accelerate Our Plans||||||
 1979|Quiet Mining Colony/Independent Operation|Light|Enhanced Cloud City|||A site or cloud sector to Bespin|||||Admiral Ackbar\par Beldon's Eye (V)\par Boss Nass\par Captain Tarpals\par Corporal Kensaric\par Goo Nee Tay\par Grugnak\par Harc Seff (V)\par Keeping The Empire Out Forever\par Lando Calrissian, Scoundrel\par Leia (V)\par Spaceport Docking Bay (not on CC)\par Wedge\par You Have A Lot Of Guts Coming Here||||
 1980|Quietly Observing|Dark|Tatooine|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans||Quietly Observing + Aurra Sing||||
-1981|Qui-Gon Jinn|Light|Tatooine|*|||||Padm� Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn + A Jedi's Patience||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|A duel destiny to cause a redraw.|
+1981|Qui-Gon Jinn|Light|Tatooine|*|||||Padme Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn + A Jedi's Patience||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|A duel destiny to cause a redraw.|
 1982|Qui-Gon Jinn With Lightsaber|Light|Theed Palace|*|lightsaber||||Padme Naberrie\par Tatooine: City Outskirts||Qui-Gon Jinn With Lightsaber + Are You Brain Dead?!\par -----\par Qui-Gon Jinn With Lightsaber + A Jedi's Resilience||||
 1983|Qui-Gon Jinn, Jedi Master|Light|Reflections III|*||A lightsaber from Lost Pile to deploy on him.\par Jedi Lightsaber\par Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber|||Padme Naberrie\par Tatooine: City Outskirts||||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 1984|Qui-Gon Jinn's Lightsaber|Light|Tatooine|*|lightsaber||||Gift Of The Mentor\par Qui-Gon Jinn, Jedi Master when lightsaber is in Lost Pile||||Master Qui-Gon\par Master Qui-Gon (V)\par Qui-Gon Jinn\par Qui-Gon Jinn, Jedi Master||
@@ -1880,8 +1880,8 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2108|Reveal Ourselves To The Jedi|Light|Coruscant|*||||||Kill Them Immediately|||||
 2109|Revealed|Light|Jabba's Palace|*|||||||||||
 2110|Revolution|Light|Premiere||||||The Signal\par We Wish To Board At Once\par Yavin 4 (V)||Revolution + any Hut\par Significant Force drain bonus.||||Evader\par Evader & Monnok\par Imperial Decree\par Imperial Justice makes a location immune to Revolution.\par Set Your Course For Alderaan/The Ultimate Power In The Universe
-2111|Ric Oli�|Light|Coruscant|*|\b leader\b0||||||Ric Oli� + Queen's Royal Starship|Bravo 1\par Queen's Royal Starship|||
-2112|Ric Oli�, Bravo Leader|Light|Theed Palace|*|\b leader\b0||||||Ric Oli�, Bravo Leader + Bravo 1 + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Bravo 1\par Queen's Royal Starship|||
+2111|Ric Olie|Light|Coruscant|*|\b leader\b0||||||Ric Olie + Queen's Royal Starship|Bravo 1\par Queen's Royal Starship|||
+2112|Ric Olie, Bravo Leader|Light|Theed Palace|*|\b leader\b0||||||Ric Olie, Bravo Leader + Bravo 1 + one other piloted Bravo Squadron starfighter\par Draws three battle destinies.|Bravo 1\par Queen's Royal Starship|||
 2113|Rise, My Friend|Dark|Death Star II|*|||||||||||
 2114|Rite Of Passage|Dark|Cloud City|*|||||Captain Bewil||||||Path Of Least Resistance
 2115|Roche|Light|Special Edition|*||Big One\par Big One: Asteroid Cave or Space Slug Belly|1|1|Mindful Of The Future||A New Secret Base (V) + Roche + Blue Squadron B-wing + Slayn & Korpil Facilities: Deploy -2 at any system and download a weapon when deployed ||||
@@ -1912,14 +1912,14 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2143|Rycar's Run|Light|Dagobah|*|||||The Signal\par We Wish To Board At Once||||||
 2144|Ryle Torsyn|Light|Special Edition|*||||||||Gold 3|||
 2145|Rystall|Dark|Special Edition|*|\b Black Sun agent\b0, \b musician\b0, Mistryl||||Ak-rev\par Coruscant: Imperial City (V)||||||
-2146|Sab�|Light|Coruscant|*|\b handmaiden\b0|Padm� Naberrie\par Padm� Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo|||My Loyal Bodyguard||||||
+2146|Sabe|Light|Coruscant|*|\b handmaiden\b0|Padme Naberrie\par Padme Naberrie (V)\par Queen Amidala\par Queen Amidala, Ruler Of Naboo|||My Loyal Bodyguard||||||
 2147|Saber 1|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!||Saber 1 + SFS L-s9.3 Laser Cannons|Baron Soontir Fel|||
 2148|Saber 2|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||Major Turr Phennir|||
 2149|Saber 3|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||DS-181-3|||
 2150|Saber 4|Dark|Death Star II|*|Imperial (starship)||||Commander Brandei\par DS-181-4\par Short Range Fighters & Watch Your Back!|||DS-181-4|||
 2151|Sabotage|Light|A New Hope|*|||||Major Palo Torshan||Sabotage + Boushh\par -----\par Sabotage + TK-422|||Informant|Informant
 2152|Sabotage (V)|Light|Virtual Card Set #1|*|||||Major Palo Torshan|Overload||||The targeting of a permanent weapon at same site as your spy.|Informant
-2153|Sach�|Light|Coruscant|*|\b handmaiden\b0||||My Loyal Bodyguard||||||
+2153|Sache|Light|Coruscant|*|\b handmaiden\b0||||My Loyal Bodyguard||||||
 2154|Sacrifice|Dark|Special Edition|*||||||First Aid|||||
 2156|Saelt-Marae|Light|Jabba's Palace|*|||||||Saelt-Marae + Kal'Falnl C'ndros||||
 2157|Sai'torr Kal Fas|Light|Premiere||||||The Signal\par We Wish To Board At Once\par Wokling (V)|Ket Maliss|||||
@@ -2523,7 +2523,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 2840|X-wing Laser Cannon|Light|Special Edition||cannon, laser cannon||||Lieutenant s'Too Vees (when at a docking bay)\par Portable Scanner\par Rapid Fire||||||
 2841|Yade M'rak|Dark|Coruscant|*|\b gambler\b0, \b smuggler\b0, \b Corellian\b0||||Elis in Hinthra (V)\par Murttoc Yine||||||
 2842|Yaggle Gakkle|Dark|Hoth||||||Tauntaun Skull||||||
-2843|Yan�|Light|Coruscant|*|\b handmaiden\b0, \b musician\b0||||My Loyal Bodyguard||||||
+2843|Yane|Light|Coruscant|*|\b handmaiden\b0, \b musician\b0||||My Loyal Bodyguard||||||
 2844|Yarkora|Light|Jabba's Palace|***|\b scout\b0||||General Crix Madine\par Might Of The Republic\par Soth Petikkin (when at a Jabba's Palace site you control)\par Arleil Schous\par Nar Shaddaa Wind Chimes\par Nar Shaddaa Wind Chimes & Out Of Somewhere||Yarkora + Sorry About the Mess\par Though Yarkora is not a warrior, use Sai'torr Kal Fas or just combine him with another character who can carry a weapon. This will create a team that is sure to beat the spies.||||
 2845|Yarna d'al' Gargan|Light|Jabba's Palace|*|||||The Signal\par We Wish To Board At Once\par Kashyyyk: Sacred Forest (V)|Well Guarded|||||
 2847|Yarua|Light|Coruscant|*|\b senator\b0, \b Wookiee\b0||||Might Of The Republic||||||
@@ -2601,7 +2601,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4044|Something Special Planned For Them (V)|Dark|Virtual Card Set #0|*|||||Twi'lek Advisor\par We Must Accelerate Our Plans\par You Cannot Hide Forever\par You Cannot Hide Forever & Mobilization Points|Strikeforce (V)|||||
 4029|Mara Jade With Lightsaber|Dark|Virtual Card Set #0|*|||||Blizzard 4||||Anakin's Lightsaber (V)||
 4094|Anakin's Lightsaber (V)|Light|Virtual Card Set #0|*|lightsaber||||Gift Of The Mentor\par I Know\par Son Of Skywalker||||Leia, non-Jedi Luke, Mara||
-4074|Master Qui-Gon (V)|Light|Virtual Card Set #0|*|||||Padm� Naberrie\par Tatooine: City Outskirts||Master Qui-Gon + matching lightsaber + A Jedi's Resilience\par -----\par Master Qui-Gon (V) + Credits Will Do Fine||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
+4074|Master Qui-Gon (V)|Light|Virtual Card Set #0|*|||||Padme Naberrie\par Tatooine: City Outskirts||Master Qui-Gon + matching lightsaber + A Jedi's Resilience\par -----\par Master Qui-Gon (V) + Credits Will Do Fine||Qui-Gon Jinn's Lightsaber\par Qui-Gon's Lightsaber||
 4001|Antilles Maneuver (V)|Light|Virtual Card Set #0|*||A Rebel of ability < 3 (except an admiral) aboard your starship.||||I Can't Shake Him! (V)|||||
 4000|Conquest (V)|Dark|Virtual Card Set #0|*|Imperial (starship), ship-docking capability||||Commander Nemet (V)\par Kuat Drive Yards|||||A (non-Immune to Sense) Interrupt (during battle)|
 4002|I Can't Shake Him! (V)|Dark|Virtual Card Set #0|*||An Imperial of ability < 3 (except an admiral) aboard your starship.||||Antilles Maneuver (V)|||||
@@ -2682,7 +2682,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4066|Captain Rex, 501st Legion|Light|Virtual Card Set #0|*|\b leader\b0 , Clone trooper.||||||Commander Cody + Captain Rex||||
 4069|Commander Cody|Light|Virtual Card Set #0|*|\b Leader\b0 . Clone trooper, commander||||||Commander Cody + Captain Rex||||
 4071|General Airen Cracken|Light|Virtual Card Set #0|*|\b leader, scout, information broker\b0 , general||||Strike Planning\par Balanced Attack|||Tala 1|||
-5001|Dorm�|Light|Virtual Card Set #0|*|\b Spy \b0 and handmaiden.||||My Loyal Bodyguard||||||
+5001|Dorme|Light|Virtual Card Set #0|*|\b Spy \b0 and handmaiden.||||My Loyal Bodyguard||||||
 4075|Obi-Wan Kenobi, Padawan Learner (V)|Light|Virtual Card Set #0|*|padawan||||Fall Of A Jedi\par Padme Naberrie\par Return Of A Jedi||||||
 4076|R-3PO (Ar-Threepio) (V)|Light|Virtual Card Set #0|*|||||Were You Looking For Me?||||||
 4084|Put That Down (V)|Light|Virtual Card Set #0|*|||||||||||
@@ -2696,7 +2696,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 4097|Lt. Pol Treidum (V)|Dark|Virtual Card Set #1|*|ISB agent||||||||||
 4105|Turn It Off! Turn It Off! (V)|Dark|Virtual Card Set #1||||||||||||
 4106|Coruscant: Imperial City (V)|Dark|Virtual Card Set #1|*||A character with "Black Sun" in lore.|0|1|||||||
-4111|Yan� (V)|Light|Virtual Card Set #1|*|\b musician, handmaiden\b0||||My Loyal Bodyguard||||||
+4111|Yane (V)|Light|Virtual Card Set #1|*|\b musician, handmaiden\b0||||My Loyal Bodyguard||||||
 5000|A New Secret Base (V)|Light|Virtual Card Set #1|*||battleground systems|||||||||
 4113|Ascension Guns (V)|Light|Virtual Card Set #1|*|||||Naboo: Theed Palace Hallway\par Naboo: Theed Palace Hallway (V)||||||
 4114|Perimeter Scan (V)|Light|Virtual Card Set #1|||||||Turn It Off! Turn It Off! (V)||||Trample|
@@ -2741,7 +2741,7 @@ Chewie, Enraged\par Chwbacca\par Chewbacca Of Kashyyyk\par Chewbacca, Protector|
 5039|Leslomy Tacema (V)|Light|Virtual Card Set #3|*|Duros, \b smuggler \b0||||||||||
 5040|Major Bren Derlin (V)|Light|Virtual Card Set #3|*|\b Scout \b0||||General Crix Madine|||||'Reacts' to the same location.|
 5041|Mon Calamari Admiral|Light|Virtual Card Set #3|***|\b Mon Calamari\b0, \b Admiral\b0||||Admiral Ackbar\par Balanced Attack\par Rebel Leadership (V)||||||
-5042|Padm� Naberrie (V)|Light|Virtual Card Set #3|*|||||Sab�||Padm� Naberrie + Jerus Jannick||Amidala's Blaster||
+5042|Padme Naberrie (V)|Light|Virtual Card Set #3|*|||||Sabe||Padme Naberrie + Jerus Jannick||Amidala's Blaster||
 5043|R2-D2 & C-3PO|Light|Virtual Card Set #3|*|r-unit||||Artoo, Come Back At Once!\par Seeking An Audience\par Seeking An Audience (V)\par Were You Looking For Me?||R2-D2 & C-3PO + Chewie With Blaster Rifle\par Chewie With Blaster Rifle adds one battle destiny if with C-3P0.||||
 5044|Toryn Farr (V)|Light|Virtual Card Set #3|*|||||||||||
 5045|Planetary Defenses (V)|Light|Virtual Card Set #3|*|||||||||||
