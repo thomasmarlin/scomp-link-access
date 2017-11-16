@@ -328,6 +328,9 @@ cardSearchApp.service('CDFService', [function() {
     } else if (line.indexOf("USED:") === 0) {
       card.gametext += "USED: " + line.substring(6).trim() + "  ";
       return;
+    } else if (line.indexOf("STARTING:") === 0) {
+      card.gametext += "STARTING: " + line.substring(10).trim() + "  ";
+      return;
     } else if (line.indexOf("Icons:") === 0) {
       var iconsString = line.substring(7).trim();
       card.icons = getIcons(iconsString);
