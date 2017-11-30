@@ -1,6 +1,6 @@
 'use strict';
 var cardSearchApp = angular.module('cardSearchApp');
-cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http', '$window', 'CDFService', 'SWIPService',  function($scope, $document, $http, $window, CDFService, SWIPService) {
+cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http', '$timeout', '$window', 'CDFService', 'ExportService', 'SWIPService',  function($scope, $document, $http, $timeout, $window, CDFService, ExportService, SWIPService) {
 
   var filterAddMode = {
     AND: "AND",
@@ -436,6 +436,32 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
   }
 
+  $scope.exportLightCdf = function() {
+    var exportLight = true;
+    var exportDark = false;
+    ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+  };
+
+  $scope.exportDarkCdf = function() {
+    var exportLight = false;
+    var exportDark = true;
+    ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+  };
+
+
+  /*
+  function getDarkCards() {
+    var request = new XMLHttpRequest();
+    request.open("GET", 'darkside.cdf', false);
+    request.overrideMimeType('text/xml; charset==UTF-8');
+    request.send(null);
+    addCardsFromCdfData(request.responseText);
+    $scope.data.loadingDark = false;
+  }
+  getDarkCards();
+  */
+
+
   $http.get('lightside.cdf').success(function(data) {
     addCardsFromCdfData(data);
     $scope.data.loadingLight = false;
@@ -603,6 +629,9 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     var matches = [];
     for (var i = 0; i < $scope.data.cardList.length; i++) {
       var card = $scope.data.cardList[i];
+      if (card.legacy) {
+        continue;
+      }
 
       // Empty field. Just ignore it!
       if (rule.data === "") {

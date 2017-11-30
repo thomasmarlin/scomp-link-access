@@ -31,6 +31,7 @@
     <script src="js/app.js"></script>
     <script src="js/CardSearchController.js"></script>
     <script src="js/CDFService.js"></script>
+    <script src="js/ExportService.js"></script>
     <script src="js/SWIPService.js"></script>
     <script src="js/onLoadError.js"></script>
     <script src="js/outsideClick.js"></script>
@@ -44,6 +45,10 @@
 
     <!-- Content -->
     <div ng-app="cardSearchApp" ng-controller="CardSearchController" class="cs-main">
+
+      <button data-ng-click="exportLightCdf()">Export Light CDF</button>
+      <button data-ng-click="exportDarkCdf()">Export Dark CDF</button>
+      <button data-ng-click="exportSWIP()">Export SWIP</button>
 
       <div class="cs-title">
         <div class="cs-title-holder">

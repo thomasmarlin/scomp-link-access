@@ -48,6 +48,7 @@ cardSearchApp.service('CDFService', [function() {
     return "";
   };
 
+
   function cardsFromCdfData(data) {
     var cards = [];
 
@@ -59,17 +60,20 @@ cardSearchApp.service('CDFService', [function() {
       if (0 === lineInfo.indexOf("card")) {
         //console.log("Detected Card: " + lineInfo);
 
+        var isLegacy = false;
+
         // Ignore Legacy cards
         if (-1 !== lineInfo.indexOf('card "/legacy')) {
-          continue;
+          isLegacy = true;
         }
         if (-1 !== lineInfo.indexOf('card "/TWOSIDED/legacy')) {
-          continue;
+          isLegacy = true;
         }
 
         // Get the card name from the line
         var card = cardFromLine(lineInfo);
         if (card) {
+          card.legacy = isLegacy;
           //console.log("Card: " + JSON.stringify(card));
           cards.push(card);
         }
@@ -97,11 +101,13 @@ cardSearchApp.service('CDFService', [function() {
     }
 
     var twoSided = false;
-    if (cardLine.indexOf('TWOSIDED') !== 0) {
+    if (cardLine.indexOf('TWOSIDED') !== -1) {
       twoSided = true;
     }
 
     var card = {
+      conceptBy: "",
+      errataInfo: "",
       links: [],
       links_large: [],
       ability: "",
@@ -110,6 +116,7 @@ cardSearchApp.service('CDFService', [function() {
       darkSideIcons: "",
       destiny: "",
       deploy: "",
+      extraText: "",
       forfeit: "",
       lore: "",
       gametext: "",
@@ -141,14 +148,28 @@ cardSearchApp.service('CDFService', [function() {
 
     var cardData = cardLine.substring(iSecondSpace + 2).trim();
 
+    console.log(cardLine);
+
+
+
     // Every decent browser can handle this...but not IE. See below...
+    /*
     cardData = cardData.replace("\"\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
     cardData = cardData.replace("\�", "•"); //jshint ignore:line
+    */
+
+    //cardData = cardData.replace(/�/g, "\x95"); //jshint ignore:line
+    //cardData = cardData.replace(/�/g, "ï"); //jshint ignore:line
+    //cardData = cardData.replace(/�/g, "•");  //jshint ignore:line
+    cardData = cardData.replace(/[^\x00-\x80]/g, "\u2022"); // //jshint ignore:line
+
 
     // For Internet Explorer stupidity (replace any garbage characters with  the uniqueness-dot
-    cardData = cardData.replace(/[^\x00-\x80]/g, "•"); // //jshint ignore:line
+    //cardData = cardData.replace(/[^\x00-\x80]/g, "•"); // //jshint ignore:line
+    //cardData = cardData.replace(/[^\x00-\x80]/g, "\x95"); // //jshint ignore:line
+    //cardData = cardData.replace(/[^\x00-\x80]/g, "\u2022"); // //jshint ignore:line
 
     // Split Lines
     // "Accuser (1)\n
@@ -239,7 +260,26 @@ cardSearchApp.service('CDFService', [function() {
       // Get Rarity
       card.rarity = line.substring(indexOfRarity+1, lastBracketIndex);
 
+
+      // The 'Type' line looks like one of the below:
+      // Dark Admiral's Order [R]
+      // Dark Character - Dark Jedi Knight [R]
+
+      // First, remove the rarity
       var fullTypeLine = line.substring(0, indexOfRarity).trim();
+
+      // Get the Side (first word)
+      if (fullTypeLine.indexOf("Dark") === 0) {
+        card.side = "Dark";
+      }
+      if (fullTypeLine.indexOf("Light") === 0){
+        card.side = "Light";
+      }
+
+      // Remove the Dark/Light from the beginning of the type string
+      fullTypeLine = fullTypeLine.replace("Dark", "").trim();
+      fullTypeLine = fullTypeLine.replace("Light", "").trim();
+
 
       // Get Basic Type
       var endOfBaseType = fullTypeLine.length;
@@ -247,23 +287,13 @@ cardSearchApp.service('CDFService', [function() {
       if (indexOfDash > -1) {
         endOfBaseType = indexOfDash;
       }
-
       var type = fullTypeLine.substring(0, endOfBaseType).trim();
-      if (type.indexOf("Dark") === 0) {
-        card.side = "Dark";
-      }
-      if (type.indexOf("Light") === 0){
-        card.side = "Light";
-      }
 
-      type = type.replace("Dark", "").trim();
-      type = type.replace("Light", "").trim();
+
       card.type = type;
 
-
       // Get Full Type
-      card.subType = fullTypeLine.substring(endOfBaseType + 1).replace("Dark", "").replace("Light", "").trim();
-
+      card.subType = fullTypeLine.substring(endOfBaseType + 1); //.replace("Dark", "").replace("Light", "").trim();
     }
 
   }
@@ -331,6 +361,24 @@ cardSearchApp.service('CDFService', [function() {
     } else if (line.indexOf("STARTING:") === 0) {
       card.gametext += "STARTING: " + line.substring(10).trim() + "  ";
       return;
+    } else if (line.indexOf("Requirements:") === 0) {
+      card.gametext += line + " ";
+      return;
+    } else if (line.indexOf("Stakes:") === 0) {
+      card.gametext += line + " ";
+      return;
+    } else if (line.indexOf("Clone cards:") === 0) {
+      card.gametext += line + " ";
+      return;
+    } else if (line.indexOf("Wild cards") === 0) {
+      card.gametext += line + " ";
+      return;
+    } else if (line.indexOf("(Original") === 0) {
+      card.conceptBy += line;
+      return;
+    } else if (line.indexOf("(Errata") === 0) {
+      card.errataInfo += line;
+      return;
     } else if (line.indexOf("Icons:") === 0) {
       var iconsString = line.substring(7).trim();
       card.icons = getIcons(iconsString);
@@ -338,10 +386,19 @@ cardSearchApp.service('CDFService', [function() {
     } else if (card.type === "Objective") {
       // Special case because Objectives aren't labeled properly... sigh...
       card.gametext += line;
-    } else if (line.indexOf("DARK") === 0) {
-      var indexOfDarkColon = line.indexOf(":");
-      if (indexOfDarkColon > 0) {
-        card.gametext += "Dark: " + line.substring(indexOfDarkColon);
+    } else if (line.indexOf("DARK: (") === 0) {
+      card.gametext += line;
+
+      var darkIconCount = parseInt(line.substring(8));
+      if (darkIconCount) {
+        card.darkSideIcons = darkIconCount;
+      }
+    } else if (line.indexOf("LIGHT: (") === 0) {
+      card.gametext += line;
+
+      var lightIconCount = parseInt(line.substring(9));
+      if (lightIconCount) {
+        card.lightSideIcons = lightIconCount;
       }
     } else if (line.indexOf("LIGHT") === 0) {
       var indexLightOfColon = line.indexOf(":");
@@ -357,11 +414,16 @@ cardSearchApp.service('CDFService', [function() {
     // Armor:
     // 5
 
+    var isPowerLine = (-1 !== line.indexOf("ower:"));
+
     var splitLine = line.trim().split(" ");
     var lastFieldNameLower = "";
     for (var i = 0; i < splitLine.length; i++) {
+
+      // Store the 'data' value
       var data = splitLine[i].trim();
 
+      // Fields are labeled, so every other data chunk is a value and it's previous value was the label
       if (i % 2 !== 0) {
         if (lastFieldNameLower === "power:") {
           card.power = data;
@@ -398,6 +460,17 @@ cardSearchApp.service('CDFService', [function() {
 
       } else{
         lastFieldNameLower = data.toLowerCase().trim();
+
+        if (isPowerLine &&  (-1 === lastFieldNameLower.indexOf(":"))) {
+          // We are on the power line, and just encountered non-labeled text.
+          // This (and the rest of the line) must be things like "Force-Sensitive" or "Jedi Knight", "Assassin Droid", etc
+          for (var j = i; j < splitLine.length; j++) {
+            card.extraText += " " + splitLine[j];
+            card.extraText = card.extraText.trim();
+          }
+
+        }
+
       }
     }
   }
