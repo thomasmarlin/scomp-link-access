@@ -189,43 +189,9 @@ cardSearchApp.service('ExportService', ['$timeout', function($timeout) {
     // Remove the "<br>" garbage for separating icons
     allCardData = allCardData.replace(/<br>/g, ',');
 
-    // Save this data into a download...
-    stringToDownload(allCardData);
+    return allCardData;
   }
   this.exportCdf = exportCdf;
-
-
-  function stringToDownload(str) {
-    var text = str;
-    var filename = "darksideExported.cdf";
-
-    var elementId = "DOWNLOAD_DATA_ELEMENT_ID";
-    var element = angular.element('<a id="' + elementId + '">ClickMe</a>');
-    //element.attr('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(text));
-    var encodedData = encodeURIComponent(text);
-    console.log("Encoded length: " + encodedData.length);
-
-    element.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.attr('download', filename);
-
-    //var compiled = $compile(element)($scope);
-
-    //element.css("display", 'none');
-
-    var body = angular.element(document).find('body').eq(0);
-    body.append(element);
-
-    $timeout(function(){
-      element.get(0).click();
-
-      $timeout(function() {
-        element.remove();
-      }, 5000);
-
-    }, 5000);
-
-  }
-
 
 
   function initializeCardLine() {

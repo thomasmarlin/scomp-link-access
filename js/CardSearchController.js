@@ -1,6 +1,6 @@
 'use strict';
 var cardSearchApp = angular.module('cardSearchApp');
-cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http', '$timeout', '$window', 'CDFService', 'ExportService', 'SWIPService',  function($scope, $document, $http, $timeout, $window, CDFService, ExportService, SWIPService) {
+cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http', '$timeout', '$window', 'CDFService', 'ExportService', 'SWIPService', 'SWIPExportService',  function($scope, $document, $http, $timeout, $window, CDFService, ExportService, SWIPService, SWIPExportService) {
 
   var filterAddMode = {
     AND: "AND",
@@ -436,16 +436,83 @@ cardSearchApp.controller('CardSearchController', ['$scope', '$document', '$http'
     }
   }
 
+  function stringToDownload(str, fileName) {
+
+
+    var a = window.document.createElement('a');
+
+    //var arrayBuffer = new ArrayBuffer(str.split(''));
+    //var blob = new Blob(arrayBuffer);
+    //a.href = window.URL.createObjectURL(blob);
+    //var arrayBuffer = btoa(unescape(encodeURIComponent(str)));
+    a.href = window.URL.createObjectURL(new Blob([str], {type: "text/plain;charset=utf-8"}));
+    a.download = fileName;
+
+    // Append anchor to body.
+    document.body.appendChild(a);
+    a.click();
+
+    // Remove anchor from body
+    document.body.removeChild(a);
+
+    return;
+
+
+
+
+    var text = str;
+    var filename = fileName;
+
+    var elementId = "DOWNLOAD_DATA_ELEMENT_ID";
+    var element = angular.element('<a id="' + elementId + '">ClickMe</a>');
+    //element.attr('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(text));
+    var encodedData = encodeURIComponent(text);
+    console.log("Encoded length: " + encodedData.length);
+
+    element.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.attr('download', filename);
+
+    //var compiled = $compile(element)($scope);
+
+    //element.css("display", 'none');
+
+    var body = angular.element(document).find('body').eq(0);
+    body.append(element);
+
+    $timeout(function(){
+      element.get(0).click();
+
+      $timeout(function() {
+        element.remove();
+      }, 5000);
+
+    }, 5000);
+
+  }
+
+  $scope.exportSWIP = function() {
+    var swipString = SWIPExportService.exportCards($scope.data.cardList);
+
+    // Save this data into a download...
+    stringToDownload(swipString, "swipdumpEXPORTED.txt");
+  };
+
   $scope.exportLightCdf = function() {
     var exportLight = true;
     var exportDark = false;
-    ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+    var cdfString = ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+
+    // Save this data into a download...
+    stringToDownload(cdfString, "lightsideEXPORTED.cdf");
   };
 
   $scope.exportDarkCdf = function() {
     var exportLight = false;
     var exportDark = true;
-    ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+    var cdfString = ExportService.exportCdf(exportLight, exportDark, $scope.data.cardList);
+
+    // Save this data into a download...
+    stringToDownload(cdfString, "darksideEXPORTED.cdf");
   };
 
 
