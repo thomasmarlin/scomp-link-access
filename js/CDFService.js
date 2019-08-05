@@ -337,9 +337,9 @@ cardSearchApp.service('CDFService', [function() {
   }
 
   function removeSetFromTitle(title) {
-    // See if thie title ends with "......... (CC)" or "..... (EP1)"
+    // See if the title ends with "......... (CC)" or "..... (EP1)"
     var replaced = title.replace(/\(..\)/ig, "").toLowerCase().trim();
-    replaced = title.replace(/\(...\)/ig, "").toLowerCase().trim();
+    replaced = replaced.replace(/\(...\)/ig, "").toLowerCase().trim();
     //replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
 
     return replaced;
@@ -534,6 +534,11 @@ cardSearchApp.service('CDFService', [function() {
       default: {
         var abbreviation = "";
         var splitWords = setName.split(" ");
+
+        if (-1 !== setName.indexOf("Virtual Set")) {
+          return setName.replace("Virtual Set ", "VS");
+        }
+
         for (var i = 0; i < splitWords.length; i++) {
           var firstLetter = splitWords[i].substring(0, 1);
           abbreviation += firstLetter.toUpperCase();

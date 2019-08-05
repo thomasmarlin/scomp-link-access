@@ -193,6 +193,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     setName = setName.replace("Premier 2 Player", "Premier Two Player Game");
     setName = setName.replace("Empire Strikes Back 2 Player", "Empire Strikes Back Two Player Game");
     setName = setName.replace("Virtual Defensive Shields", "Virtual Set 0");
+    setName = setName.replace("Demonstration Deck Premium Card Set", "Demo Deck")
     return setName;
   }
   function getCharacteristics(splitData) {
