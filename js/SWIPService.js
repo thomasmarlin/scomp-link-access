@@ -150,6 +150,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     UniquenessV char(6));
   */
 
+  var idHeaderIndex = -1;
   var nameHeaderIndex = -1;
   var sideIndexHeader = -1;
   var expansionIndexHeader = -1;
@@ -174,6 +175,9 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     return "";
   }
 
+  function getId(splitData) {
+    return parseInt(getDataAtIndex(splitData, idHeaderIndex));
+  }
   function getSide(splitData) {
     return getDataAtIndex(splitData, sideIndexHeader);
   }
@@ -184,7 +188,11 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     // SWIP lists the set as "Virtual Card Set #X"
     //
     // Transform SWIP data to match :)
+    setName = setName.replace("Enhanced Premiere Pack", "Enhanced Premiere");
     setName = setName.replace("Virtual Card Set #", "Virtual Set ");
+    setName = setName.replace("Premier 2 Player", "Premier Two Player Game");
+    setName = setName.replace("Empire Strikes Back 2 Player", "Empire Strikes Back Two Player Game");
+    setName = setName.replace("Virtual Defensive Shields", "Virtual Set 0");
     return setName;
   }
   function getCharacteristics(splitData) {
@@ -252,6 +260,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
 
   function processHeaders(firstLine) {
     var headers = firstLine.split('|');
+    idHeaderIndex = headers.indexOf('id');
     nameHeaderIndex = headers.indexOf('CardName');
     sideIndexHeader = headers.indexOf('Grouping');
     expansionIndexHeader = headers.indexOf('Expansion');
@@ -297,6 +306,7 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
       var existingCard = getCardWithName(cardWithoutSetInfo, cardSide, cardExpansion, existingCards);
       if (existingCard) {
         // Add the extra data from SWIP!!
+        existingCard.id = getId(cardDataFields);
         existingCard.pulls = getPulls(cardDataFields);
         existingCard.pulledBy = getPulledBy(cardDataFields);
         existingCard.counterpart = getCounterpart(cardDataFields);
@@ -310,6 +320,8 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
         existingCard.lightSideIcons = getLightSideIcons(cardDataFields);
         existingCard.darkSideIcons = getDarkSideIcons(cardDataFields);
         existingCard.uniqueness = getUniqueness(cardDataFields);
+      } else {
+        console.log("Failed to find card: " + cardWithoutSetInfo + " cardSide: "+ cardSide + " cardExpansion: " + cardExpansion);
       }
 
     }

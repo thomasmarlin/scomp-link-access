@@ -16,6 +16,7 @@ cardSearchApp.service('CDFService', [function() {
     JEDI_TEST: "JEDI_TEST",
     LOCATION: "LOCATION",
     OBJECTIVE: "OBJECTIVE",
+    Podracer: "PODRACER",
     STARSHIP: "STARSHIP",
     VEHICLE: "VEHICLE",
     WEAPON: "WEAPON",
@@ -35,6 +36,7 @@ cardSearchApp.service('CDFService', [function() {
     JEDI_TEST: "jedi test",
     LOCATION: "location",
     OBJECTIVE: "objective",
+    PODRACER: "podracer",
     STARSHIP: "starship",
     VEHICLE: "vehicle",
     WEAPON: "weapon"
@@ -117,6 +119,7 @@ cardSearchApp.service('CDFService', [function() {
       destiny: "",
       deploy: "",
       extraText: "",
+      ferocity: "",
       forfeit: "",
       lore: "",
       gametext: "",
@@ -293,7 +296,7 @@ cardSearchApp.service('CDFService', [function() {
       card.type = type;
 
       // Get Full Type
-      card.subType = fullTypeLine.substring(endOfBaseType + 1); //.replace("Dark", "").replace("Light", "").trim();
+      card.subType = fullTypeLine.substring(endOfBaseType + 2); //.replace("Dark", "").replace("Light", "").trim();
     }
 
   }
@@ -312,6 +315,9 @@ cardSearchApp.service('CDFService', [function() {
     titleSortable = titleSortable.replace("é", "e");
 
     titleSortable = titleSortable.replace("ï¿½", "e");
+
+    titleSortable = titleSortable.replace(/\'/g, "");
+    titleSortable = titleSortable.replace(/\"/g, "");
 
     return titleSortable;
   }
@@ -332,8 +338,9 @@ cardSearchApp.service('CDFService', [function() {
 
   function removeSetFromTitle(title) {
     // See if thie title ends with "......... (CC)" or "..... (EP1)"
-    var replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
-    replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
+    var replaced = title.replace(/\(..\)/ig, "").toLowerCase().trim();
+    replaced = title.replace(/\(...\)/ig, "").toLowerCase().trim();
+    //replaced = title.replace(/\(.*.*\)/i, "").toLowerCase().trim();
 
     return replaced;
   }
@@ -455,6 +462,8 @@ cardSearchApp.service('CDFService', [function() {
           card.politics = data;
         } else if (lastFieldNameLower === "parsec:") {
           card.parsec = data;
+        } else if (lastFieldNameLower === "ferocity:") {
+          card.ferocity = data;
         }
 
 
