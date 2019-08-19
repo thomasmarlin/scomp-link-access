@@ -190,10 +190,10 @@ cardSearchApp.service('SWIPService', ['CDFService', function(CDFService) {
     // Transform SWIP data to match :)
     setName = setName.replace("Enhanced Premiere Pack", "Enhanced Premiere");
     setName = setName.replace("Virtual Card Set #", "Virtual Set ");
-    setName = setName.replace("Premier 2 Player", "Premier Two Player Game");
-    setName = setName.replace("Empire Strikes Back 2 Player", "Empire Strikes Back Two Player Game");
+    setName = setName.replace("Empire Strikes Back 2 Player", "Empire Strikes Back Introductory Two Player Game");
     setName = setName.replace("Virtual Defensive Shields", "Virtual Set 0");
-    setName = setName.replace("Demonstration Deck Premium Card Set", "Demo Deck")
+    setName = setName.replace("Demonstration Deck Premium Card Set", "Demo Deck");
+    setName = setName.replace("Premiere 2 Player", "Premiere Introductory Two Player Game");
     return setName;
   }
   function getCharacteristics(splitData) {

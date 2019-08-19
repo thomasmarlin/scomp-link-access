@@ -151,7 +151,7 @@ cardSearchApp.service('CDFService', [function() {
 
     var cardData = cardLine.substring(iSecondSpace + 2).trim();
 
-    console.log(cardLine);
+    //console.log(cardLine);
 
 
 
@@ -536,7 +536,7 @@ cardSearchApp.service('CDFService', [function() {
         var splitWords = setName.split(" ");
 
         if (-1 !== setName.indexOf("Virtual Set")) {
-          return setName.replace("Virtual Set ", "VS");
+          return setName.replace("Virtual Set ", "V");
         }
 
         for (var i = 0; i < splitWords.length; i++) {
